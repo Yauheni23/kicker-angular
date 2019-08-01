@@ -1,8 +1,7 @@
 export interface ITeam {
     id: string;
     name: string;
-    player1: string;
-    player2: string;
+    players: string[];
     countGame: number;
     winGame: number;
 }

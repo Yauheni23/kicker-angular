@@ -8,11 +8,13 @@ import {PlayerService} from '../../services/player.service';
     styleUrls: ['./editor-user.component.css']
 })
 export class EditorUserComponent {
-    public userFormGroup: FormGroup;
+    public userFormGroup = new FormGroup({
+        username: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        role: new FormControl('', Validators.required),
+    });
     public success: boolean;
 
     constructor(private playerService: PlayerService) {
-        this.prepareForm();
     }
 
     public onSubmit(player, form): void {
@@ -28,12 +30,4 @@ export class EditorUserComponent {
     get role() {
         return this.userFormGroup.get('role');
     }
-
-    private prepareForm(): void {
-        this.userFormGroup = new FormGroup({
-            username: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            role: new FormControl('', Validators.required),
-        });
-    }
-
 }

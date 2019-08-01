@@ -1,29 +1,28 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ITeam} from '../types';
+import generateId from 'uuid/v4';
+
 
 export const teamDefault: ITeam[] = [
     {
         id: '1',
         name: 'Дикари',
-        player1: '1',
-        player2: '2',
+        players: ['1', '2'],
         countGame: 3,
         winGame: 2
     },
     {
         id: '2',
         name: 'Мстители',
-        player1: '3',
-        player2: '4',
+        players: ['3', '4'],
         countGame: 3,
         winGame: 1
     },
     {
         id: '3',
         name: 'Драконы',
-        player1: '5',
-        player2: '6',
+        players: ['5', '6'],
         countGame: 0,
         winGame: 0
     }
@@ -43,7 +42,13 @@ export class TeamService {
 
     public createTeam(team: ITeam): void {
         if (team) {
-            this.data.next(this.data.value.concat(team));
+            const newTeam = {
+                ...team,
+                id: generateId(),
+                countGame: 0,
+                winGame: 0
+            };
+            this.data.next(this.data.value.concat(newTeam));
         }
     }
 

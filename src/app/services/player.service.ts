@@ -8,32 +8,53 @@ export const playerDefault: IPlayer[] = [
         id: '1',
         username: '4iter',
         countGoal: 243,
-        countGame: 100
+        countGame: 100,
+        teamId: '1'
     }, {
         id: '2',
         username: 'Mag',
         countGoal: 243,
-        countGame: 100
+        countGame: 100,
+        teamId: '1'
     }, {
         id: '3',
         username: 'Bond',
         countGoal: 243,
-        countGame: 100
+        countGame: 100,
+        teamId: '2'
     }, {
         id: '4',
         username: 'Felix',
         countGoal: 243,
-        countGame: 100
+        countGame: 100,
+        teamId: '2'
     }, {
         id: '5',
         username: 'Stan',
         countGoal: 0,
-        countGame: 0
+        countGame: 0,
+        teamId: '3'
     }, {
         id: '6',
         username: 'Leha',
         countGoal: 0,
-        countGame: 0
+        countGame: 0,
+        teamId: '3'
+    }, {
+        id: '7',
+        username: 'Belka',
+        countGoal: 0,
+        countGame: 0,
+    }, {
+        id: '8',
+        username: 'Solo',
+        countGoal: 0,
+        countGame: 0,
+    }, {
+        id: '9',
+        username: 'Ram',
+        countGoal: 0,
+        countGame: 0,
     },
 
 ];
@@ -53,8 +74,12 @@ export class PlayerService {
         return this.data.value.find(player => player.id === id);
     }
 
+    public getFreePlayers(): IPlayer[] {
+        return this.data.value.filter(player => !player.teamId);
+    }
+
     public getPlayerByTeam(team: ITeam): IPlayer[] {
-        return this.data.value.filter(player => player.id === team.player1 || player.id === team.player2);
+        return this.data.value.filter(player => team.players.some(el => el === player.id));
     }
 
     public createPlayer(player): void {
