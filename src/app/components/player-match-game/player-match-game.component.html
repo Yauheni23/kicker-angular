@@ -1,9 +1,9 @@
 <div>
-    <h2>Player: {{player.username}}</h2>
-    <h2>Goals: </h2>
-    <mat-form-field>
-        <mat-select>
-            <mat-option *ngFor="let goal of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" [value]="goal">
+    <h1 style="text-align: center">{{player.username}}</h1>
+    <h3 style="text-align: center">Goals: </h3>
+    <mat-form-field [style.width.px]="75">
+        <mat-select style="text-align: center" (valueChange)="setGoals(goals.value)" #goals>
+            <mat-option *ngFor="let goal of goalsArray" [value]="goal" style="text-align: center">
                 {{goal}}
             </mat-option>
         </mat-select>

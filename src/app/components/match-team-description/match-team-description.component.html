@@ -11,17 +11,17 @@
     </div>
     <div class="goals center">
         <h2 style="text-align: center">Goals:</h2>
-        <mat-form-field>
-            <mat-select [(value)]="goals" style="text-align: center">
-                <mat-option *ngFor="let goal of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" [value]="goal" style="text-align: center">
+        <mat-form-field [style.width.px]="75">
+            <mat-select (valueChange)="setMaxGoals(goals.value)" style="text-align: center" #goals>
+                <mat-option *ngFor="let goal of variantGoals" [value]="goal" style="text-align: center">
                     {{goal}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="players">
-        <div *ngFor="let player of players">
-            <app-player-match-game [player]="player" [goals]="goals"></app-player-match-game>
+        <div *ngFor="let player of players; index as i">
+            <app-player-match-game [player]="player" [id]="i"></app-player-match-game>
         </div>
     </div>
 
