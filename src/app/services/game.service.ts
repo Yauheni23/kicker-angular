@@ -1,32 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {IGame} from '../types';
-import {teamDefault} from './team.service';
-
-const gameDefault: IGame[] = [
-    {
-        id: '1',
-        team1: teamDefault[0],
-        team2: teamDefault[1],
-        winTeam: teamDefault[0],
-        goalTeam1: 11,
-        goalTeam2: 6
-    }, {
-        id: '2',
-        team1: teamDefault[0],
-        team2: teamDefault[1],
-        winTeam: teamDefault[0],
-        goalTeam1: 11,
-        goalTeam2: 9
-    }, {
-        id: '3',
-        team1: teamDefault[0],
-        team2: teamDefault[1],
-        winTeam: teamDefault[1],
-        goalTeam1: 8,
-        goalTeam2: 11
-    },
-];
+import {gameDefault} from '../constants';
 
 @Injectable({providedIn: 'root'})
 export class GameService {

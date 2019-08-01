@@ -1,27 +1,18 @@
 <form [formGroup]="teamFormGroup" (ngSubmit)="onSubmit(teamFormGroup.value ,formDirective)"
       class="example-container" #formDirective>
     <mat-form-field>
-        <input matInput placeholder="Name" formControlName="username">
+        <input matInput placeholder="Name" formControlName="name" (change)="onClear()">
         <mat-error *ngIf="name.touched && name.errors">
             Minimum 2 character
         </mat-error>
     </mat-form-field>
     <div style="display: flex; justify-content: space-around">
-        <mat-form-field>
-            <mat-select placeholder="Player" formControlName="player1">
+        <mat-form-field *ngFor="let user of [player1,player2]">
+            <mat-select placeholder="Player" [formControl]="user" (valueChange)="onClear()">
                 <mat-option [value]="player.id"
                             *ngFor="let player of players">{{player.username}}</mat-option>
             </mat-select>
-            <mat-error *ngIf="player1.touched && player1.errors">
-                Player is required
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-select placeholder="Player" formControlName="player2">
-                <mat-option [value]="player.id"
-                            *ngFor="let player of players">{{player.username}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="player2.touched && player2.errors">
+            <mat-error *ngIf="user.touched && user.errors">
                 Player is required
             </mat-error>
         </mat-form-field>
@@ -36,5 +27,8 @@
     </button>
     <div *ngIf="success && !teamFormGroup.touched" style="text-align: center">
         <span [style.color]="'green'">Success</span>
+    </div>
+    <div *ngIf="errorMessage" style="text-align: center">
+        <span [style.color]="'red'">{{errorMessage}}</span>
     </div>
 </form>

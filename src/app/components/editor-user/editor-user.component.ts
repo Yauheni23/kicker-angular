@@ -13,14 +13,9 @@ export class EditorUserComponent {
         role: new FormControl('', Validators.required),
     });
     public success: boolean;
+    public errorMessage: string;
 
     constructor(private playerService: PlayerService) {
-    }
-
-    public onSubmit(player, form): void {
-        this.playerService.createPlayer(player);
-        form.reset();
-        this.success = true;
     }
 
     get username() {
@@ -29,5 +24,20 @@ export class EditorUserComponent {
 
     get role() {
         return this.userFormGroup.get('role');
+    }
+
+    public onSubmit(player, form): void {
+        this.playerService.createPlayer(player)
+            .then(() => {
+                form.reset();
+                this.success = true;
+            })
+            .catch(error => {
+                this.errorMessage = error.message;
+            });
+    }
+
+    public onClear(): void {
+        this.errorMessage = '';
     }
 }
