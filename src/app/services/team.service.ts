@@ -18,6 +18,14 @@ export const teamDefault: ITeam[] = [
         player2: '4',
         countGame: 3,
         winGame: 1
+    },
+    {
+        id: '3',
+        name: 'Драконы',
+        player1: '5',
+        player2: '6',
+        countGame: 0,
+        winGame: 0
     }
 ];
 

@@ -23,6 +23,16 @@ export const playerDefault: IPlayer[] = [
         username: 'Felix',
         countGoal: 243,
         countGame: 100
+    }, {
+        id: '5',
+        username: 'Stan',
+        countGoal: 0,
+        countGame: 0
+    }, {
+        id: '6',
+        username: 'Leha',
+        countGoal: 0,
+        countGame: 0
     },
 
 ];

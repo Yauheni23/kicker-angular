@@ -1,26 +1,20 @@
 import {Injectable} from '@angular/core';
-import {TeamService} from './team.service';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {IGame} from '../types';
 
 @Injectable({
     providedIn: 'root'
 })
 export class EditorGameService {
-    private data: BehaviorSubject<IGame[]> = new BehaviorSubject<IGame[]>([]);
+    private data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
-    public getGames(): Observable<IGame[]> {
+    public getSelectedTeam(): Observable<string[]> {
         return this.data.asObservable();
     }
 
-    public getGameById(id: string): IGame {
-        return this.data.value.find(game => game.id === id);
-    }
+    public selectTeam(oldSelectedTeam: string, nextSelectedTeam): void {
+        const selectedTeams = this.data.value.filter(teamId => teamId !== oldSelectedTeam);
 
-    public createGame(game: IGame): void {
-        if (game) {
-            this.data.next(this.data.value.concat(game));
-        }
+        this.data.next(selectedTeams.concat(nextSelectedTeam));
     }
 
 }

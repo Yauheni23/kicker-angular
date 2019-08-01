@@ -1,29 +1,29 @@
 <div class="match-team-description">
-    <div>
+    <div class="team center">
         <mat-form-field>
             <mat-label>Team</mat-label>
             <mat-select>
-                <mat-option *ngFor="let team of teams" [value]="team.id" (onSelectionChange)="getPlayers(team)">
+                <mat-option *ngFor="let team of teams" [value]="team.id" (click)="selectTeam(team)">
                     {{team.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
-    <div>
-        <h2>Goals:</h2>
+    <div class="goals center">
+        <h2 style="text-align: center">Goals:</h2>
         <mat-form-field>
-            <mat-select [value]="goals">
-                <mat-option *ngFor="let goal of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" [value]="goal">
+            <mat-select [(value)]="goals" style="text-align: center">
+                <mat-option *ngFor="let goal of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" [value]="goal" style="text-align: center">
                     {{goal}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
-<!--    <div class="players">-->
-<!--        <div *ngFor="let player of players">-->
-<!--            <app-player-match-game [player]=""></app-player-match-game>-->
-<!--        </div>-->
-<!--    </div>-->
+    <div class="players">
+        <div *ngFor="let player of players">
+            <app-player-match-game [player]="player" [goals]="goals"></app-player-match-game>
+        </div>
+    </div>
 
 </div>
 

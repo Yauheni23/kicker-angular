@@ -8,6 +8,7 @@ import {IPlayer} from '../../types';
 })
 export class PlayerMatchGameComponent implements OnInit {
   @Input() public player: IPlayer;
+  @Input() public goals: number;
 
   constructor() { }
 
