@@ -1,20 +1,40 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {ITeam} from '../types';
+import {TeamService} from './team.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class EditorGameService {
-    private data: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+    public teamsAll: ITeam[] = [];
+    public availableTeams: BehaviorSubject<ITeam[]> = new BehaviorSubject([]);
+    private selectedTeams: string[] = [];
 
-    public getSelectedTeam(): Observable<string[]> {
-        return this.data.asObservable();
+    constructor(private teamService: TeamService) {
+        this.teamService.getTeams().subscribe(data => {
+            this.teamsAll = data;
+            this.filterTeams();
+        });
     }
 
-    public selectTeam(oldSelectedTeam: string, nextSelectedTeam): void {
-        const selectedTeams = this.data.value.filter(teamId => teamId !== oldSelectedTeam);
+    public getTeams(): Observable<ITeam[]> {
+        return this.availableTeams.asObservable();
+    }
 
-        this.data.next(selectedTeams.concat(nextSelectedTeam));
+    public selectTeam(oldSelectedTeam: string, nextSelectedTeam: string): void {
+        this.selectedTeams = this.selectedTeams.filter(teamId => teamId !== oldSelectedTeam).concat(nextSelectedTeam);
+        this.filterTeams();
+    }
+
+    private filterTeams(): void {
+        let teams = this.teamsAll;
+        this.selectedTeams.forEach(selectedTeam => {
+            teams = teams.filter(team => {
+                return team.id !== selectedTeam;
+            });
+        });
+        this.availableTeams.next(teams);
     }
 
 }

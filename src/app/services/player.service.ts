@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {IPlayer} from '../types';
+import {IPlayer, ITeam} from '../types';
 
 export const playerDefault: IPlayer[] = [
     {
@@ -41,12 +41,18 @@ export const playerDefault: IPlayer[] = [
 export class PlayerService {
     private data: BehaviorSubject<IPlayer[]> = new BehaviorSubject<IPlayer[]>(playerDefault);
 
+    constructor(private playerService: PlayerService) {}
+
     public getPlayers(): Observable<IPlayer[]> {
         return this.data.asObservable();
     }
 
     public getPlayerById(id: string): IPlayer {
         return this.data.value.find(player => player.id === id);
+    }
+
+    public getPlayerByTeam(team: ITeam): IPlayer[] {
+        return this.data.value.filter(player => player.id === team.player1 || player.id === team.player2);
     }
 
     public createGame(player: IPlayer): void {
