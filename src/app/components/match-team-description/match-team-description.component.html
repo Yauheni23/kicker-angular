@@ -10,8 +10,9 @@
         </mat-form-field>
     </div>
     <div class="goals center">
-        <h2 style="text-align: center">Goals:</h2>
+        <h1 style="text-align: center; color: darkblue">{{selectedTeam ? selectedTeam.name : null}}</h1>
         <mat-form-field [style.width.px]="75">
+            <mat-label>Goals</mat-label>
             <mat-select (valueChange)="setMaxGoals(goals.value)" style="text-align: center" #goals>
                 <mat-option *ngFor="let goal of variantGoals" [value]="goal" style="text-align: center">
                     {{goal}}

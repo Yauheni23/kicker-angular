@@ -12,6 +12,7 @@ export interface IPlayer {
     username: string;
     countGoal: number;
     countGame: number;
+    role?: string;
     teamId?: string;
 }
 

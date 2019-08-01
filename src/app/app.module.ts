@@ -13,8 +13,8 @@ import {MatCheckboxModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
-
-
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 import {HeaderComponent} from './components/header/header.component';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
@@ -27,6 +27,7 @@ import { GamePageComponent } from './screens/game-page/game-page.component';
 import { EditorGameComponent } from './components/editor-game/editor-game.component';
 import { MatchTeamDescriptionComponent } from './components/match-team-description/match-team-description.component';
 import { PlayerMatchGameComponent } from './components/player-match-game/player-match-game.component';
+import { EditorTeamComponent } from './components/editor-team/editor-team.component';
 
 const appRoutes: Routes = [
     {path: 'game', component: GamePageComponent},
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
         GamePageComponent,
         EditorGameComponent,
         MatchTeamDescriptionComponent,
-        PlayerMatchGameComponent
+        PlayerMatchGameComponent,
+        EditorTeamComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),
@@ -66,7 +68,9 @@ const appRoutes: Routes = [
         MatCheckboxModule,
         MatFormFieldModule,
         MatIconModule,
-        MatSelectModule
+        MatSelectModule,
+        MatInputModule,
+        MatButtonModule
     ],
     providers: [],
     bootstrap: [AppComponent]

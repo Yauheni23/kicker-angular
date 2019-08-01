@@ -38,7 +38,6 @@ export class MatchTeamDescriptionComponent {
     }
 
     private getPlayers(): void {
-
         this.players = this.playerService.getPlayerByTeam(this.selectedTeam);
         this.playerStatisticService.setCountPlayers(this.players.length);
     }
