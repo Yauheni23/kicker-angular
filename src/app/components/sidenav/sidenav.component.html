@@ -2,18 +2,12 @@
     <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
 
     <mat-sidenav-container class="sidenav-container">
-        <mat-sidenav #sidenav mode="over" opened class="sidenav">
-            <app-navigation></app-navigation>
+        <mat-sidenav #sidenav mode="over"  class="sidenav">
+            <app-navigation (selectLink)="sidenav.close()"></app-navigation>
         </mat-sidenav>
 
         <mat-sidenav-content>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus quam sit
-                voluptates!
-                Atque consectetur, debitis dicta ducimus earum et exercitationem explicabo facere
-                facilis
-                illum magni maiores nihil nisi numquam perferendis quaerat quo quod repellat
-            </p>
+            <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
 

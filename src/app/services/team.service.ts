@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ITeam} from '../types';
-import {playerDefault} from './player.service';
 
 export const teamDefault: ITeam[] = [
     {
         id: '1',
         name: 'Дикари',
-        player1: playerDefault[0],
-        player2: playerDefault[1],
+        player1: '1',
+        player2: '2',
         countGame: 3,
         winGame: 2
     },
     {
         id: '2',
         name: 'Мстители',
-        player1: playerDefault[2],
-        player2: playerDefault[3],
+        player1: '3',
+        player2: '4',
         countGame: 3,
         winGame: 1
     }

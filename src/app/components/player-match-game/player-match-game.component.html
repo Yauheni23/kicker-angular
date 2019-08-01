@@ -1,0 +1,11 @@
+<div>
+    <h2>Player: {{player.username}}</h2>
+    <h2>Goals:</h2>
+    <mat-form-field>
+        <mat-select>
+            <mat-option *ngFor="let goal of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]" [value]="goal">
+                {{goal}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

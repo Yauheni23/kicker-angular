@@ -1,18 +1,19 @@
 <mat-nav-list>
-    <h2 matSubheader>Result match</h2>
+    <h2 matSubheader>Creating</h2>
     <mat-list-item>
-        <a matLine routerLink="/users"><mat-icon>add</mat-icon>Result match</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <h2 matSubheader>Game</h2>
-    <mat-list-item>
-        <a matLine routerLink="/users"><mat-icon>person</mat-icon>Create </a>
+        <a matLine routerLink="/game" (click)="closeSidenav()">
+            <mat-icon>add</mat-icon>Game
+        </a>
     </mat-list-item>
     <mat-list-item>
-        <a matLine routerLink="/users"><mat-icon>person</mat-icon>Create team</a>
+        <a matLine routerLink="/user" (click)="closeSidenav()">
+            <mat-icon>add</mat-icon>User
+        </a>
     </mat-list-item>
     <mat-list-item>
-        <a matLine routerLink="/team"><mat-icon>supervisor_account</mat-icon>Add player</a>
+        <a matLine routerLink="/team"  (click)="closeSidenav()">
+            <mat-icon>add</mat-icon>Team
+        </a>
     </mat-list-item>
     <mat-divider></mat-divider>
     <h2 matSubheader>Rating</h2>

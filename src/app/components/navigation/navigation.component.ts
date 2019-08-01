@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
+    @Output() public selectLink: EventEmitter<void> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+    public closeSidenav(): void {
+        this.selectLink.emit();
+    }
 }
