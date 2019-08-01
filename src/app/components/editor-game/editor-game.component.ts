@@ -6,7 +6,6 @@ import {Component} from '@angular/core';
     styleUrls: ['./editor-game.component.css']
 })
 export class EditorGameComponent {
-
     constructor() {
     }
 }

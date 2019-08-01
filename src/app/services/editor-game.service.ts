@@ -27,6 +27,11 @@ export class EditorGameService {
         this.filterTeams();
     }
 
+    public clear(): void {
+        this.selectedTeams = [];
+        this.filterTeams();
+    }
+
     private filterTeams(): void {
         let teams = this.teamsAll;
         this.selectedTeams.forEach(selectedTeam => {
