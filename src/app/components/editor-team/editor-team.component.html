@@ -1,14 +1,19 @@
-<form [formGroup]="teamFormGroup" (ngSubmit)="onSubmit(teamFormGroup.value ,formDirective)"
-      class="example-container" #formDirective>
-    <mat-form-field>
-        <input matInput placeholder="Name" formControlName="name" (change)="onClear()">
+<app-editor-layout [errorMessage]="errorMessage"
+                   [success]="success"
+                   [formGroup]="teamFormGroup"
+                   (submitEvent)="onSubmit()"
+                   class="editor-team"
+>
+    <h1>Team</h1>
+    <mat-form-field class="wrapper-input">
+        <input matInput placeholder="Name" formControlName="name" (change)="clear()">
         <mat-error *ngIf="name.touched && name.errors">
             Minimum 2 character
         </mat-error>
     </mat-form-field>
-    <div style="display: flex; justify-content: space-around">
+    <div class="editor-team__players">
         <mat-form-field *ngFor="let user of [player1,player2]">
-            <mat-select placeholder="Player" [formControl]="user" (valueChange)="onClear()">
+            <mat-select placeholder="Player" [formControl]="user" (valueChange)="clear()">
                 <mat-option [value]="player.id"
                             *ngFor="let player of players">{{player.username}}</mat-option>
             </mat-select>
@@ -17,18 +22,4 @@
             </mat-error>
         </mat-form-field>
     </div>
-
-    <button mat-raised-button
-            color="accent"
-            class="button-create"
-            type="submit"
-            [disabled]="!teamFormGroup.valid"
-    >Create
-    </button>
-    <div *ngIf="success && !teamFormGroup.touched" style="text-align: center">
-        <span [style.color]="'green'">Success</span>
-    </div>
-    <div *ngIf="errorMessage" style="text-align: center">
-        <span [style.color]="'red'">{{errorMessage}}</span>
-    </div>
-</form>
+</app-editor-layout>

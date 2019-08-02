@@ -1,17 +1,3 @@
-.example-container {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 40%;
-}
-
-.example-container > * {
+.wrapper-input {
     width: 100%;
-    margin: 20px 0;
-}
-
-.example-container .button-create {
-    width: 200px;
 }

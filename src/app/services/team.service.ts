@@ -28,6 +28,13 @@ export class TeamService {
                 });
                 return;
             }
+            if (team.player1 === team.player2) {
+                reject({
+                    message: 'Players is equal'
+                });
+                return;
+            }
+
             if (this.teams.some(el => el.name === team.name)) {
                 reject({
                     message: 'Name is busy!'

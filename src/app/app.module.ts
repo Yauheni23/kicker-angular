@@ -28,14 +28,15 @@ import { EditorGameComponent } from './components/editor-game/editor-game.compon
 import { MatchTeamDescriptionComponent } from './components/match-team-description/match-team-description.component';
 import { PlayerMatchGameComponent } from './components/player-match-game/player-match-game.component';
 import { EditorTeamComponent } from './components/editor-team/editor-team.component';
+import { EditorLayoutComponent } from './components/editor-layout/editor-layout.component';
 
 const appRoutes: Routes = [
-    {path: 'game', component: GamePageComponent},
-    {path: 'user', component: UserPageComponent},
-    {path: 'team', component: TeamPageComponent},
+    {path: 'create/game', component: GamePageComponent},
+    {path: 'create/user', component: UserPageComponent},
+    {path: 'create/team', component: TeamPageComponent},
     {
         path: '',
-        redirectTo: '/user',
+        redirectTo: 'create/game',
         pathMatch: 'full'
     },
 ];
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
         EditorGameComponent,
         MatchTeamDescriptionComponent,
         PlayerMatchGameComponent,
-        EditorTeamComponent
+        EditorTeamComponent,
+        EditorLayoutComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),

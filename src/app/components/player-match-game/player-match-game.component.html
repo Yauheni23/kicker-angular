@@ -1,9 +1,9 @@
-<div>
-    <h1 style="text-align: center">{{player.username}}</h1>
-    <mat-form-field [style.width.px]="75">
+<div class="player-description">
+    <h1 class="player-description__name">{{player.username}}</h1>
+    <mat-form-field class="goals-select">
         <mat-label>Goals</mat-label>
-        <mat-select style="text-align: center" (valueChange)="setGoals(goals.value)" #goals>
-            <mat-option *ngFor="let goal of goalsArray" [value]="goal" style="text-align: center">
+        <mat-select (valueChange)="setGoals(goals.value)" #goals [formControl]="formGroupPlayer">
+            <mat-option *ngFor="let goal of goalsArray" [value]="goal">
                 {{goal}}
             </mat-option>
         </mat-select>
