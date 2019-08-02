@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IPlayer} from '../../types';
 import {goalsVariant} from '../../constants';
 import {PlayerStatisticService} from '../../services/player-statistic.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'app-player-match-game',
@@ -9,6 +10,7 @@ import {PlayerStatisticService} from '../../services/player-statistic.service';
     styleUrls: ['./player-match-game.component.css']
 })
 export class PlayerMatchGameComponent implements OnInit {
+    @Input() public formGroupPlayer: FormControl;
     @Input() public player: IPlayer;
     @Input() public id: number;
     public maxGoals: number;
@@ -23,7 +25,7 @@ export class PlayerMatchGameComponent implements OnInit {
     }
 
     get goalsArray(): number[] {
-        return goalsVariant.slice(0, this.maxGoals + 1);
+        return goalsVariant.slice(0, this.maxGoals);
     }
 
     public setGoals(countGoals: number): void {

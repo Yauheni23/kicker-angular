@@ -26,18 +26,19 @@ export class EditorUserComponent {
         return this.userFormGroup.get('role');
     }
 
-    public onSubmit(player, form): void {
-        this.playerService.createPlayer(player)
+    public onSubmit(): void {
+        this.playerService.createPlayer(this.userFormGroup.value)
             .then(() => {
-                form.reset();
+                this.userFormGroup.reset();
                 this.success = true;
             })
             .catch(error => {
                 this.errorMessage = error.message;
+                this.success = false;
             });
     }
 
-    public onClear(): void {
+    public clear(): void {
         this.errorMessage = '';
     }
 }

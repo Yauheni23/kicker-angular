@@ -23,20 +23,17 @@ export class EditorTeamComponent {
         this.players = this.playerService.getFreePlayers();
     }
 
-    public onSubmit(team, form): void {
-        if (team.player1 === team.player2) {
-            this.errorMessage = 'Players is equal';
-        } else {
-            this.teamService.createTeam(team)
-                .then(() => {
-                    form.reset();
-                    this.success = true;
-                    this.players = this.playerService.getFreePlayers();
-                })
-                .catch(error => {
-                    this.errorMessage = error.message;
-                });
-        }
+    public onSubmit(): void {
+        this.teamService.createTeam(this.teamFormGroup.value)
+            .then(() => {
+                this.teamFormGroup.reset();
+                this.success = true;
+                this.players = this.playerService.getFreePlayers();
+            })
+            .catch(error => {
+                this.success = false;
+                this.errorMessage = error.message;
+            });
     }
 
     get name() {
@@ -51,7 +48,7 @@ export class EditorTeamComponent {
         return this.teamFormGroup.get('player2');
     }
 
-    public onClear(): void {
+    public clear(): void {
         this.errorMessage = '';
     }
 }

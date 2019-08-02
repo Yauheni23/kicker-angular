@@ -1,14 +1,16 @@
-<form [formGroup]="userFormGroup" (ngSubmit)="onSubmit(userFormGroup.value ,formDirective)"
-      class="example-container" #formDirective>
-    <mat-form-field>
-        <input matInput placeholder="Name" formControlName="username" (input)="onClear()">
+<app-editor-layout [errorMessage]="errorMessage"
+                   [success]="success"
+                   [formGroup]="userFormGroup"
+                   (submitEvent)="onSubmit()">
+    <h1>User</h1>
+    <mat-form-field class="wrapper-input">
+        <input matInput placeholder="Name" [formControl]="username" (input)="clear()">
         <mat-error *ngIf="username.touched && username.errors">
             Minimum 2 character
         </mat-error>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-select placeholder="Role" formControlName="role" (valueChange)="onClear()">
+        <mat-select placeholder="Role" [formControl]="role" (valueChange)="clear()">
             <mat-option value="Attack">Attack</mat-option>
             <mat-option value="Defense">Defense</mat-option>
         </mat-select>
@@ -16,17 +18,4 @@
             Role is required
         </mat-error>
     </mat-form-field>
-    <button mat-raised-button
-            color="accent"
-            class="button-create"
-            type="submit"
-            [disabled]="!userFormGroup.valid"
-    >Create
-    </button>
-    <div *ngIf="success && !userFormGroup.touched" style="text-align: center">
-        <span [style.color]="'green'">Success</span>
-    </div>
-    <div *ngIf="errorMessage" style="text-align: center">
-        <span [style.color]="'red'">{{errorMessage}}</span>
-    </div>
-</form>
+</app-editor-layout>

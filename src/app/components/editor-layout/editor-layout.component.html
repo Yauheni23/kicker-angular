@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" class="example-container">
+    <ng-content></ng-content>
+    <button mat-raised-button
+            color="accent"
+            class="button-create"
+            type="submit"
+            (click)="submit()"
+            [disabled]="!formGroup.valid"
+    >Create
+    </button>
+    <div *ngIf="success && !formGroup.touched && !errorMessage">
+        <span class="success">Success</span>
+    </div>
+    <div *ngIf="errorMessage">
+        <span class="error">{{errorMessage}}</span>
+    </div>
+</form>

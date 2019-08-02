@@ -1,4 +1,10 @@
-<div class="editor-task">
-    <app-match-team-description></app-match-team-description>
-    <app-match-team-description></app-match-team-description>
-</div>
+<app-editor-layout [errorMessage]="errorMessage"
+                   [success]="success"
+                   [formGroup]="gameFormGroup"
+                   (submitEvent)="createGame()">
+    <h1>Game</h1>
+    <div class="teams">
+        <app-match-team-description [formGroupTeam]="team1"></app-match-team-description>
+        <app-match-team-description [formGroupTeam]="team2"></app-match-team-description>
+    </div>
+</app-editor-layout>

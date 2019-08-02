@@ -12,24 +12,21 @@ export interface IPlayer {
     countGoal: number;
     countGame: number;
     role?: string;
-    teamId?: string;
 }
 
 export interface IGame {
     id: string;
-    team1: ITeam | string;
-    team2: ITeam | string;
-    winTeam: ITeam | string;
+    team1: string;
+    team2: string;
     goalTeam1: number;
     goalTeam2: number;
     goalsStatistics?: IGoalsStatistics;
-    time?: Date;
 }
 
 export interface IGoalsStatistics {
-    team1Player1?: number;
-    team1Player2?: number;
-    team2Player1?: number;
-    team2Player2?: number;
+    team1Player1: number;
+    team1Player2: number;
+    team2Player1: number;
+    team2Player2: number;
 }
 

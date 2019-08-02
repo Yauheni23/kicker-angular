@@ -1,20 +1,24 @@
 <mat-nav-list>
     <h2 matSubheader>Creating</h2>
-    <mat-list-item routerLink="/game" (click)="closeSidenav()">
+    <mat-list-item routerLink="/create/game" (click)="closeSidenav()">
         <span matLine><mat-icon>add</mat-icon>Game</span>
     </mat-list-item>
-    <mat-list-item routerLink="/user" (click)="closeSidenav()">
-        <span matLine><mat-icon>add</mat-icon>User</span>
-    </mat-list-item>
-    <mat-list-item routerLink="/team" (click)="closeSidenav()">
+    <mat-list-item routerLink="/create/team" (click)="closeSidenav()">
         <span matLine><mat-icon>add</mat-icon>Team</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/create/user" (click)="closeSidenav()">
+        <span matLine><mat-icon>add</mat-icon>User</span>
     </mat-list-item>
     <mat-divider></mat-divider>
     <h2 matSubheader>Rating</h2>
     <mat-list-item>
-        <a matLine routerLink="/team"><mat-icon>supervisor_account</mat-icon>Team</a>
+        <a matLine routerLink="/rating/team"><mat-icon>supervisor_account</mat-icon>Team</a>
     </mat-list-item>
     <mat-list-item>
-        <a matLine routerLink="/users"><mat-icon>person</mat-icon>Player</a>
+        <a matLine routerLink="/rating/users"><mat-icon>person</mat-icon>Player</a>
+    </mat-list-item>
+    <h2 matSubheader>History</h2>
+    <mat-list-item>
+        <a matLine routerLink="/history/game"><mat-icon>videogame_asset</mat-icon>Games</a>
     </mat-list-item>
 </mat-nav-list>

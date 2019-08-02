@@ -1,7 +1,7 @@
 import {IGame, IPlayer, ITeam} from './types';
 
 export const goalsVariant: number[] = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ];
 
 export const gameDefault: IGame[] = [
@@ -9,21 +9,18 @@ export const gameDefault: IGame[] = [
         id: '1',
         team1: '1',
         team2: '2',
-        winTeam: '1',
         goalTeam1: 11,
         goalTeam2: 6
     }, {
         id: '2',
         team1: '1',
         team2: '2',
-        winTeam: '1',
         goalTeam1: 11,
         goalTeam2: 9
     }, {
         id: '3',
         team1: '1',
         team2: '2',
-        winTeam: '2',
         goalTeam1: 8,
         goalTeam2: 11
     },
@@ -35,37 +32,31 @@ export const playerDefault: IPlayer[] = [
         username: '4iter',
         countGoal: 243,
         countGame: 100,
-        teamId: '1'
     }, {
         id: '2',
         username: 'Mag',
         countGoal: 243,
         countGame: 100,
-        teamId: '1'
     }, {
         id: '3',
         username: 'Bond',
         countGoal: 243,
         countGame: 100,
-        teamId: '2'
     }, {
         id: '4',
         username: 'Felix',
         countGoal: 243,
         countGame: 100,
-        teamId: '2'
     }, {
         id: '5',
         username: 'Stan',
         countGoal: 0,
         countGame: 0,
-        teamId: '3'
     }, {
         id: '6',
         username: 'Leha',
         countGoal: 0,
         countGame: 0,
-        teamId: '3'
     }, {
         id: '7',
         username: 'Belka',
