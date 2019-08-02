@@ -11,14 +11,14 @@
     </mat-list-item>
     <mat-divider></mat-divider>
     <h2 matSubheader>Rating</h2>
-    <mat-list-item>
-        <a matLine routerLink="/rating/team"><mat-icon>supervisor_account</mat-icon>Team</a>
+    <mat-list-item routerLink="/rating/teams" (click)="closeSidenav()">
+        <span matLine><mat-icon>supervisor_account</mat-icon>Teams</span>
     </mat-list-item>
-    <mat-list-item>
-        <a matLine routerLink="/rating/users"><mat-icon>person</mat-icon>Player</a>
+    <mat-list-item routerLink="/rating/users" (click)="closeSidenav()">
+        <span matLine><mat-icon>person</mat-icon>Players</span>
     </mat-list-item>
     <h2 matSubheader>History</h2>
-    <mat-list-item>
-        <a matLine routerLink="/history/game"><mat-icon>videogame_asset</mat-icon>Games</a>
+    <mat-list-item routerLink="/history/games" (click)="closeSidenav()">
+        <span matLine><mat-icon>videogame_asset</mat-icon>Games</span>
     </mat-list-item>
 </mat-nav-list>

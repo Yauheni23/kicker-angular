@@ -15,6 +15,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 import {HeaderComponent} from './components/header/header.component';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
@@ -29,11 +32,13 @@ import { MatchTeamDescriptionComponent } from './components/match-team-descripti
 import { PlayerMatchGameComponent } from './components/player-match-game/player-match-game.component';
 import { EditorTeamComponent } from './components/editor-team/editor-team.component';
 import { EditorLayoutComponent } from './components/editor-layout/editor-layout.component';
+import { RatingTeamsComponent } from './components/rating-teams/rating-teams.component';
 
 const appRoutes: Routes = [
     {path: 'create/game', component: GamePageComponent},
     {path: 'create/user', component: UserPageComponent},
     {path: 'create/team', component: TeamPageComponent},
+    {path: 'rating/teams', component: RatingTeamsComponent},
     {
         path: '',
         redirectTo: 'create/game',
@@ -56,7 +61,8 @@ const appRoutes: Routes = [
         MatchTeamDescriptionComponent,
         PlayerMatchGameComponent,
         EditorTeamComponent,
-        EditorLayoutComponent
+        EditorLayoutComponent,
+        RatingTeamsComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),
@@ -72,7 +78,10 @@ const appRoutes: Routes = [
         MatIconModule,
         MatSelectModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
     providers: [],
     bootstrap: [AppComponent]
