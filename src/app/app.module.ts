@@ -33,12 +33,14 @@ import { PlayerMatchGameComponent } from './components/player-match-game/player-
 import { EditorTeamComponent } from './components/editor-team/editor-team.component';
 import { EditorLayoutComponent } from './components/editor-layout/editor-layout.component';
 import { RatingTeamsComponent } from './components/rating-teams/rating-teams.component';
+import { RatingUsersComponent } from './components/rating-users/rating-users.component';
 
 const appRoutes: Routes = [
     {path: 'create/game', component: GamePageComponent},
     {path: 'create/user', component: UserPageComponent},
     {path: 'create/team', component: TeamPageComponent},
     {path: 'rating/teams', component: RatingTeamsComponent},
+    {path: 'rating/users', component: RatingUsersComponent},
     {
         path: '',
         redirectTo: 'create/game',
@@ -62,7 +64,8 @@ const appRoutes: Routes = [
         PlayerMatchGameComponent,
         EditorTeamComponent,
         EditorLayoutComponent,
-        RatingTeamsComponent
+        RatingTeamsComponent,
+        RatingUsersComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),

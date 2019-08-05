@@ -37,17 +37,17 @@ export const playerDefault: IPlayer[] = [
     {
         id: '1',
         username: '4iter',
-        countGoal: 243,
+        countGoal: 110,
         countGame: 100,
     }, {
         id: '2',
         username: 'Mag',
-        countGoal: 243,
+        countGoal: 200,
         countGame: 100,
     }, {
         id: '3',
         username: 'Bond',
-        countGoal: 243,
+        countGoal: 95,
         countGame: 100,
     }, {
         id: '4',
@@ -77,8 +77,8 @@ export const playerDefault: IPlayer[] = [
     }, {
         id: '9',
         username: 'Ram',
-        countGoal: 0,
-        countGame: 0,
+        countGoal: 300,
+        countGame: 40,
     },
 ];
 

@@ -61,7 +61,6 @@ export class PlayerService {
                 resolve({ok: true});
             }
         }));
-
     }
 
 }

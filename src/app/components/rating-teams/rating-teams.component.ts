@@ -13,7 +13,7 @@ export interface TeamData {
     winRate: number;
     player1: string;
     player2: string;
-    ratingId: number;
+    place: number;
 }
 
 @Component({
@@ -22,7 +22,7 @@ export interface TeamData {
     styleUrls: ['./rating-teams.component.css']
 })
 export class RatingTeamsComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'name', 'games', 'winRate', 'player1', 'player2'];
+    displayedColumns: string[] = ['place', 'name', 'games', 'winRate', 'player1', 'player2'];
     dataSource: MatTableDataSource<TeamData>;
 
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -45,7 +45,7 @@ export class RatingTeamsComponent implements OnInit {
             return prev.winRate > next.winRate ? -1 : 1;
         }).map((team, index) => ({
             ...team,
-            ratingId: index + 1
+            place: index + 1
         }));
         this.dataSource = new MatTableDataSource(teams);
         this.dataSource.paginator = this.paginator;
