@@ -4,6 +4,13 @@ export const goalsVariant: number[] = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ];
 
+export enum PlaceColor {
+    First = 'gold',
+    Second = 'silver',
+    Third = '#cd7f32',
+    Default = '#ffffff'
+}
+
 export const gameDefault: IGame[] = [
     {
         id: '1',
@@ -94,8 +101,8 @@ export const teamDefault: ITeam[] = [
         id: '3',
         name: 'Драконы',
         players: ['5', '6'],
-        countGame: 0,
-        winGame: 0
+        countGame: 6,
+        winGame: 5
     }
 ];
 

@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {TeamService} from '../../services/team.service';
 import {PlayerService} from '../../services/player.service';
+import {PlaceColor} from '../../constants';
 
 export interface TeamData {
     id: string;
@@ -12,6 +13,7 @@ export interface TeamData {
     winRate: number;
     player1: string;
     player2: string;
+    ratingId: number;
 }
 
 @Component({
@@ -29,7 +31,7 @@ export class RatingTeamsComponent implements OnInit {
     constructor(private teamService: TeamService, private playerService: PlayerService) {
     }
 
-    ngOnInit() {
+    public ngOnInit(): void {
         const teams = this.teamService.teams.map(team => {
             return {
                 id: team.id,
@@ -39,7 +41,12 @@ export class RatingTeamsComponent implements OnInit {
                 player1: this.playerService.getPlayerById(team.players[0]).username,
                 player2: this.playerService.getPlayerById(team.players[1]).username,
             };
-        });
+        }).sort((prev, next) => {
+            return prev.winRate > next.winRate ? -1 : 1;
+        }).map((team, index) => ({
+            ...team,
+            ratingId: index + 1
+        }));
         this.dataSource = new MatTableDataSource(teams);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -50,6 +57,19 @@ export class RatingTeamsComponent implements OnInit {
 
         if (this.dataSource.paginator) {
             this.dataSource.paginator.firstPage();
+        }
+    }
+
+    public setColor(id: number): string {
+        switch (id) {
+            case 1:
+                return PlaceColor.First;
+            case 2:
+                return PlaceColor.Second;
+            case 3:
+                return PlaceColor.Third;
+            default:
+                return PlaceColor.Default;
         }
     }
 }
