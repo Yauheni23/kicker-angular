@@ -18,8 +18,9 @@ export interface IGame {
     id: string;
     team1: string;
     team2: string;
-    goalTeam1: number;
-    goalTeam2: number;
+    goalsTeam1: number;
+    goalsTeam2: number;
+    date: Date;
     goalsStatistics?: IGoalsStatistics;
 }
 

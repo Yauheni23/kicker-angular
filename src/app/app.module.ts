@@ -34,6 +34,8 @@ import { EditorTeamComponent } from './components/editor-team/editor-team.compon
 import { EditorLayoutComponent } from './components/editor-layout/editor-layout.component';
 import { RatingTeamsComponent } from './components/rating-teams/rating-teams.component';
 import { RatingUsersComponent } from './components/rating-users/rating-users.component';
+import { HistoryGamesComponent } from './components/history-games/history-games.component';
+import { DescriptionGameLayoutComponent } from './components/description-game-layout/description-game-layout.component';
 
 const appRoutes: Routes = [
     {path: 'create/game', component: GamePageComponent},
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
     {path: 'create/team', component: TeamPageComponent},
     {path: 'rating/teams', component: RatingTeamsComponent},
     {path: 'rating/users', component: RatingUsersComponent},
+    {path: 'history/games', component: HistoryGamesComponent},
     {
         path: '',
         redirectTo: 'create/game',
@@ -65,7 +68,9 @@ const appRoutes: Routes = [
         EditorTeamComponent,
         EditorLayoutComponent,
         RatingTeamsComponent,
-        RatingUsersComponent
+        RatingUsersComponent,
+        HistoryGamesComponent,
+        DescriptionGameLayoutComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),

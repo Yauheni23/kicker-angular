@@ -8,6 +8,10 @@ import generateId from 'uuid/v4';
 export class GameService {
     private data: BehaviorSubject<IGame[]> = new BehaviorSubject<IGame[]>(gameDefault);
 
+    get games(): IGame[] {
+        return this.data.value;
+    }
+
     public getGames(): Observable<IGame[]> {
         return this.data.asObservable();
     }
@@ -36,13 +40,14 @@ export class GameService {
                 id: generateId(),
                 team1: game.team1.name,
                 team2: game.team2.name,
-                goalTeam1: game.team1.countGoals,
-                goalTeam2: game.team2.countGoals,
+                goalsTeam1: game.team1.countGoals,
+                goalsTeam2: game.team2.countGoals,
+                date: new Date(),
                 goalsStatistics: {
-                    team1Player1: game.team1.playersStatistics.goalsPlayer1,
-                    team1Player2: game.team1.playersStatistics.goalsPlayer2,
-                    team2Player1: game.team2.playersStatistics.goalsPlayer1,
-                    team2Player2: game.team2.playersStatistics.goalsPlayer2
+                    team1Player1: game.team1.playersStatistics.goalsPlayer1 || 0,
+                    team1Player2: game.team1.playersStatistics.goalsPlayer2 || 0,
+                    team2Player1: game.team2.playersStatistics.goalsPlayer1 || 0,
+                    team2Player2: game.team2.playersStatistics.goalsPlayer2 || 0
                 }
             };
 

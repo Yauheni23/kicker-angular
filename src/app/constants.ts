@@ -16,20 +16,41 @@ export const gameDefault: IGame[] = [
         id: '1',
         team1: '1',
         team2: '2',
-        goalTeam1: 11,
-        goalTeam2: 6
+        goalsTeam1: 10,
+        goalsTeam2: 6,
+        goalsStatistics: {
+            team1Player1: 1,
+            team1Player2: 9,
+            team2Player1: 5,
+            team2Player2: 1
+        },
+        date: new Date(2019, 5, 10)
     }, {
         id: '2',
         team1: '1',
         team2: '2',
-        goalTeam1: 11,
-        goalTeam2: 9
+        goalsTeam1: 10,
+        goalsTeam2: 9,
+        goalsStatistics: {
+            team1Player1: 5,
+            team1Player2: 5,
+            team2Player1: 5,
+            team2Player2: 4
+        },
+        date: new Date(2019, 5, 8)
     }, {
         id: '3',
         team1: '1',
         team2: '2',
-        goalTeam1: 8,
-        goalTeam2: 11
+        goalsTeam1: 8,
+        goalsTeam2: 10,
+        goalsStatistics: {
+            team1Player1: 6,
+            team1Player2: 2,
+            team2Player1: 5,
+            team2Player2: 5
+        },
+        date: new Date(2019, 5, 7)
     },
 ];
 

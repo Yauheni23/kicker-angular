@@ -1,0 +1,30 @@
+<div class="description-game">
+    <div class="description-game__team">
+        <div>
+            <h3 class="team__name">{{game.team1}}</h3>
+        </div>
+        <div class="team__players">
+            <span>{{game.team1Player1}}: {{game.goalsStatistics.team1Player1}}</span>
+            <span>{{game.team1Player2}}: {{game.goalsStatistics.team1Player2}}</span>
+        </div>
+    </div>
+
+    <div class="description-game__bill">
+        <div>
+            <h2><span [style.color]="game.goalsTeam1 === 10 ? 'green' : 'red'">{{game.goalsTeam1}}</span> : <span [style.color]="game.goalsTeam2 === 10 ? 'green' : 'red'">{{game.goalsTeam2}}</span></h2>
+        </div>
+        <div>
+            <span>({{game.date | date:"medium"}})</span>
+        </div>
+    </div>
+
+    <div class="description-game__team">
+        <div>
+            <h3 class="team__name">{{game.team2}}</h3>
+        </div>
+        <div class="team__players">
+            <span>{{game.team2Player1}}: {{game.goalsStatistics.team2Player1}}</span>
+            <span>{{game.team2Player2}}: {{game.goalsStatistics.team2Player2}}</span>
+        </div>
+    </div>
+</div>

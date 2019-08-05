@@ -1,0 +1,34 @@
+.description-game {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.description-game__team {
+    text-align: center;
+}
+
+.description-game__bill {
+    text-align: center;
+    font-size: 1.7em;
+}
+
+.team__name {
+    color: darkblue;
+    font-size: 1.7em;
+}
+
+.team__players {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    font-size: 1.5em;
+    padding: 5px;
+}
+
+.team__player-description {
+    display: flex;
+    flex-direction: column;
+}
+
