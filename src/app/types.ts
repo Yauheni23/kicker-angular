@@ -1,33 +1,41 @@
 export interface ITeam {
     id: string;
     name: string;
-    players: string[];
-    countGame: number;
-    winGame: number;
+    image: string;
+    users: IUser[];
+    goals: number;
+    games: IGame[];
+    place?: number;
+    winRate?: number;
 }
 
-export interface IPlayer {
+export interface IUser {
     id: string;
-    username: string;
-    countGoal: number;
+    name: string;
+    image: string;
+    scope: number;
     countGame: number;
-    role?: string;
+    place?: number;
+    teams?: {
+        id: string,
+        name: string,
+        image: string
+    }[];
 }
 
 export interface IGame {
     id: string;
-    team1: string;
-    team2: string;
-    goalsTeam1: number;
-    goalsTeam2: number;
     date: Date;
-    goalsStatistics?: IGoalsStatistics;
+    team1: {
+        id: string;
+        name: string;
+        image: string;
+        goals: number;
+    };
+    team2: {
+        id: string;
+        name: string;
+        image: string;
+        goals: number;
+    };
 }
-
-export interface IGoalsStatistics {
-    team1Player1: number;
-    team1Player2: number;
-    team2Player1: number;
-    team2Player2: number;
-}
-

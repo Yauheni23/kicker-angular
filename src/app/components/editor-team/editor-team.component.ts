@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TeamService} from '../../services/team.service';
 import {PlayerService} from '../../services/player.service';
-import {IPlayer} from '../../types';
+import {IUser} from '../../types';
 
 @Component({
     selector: 'app-editor-team',
@@ -12,12 +12,10 @@ import {IPlayer} from '../../types';
 export class EditorTeamComponent {
     public teamFormGroup = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        player1: new FormControl('', Validators.required),
-        player2: new FormControl('', Validators.required),
     });
     public success: boolean;
     public errorMessage: string;
-    public players: IPlayer[] = [];
+    public players: IUser[] = [];
 
     constructor(private teamService: TeamService, private playerService: PlayerService) {
         this.players = this.playerService.getFreePlayers();
@@ -25,12 +23,11 @@ export class EditorTeamComponent {
 
     public onSubmit(): void {
         this.teamService.createTeam(this.teamFormGroup.value)
-            .then(() => {
+            .subscribe(() => {
                 this.teamFormGroup.reset();
                 this.success = true;
                 this.players = this.playerService.getFreePlayers();
-            })
-            .catch(error => {
+            }, error => {
                 this.success = false;
                 this.errorMessage = error.message;
             });

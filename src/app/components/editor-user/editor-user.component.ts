@@ -9,8 +9,7 @@ import {PlayerService} from '../../services/player.service';
 })
 export class EditorUserComponent {
     public userFormGroup = new FormGroup({
-        username: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        role: new FormControl('', Validators.required),
+        name: new FormControl('', [Validators.required, Validators.minLength(2)]),
     });
     public success: boolean;
     public errorMessage: string;
@@ -18,21 +17,16 @@ export class EditorUserComponent {
     constructor(private playerService: PlayerService) {
     }
 
-    get username() {
-        return this.userFormGroup.get('username');
-    }
-
-    get role() {
-        return this.userFormGroup.get('role');
+    get name() {
+        return this.userFormGroup.get('name');
     }
 
     public onSubmit(): void {
         this.playerService.createPlayer(this.userFormGroup.value)
-            .then(() => {
+            .subscribe(() => {
                 this.userFormGroup.reset();
                 this.success = true;
-            })
-            .catch(error => {
+            }, error => {
                 this.errorMessage = error.message;
                 this.success = false;
             });

@@ -1,18 +1,26 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {IGame} from '../types';
-import {gameDefault} from '../constants';
+import {serverAddress} from '../constants';
 import generateId from 'uuid/v4';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class GameService {
-    private data: BehaviorSubject<IGame[]> = new BehaviorSubject<IGame[]>(gameDefault);
+    private data: BehaviorSubject<IGame[]> = new BehaviorSubject<IGame[]>([]);
+
+    constructor(private httpClient: HttpClient) {
+
+    }
 
     get games(): IGame[] {
         return this.data.value;
     }
 
     public getGames(): Observable<IGame[]> {
+        this.httpClient.get<IGame[]>(serverAddress + '/game').subscribe(games => {
+            this.data.next(games);
+        });
         return this.data.asObservable();
     }
 

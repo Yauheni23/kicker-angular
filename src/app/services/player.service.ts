@@ -1,32 +1,32 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {IPlayer, ITeam} from '../types';
-import generateId from 'uuid/v4';
+import {IUser, ITeam} from '../types';
 import {TeamService} from './team.service';
-import {playerDefault} from '../constants';
+import {DataBaseService} from './data-base.service';
+import {serverAddress} from '../constants';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class PlayerService {
-    private data: BehaviorSubject<IPlayer[]> = new BehaviorSubject<IPlayer[]>(playerDefault);
+    private data: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
 
-    constructor(private teamService: TeamService) {
+    constructor(private teamService: TeamService, private dataBaseService: DataBaseService, private httpClient: HttpClient) {
     }
 
-    get players(): IPlayer[] {
-        return this.data.value;
-    }
-
-    public getPlayers(): Observable<IPlayer[]> {
+    getPlayers(): Observable<IUser[]> {
+        this.httpClient.get<IUser[]>(serverAddress + '/user').subscribe(users => {
+            this.data.next(users);
+        });
         return this.data.asObservable();
     }
 
-    public getPlayerById(id: string): IPlayer {
+    getPlayerById(id: string): IUser {
         return this.data.value.find(player => player.id === id);
     }
 
-    public getFreePlayers(): IPlayer[] {
+    getFreePlayers(): IUser[] {
         // @ts-ignore
-        const playersFromTeam = this.teamService.teams.filter(el => el.players).map(el => el.players).flat();
+        const playersFromTeam = this.teamService.teams.filter(el => el.users).map(el => el.users).flat();
         let freePlayers = this.data.value;
         playersFromTeam.forEach(el => {
             freePlayers = freePlayers.filter(player => player.id !== el);
@@ -34,33 +34,15 @@ export class PlayerService {
         return freePlayers;
     }
 
-    public getPlayerByTeam(team: ITeam): IPlayer[] {
-        return this.data.value.filter(player => team.players.some(el => el === player.id));
+    getPlayerByTeam(team: ITeam): IUser[] {
+        return this.data.value.filter(player => team.users.some(el => el.id === player.id));
     }
 
-    public createPlayer(player): any {
-        return new Promise(((resolve, reject) => {
-            if (!player) {
-                reject({
-                    message: 'Data is invalid'
-                });
-                return;
-            }
-            if (this.players.some(el => el.username === player.username)) {
-                reject({
-                    message: 'Name is busy!'
-                });
-            } else {
-                const newPlayer = {
-                    ...player,
-                    id: generateId(),
-                    countGame: 0,
-                    countGoal: 0
-                };
-                this.data.next(this.data.value.concat(newPlayer));
-                resolve({ok: true});
-            }
-        }));
+    createPlayer(player): any {
+        return this.httpClient.post<IUser[]>(serverAddress + '/user', {
+            ...player,
+            image: 'lol'
+        });
     }
 
 }

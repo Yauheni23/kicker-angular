@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IPlayer} from '../../types';
+import {IUser} from '../../types';
 import {goalsVariant} from '../../constants';
 import {PlayerStatisticService} from '../../services/player-statistic.service';
 import {FormControl} from '@angular/forms';
@@ -11,7 +11,7 @@ import {FormControl} from '@angular/forms';
 })
 export class PlayerMatchGameComponent implements OnInit {
     @Input() public formGroupPlayer: FormControl;
-    @Input() public player: IPlayer;
+    @Input() public player: IUser;
     @Input() public id: number;
     public maxGoals: number;
 

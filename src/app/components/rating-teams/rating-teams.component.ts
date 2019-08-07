@@ -3,18 +3,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {TeamService} from '../../services/team.service';
-import {PlayerService} from '../../services/player.service';
 import {PlaceColor} from '../../constants';
-
-export interface TeamData {
-    id: string;
-    name: string;
-    games: number;
-    winRate: number;
-    player1: string;
-    player2: string;
-    place: number;
-}
+import {ITeam} from '../../types';
 
 @Component({
     selector: 'app-rating-teams',
@@ -22,34 +12,21 @@ export interface TeamData {
     styleUrls: ['./rating-teams.component.css']
 })
 export class RatingTeamsComponent implements OnInit {
-    displayedColumns: string[] = ['place', 'name', 'games', 'winRate', 'player1', 'player2'];
-    dataSource: MatTableDataSource<TeamData>;
+    displayedColumns: string[] = ['place', 'name', 'games', 'goals', 'winRate'];
+    dataSource: MatTableDataSource<ITeam>;
 
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-    constructor(private teamService: TeamService, private playerService: PlayerService) {
+    constructor(private teamService: TeamService) {
     }
 
-    public ngOnInit(): void {
-        const teams = this.teamService.teams.map(team => {
-            return {
-                id: team.id,
-                name: team.name,
-                games: team.countGame,
-                winRate: (team.winGame * 100 / team.countGame) | 0,
-                player1: this.playerService.getPlayerById(team.players[0]).username,
-                player2: this.playerService.getPlayerById(team.players[1]).username,
-            };
-        }).sort((prev, next) => {
-            return prev.winRate > next.winRate ? -1 : 1;
-        }).map((team, index) => ({
-            ...team,
-            place: index + 1
-        }));
-        this.dataSource = new MatTableDataSource(teams);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+    ngOnInit(): void {
+        this.teamService.getTeams().subscribe(teams => {
+            this.dataSource = new MatTableDataSource(teams.map(this.mapTeams).sort(this.sortWinRate).map(this.mapPlace));
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+        });
     }
 
     applyFilter(filterValue: string) {
@@ -60,7 +37,7 @@ export class RatingTeamsComponent implements OnInit {
         }
     }
 
-    public setColor(id: number): string {
+    setColor(id: number): string {
         switch (id) {
             case 1:
                 return PlaceColor.First;
@@ -71,5 +48,33 @@ export class RatingTeamsComponent implements OnInit {
             default:
                 return PlaceColor.Default;
         }
+    }
+
+    private mapTeams(team): ITeam {
+        return {
+            id: team.id,
+            name: team.name,
+            users: team.users,
+            image: team.image,
+            games: team.games.length,
+            goals: team.goals,
+            winRate: (team.games.length ? team.games.reduce(reduceWinRate, 0) / team.games.length : 0) * 100
+        };
+
+        function reduceWinRate(accumulator, game): number {
+            return accumulator +
+                ((game.team1.id === team.id && game.team1.goals === 10) || (game.team2.id === team.id && game.team2.goals === 10) ? 1 : 0);
+        }
+    }
+
+    private sortWinRate(current, next): number {
+        return current.winRate > next.winRate ? -1 : 1;
+    }
+
+    private mapPlace(team, index): ITeam {
+        return {
+            ...team,
+            place: index + 1
+        };
     }
 }

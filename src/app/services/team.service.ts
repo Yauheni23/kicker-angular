@@ -1,56 +1,37 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ITeam} from '../types';
-import generateId from 'uuid/v4';
-import {teamDefault} from '../constants';
+import {DataBaseService} from './data-base.service';
+import {serverAddress} from '../constants';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class TeamService {
-    private data: BehaviorSubject<ITeam[]> = new BehaviorSubject<ITeam[]>(teamDefault);
+    private data: BehaviorSubject<ITeam[]> = new BehaviorSubject<ITeam[]>([]);
 
-    public getTeams(): Observable<ITeam[]> {
-        return this.data.asObservable();
+    constructor(private dataBaseService: DataBaseService, private httpClient: HttpClient) {
     }
 
     get teams(): ITeam[] {
         return this.data.value;
     }
 
-    public getTeamById(id: string): ITeam {
+    getTeams(): Observable<ITeam[]> {
+        this.httpClient.get<ITeam[]>(serverAddress + '/team').subscribe(teams => {
+            this.data.next(teams);
+        });
+        return this.data.asObservable();
+    }
+
+    getTeamById(id: string): ITeam {
         return this.data.value.find(team => team.id === id);
     }
 
-    public createTeam(team): any {
-        return new Promise(((resolve, reject) => {
-            if (!team) {
-                reject({
-                    message: 'Data is invalid'
-                });
-                return;
-            }
-            if (team.player1 === team.player2) {
-                reject({
-                    message: 'Players is equal'
-                });
-                return;
-            }
-
-            if (this.teams.some(el => el.name === team.name)) {
-                reject({
-                    message: 'Name is busy!'
-                });
-            } else {
-                const newTeam = {
-                    name: team.name,
-                    players: [team.player1, team.player2],
-                    id: generateId(),
-                    countGame: 0,
-                    winGame: 0
-                };
-                this.data.next(this.data.value.concat(newTeam));
-                resolve({ok: true});
-            }
-        }));
+    createTeam(team: {name: string; image: string}): Observable<any> {
+        return this.httpClient.post<ITeam[]>(serverAddress + '/team', {
+            ...team,
+            image: 'lol'
+        });
     }
 
 }

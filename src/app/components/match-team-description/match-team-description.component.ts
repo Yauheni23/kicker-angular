@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {IPlayer, ITeam} from '../../types';
+import {IUser, ITeam} from '../../types';
 import {PlayerService} from '../../services/player.service';
 import {EditorGameService} from '../../services/editor-game.service';
 import {goalsVariant} from '../../constants';
@@ -16,7 +16,7 @@ export class MatchTeamDescriptionComponent {
     public readonly variantGoals: number[] = goalsVariant;
     @Input() formGroupTeam: FormGroup | AbstractControl;
     public teams: ITeam[] = [];
-    public players: IPlayer[] = [];
+    public players: IUser[] = [];
     private selectedTeam: ITeam;
 
     constructor(private playerService: PlayerService,

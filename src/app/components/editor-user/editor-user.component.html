@@ -4,18 +4,9 @@
                    (submitEvent)="onSubmit()">
     <h1>User</h1>
     <mat-form-field class="wrapper-input">
-        <input matInput placeholder="Name" [formControl]="username" (input)="clear()">
-        <mat-error *ngIf="username.touched && username.errors">
+        <input matInput placeholder="Name" [formControl]="name" (input)="clear()">
+        <mat-error *ngIf="name.touched && name.errors">
             Minimum 2 character
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select placeholder="Role" [formControl]="role" (valueChange)="clear()">
-            <mat-option value="Attack">Attack</mat-option>
-            <mat-option value="Defense">Defense</mat-option>
-        </mat-select>
-        <mat-error *ngIf="role.touched && role.errors">
-            Role is required
         </mat-error>
     </mat-form-field>
 </app-editor-layout>

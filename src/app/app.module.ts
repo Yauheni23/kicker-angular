@@ -3,6 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 
@@ -18,13 +19,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import {HeaderComponent} from './components/header/header.component';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {EditorUserComponent} from './components/editor-user/editor-user.component';
-import { UserPageComponent } from './screens/user-page/user-page.component';
 import { TeamPageComponent } from './screens/team-page/team-page.component';
 import { GamePageComponent } from './screens/game-page/game-page.component';
 import { EditorGameComponent } from './components/editor-game/editor-game.component';
@@ -36,13 +37,12 @@ import { RatingTeamsComponent } from './components/rating-teams/rating-teams.com
 import { RatingUsersComponent } from './components/rating-users/rating-users.component';
 import { HistoryGamesComponent } from './components/history-games/history-games.component';
 import { DescriptionGameLayoutComponent } from './components/description-game-layout/description-game-layout.component';
+import { RatingComponent } from './screens/rating/rating.component';
 
 const appRoutes: Routes = [
     {path: 'create/game', component: GamePageComponent},
-    {path: 'create/user', component: UserPageComponent},
     {path: 'create/team', component: TeamPageComponent},
-    {path: 'rating/teams', component: RatingTeamsComponent},
-    {path: 'rating/users', component: RatingUsersComponent},
+    {path: 'rating', component: RatingComponent},
     {path: 'history/games', component: HistoryGamesComponent},
     {
         path: '',
@@ -59,7 +59,6 @@ const appRoutes: Routes = [
         NavigationComponent,
         FooterComponent,
         EditorUserComponent,
-        UserPageComponent,
         TeamPageComponent,
         GamePageComponent,
         EditorGameComponent,
@@ -70,10 +69,12 @@ const appRoutes: Routes = [
         RatingTeamsComponent,
         RatingUsersComponent,
         HistoryGamesComponent,
-        DescriptionGameLayoutComponent
+        DescriptionGameLayoutComponent,
+        RatingComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),
+        HttpClientModule,
         BrowserModule,
         BrowserAnimationsModule,
         MatSidenavModule,
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
         MatButtonModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatTabsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

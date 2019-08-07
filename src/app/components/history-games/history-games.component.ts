@@ -1,10 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {IGoalsStatistics} from '../../types';
 import {GameService} from '../../services/game.service';
-import {TeamService} from '../../services/team.service';
-import {PlayerService} from '../../services/player.service';
+import {IGame} from '../../types';
 
 @Component({
     selector: 'app-history-games',
@@ -20,56 +18,24 @@ import {PlayerService} from '../../services/player.service';
 })
 export class HistoryGamesComponent implements OnInit {
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-    dataSource: MatTableDataSource<IGameDescription>;
+    dataSource: MatTableDataSource<IGame>;
     columnsToDisplay = ['id', 'teams', 'bill', 'date'];
-    expandedElement: IGameDescription | null;
+    expandedElement: IGame | null;
 
-    constructor(private gameService: GameService,
-                private teamService: TeamService,
-                private playerService: PlayerService) {
+    constructor(private gameService: GameService) {
     }
 
     public ngOnInit(): void {
-        const games = this.getGameStatistics();
-        this.dataSource = new MatTableDataSource<IGameDescription>(games);
-
-        this.dataSource.paginator = this.paginator;
+        this.gameService.getGames().subscribe(games => {
+            this.dataSource = new MatTableDataSource<IGame>(games.map(this.mapGameId));
+            this.dataSource.paginator = this.paginator;
+        });
     }
 
-    private getGameStatistics(): any {
-        return this.gameService.games.map(game => {
-            const team1 = this.teamService.getTeamById(game.team1);
-            const team2 = this.teamService.getTeamById(game.team2);
-
-            return {
-                ...game,
-                team1: team1.name,
-                team2: team2.name,
-                team1Player1: this.playerService.getPlayerById(team1.players[0]).username,
-                team1Player2: this.playerService.getPlayerById(team1.players[1]).username,
-                team2Player1: this.playerService.getPlayerById(team2.players[0]).username,
-                team2Player2: this.playerService.getPlayerById(team2.players[1]).username,
-            };
-        }).sort((prev, next) => {
-            return +prev.date > +next.date ? -1 : 1;
-        }).map((game, index) => ({
+    private mapGameId(game, index) {
+        return {
             ...game,
-            id: index + 1
-        }));
+            gameId: index + 1
+        };
     }
-
-}
-
-export interface IGameDescription {
-    id: string;
-    team1: number;
-    team2: number;
-    goalsTeam1: string;
-    goalsTeam2: string;
-    team1Player1: string;
-    team1Player2: string;
-    team2Player1: string;
-    team2Player2: string;
-    date: Date;
-    goalsStatistics: IGoalsStatistics;
 }
