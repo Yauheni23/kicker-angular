@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ITeam} from '../types';
-import {DataBaseService} from './data-base.service';
 import {serverAddress} from '../constants';
 import {HttpClient} from '@angular/common/http';
 
@@ -9,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 export class TeamService {
     private data: BehaviorSubject<ITeam[]> = new BehaviorSubject<ITeam[]>([]);
 
-    constructor(private dataBaseService: DataBaseService, private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient) {
     }
 
     get teams(): ITeam[] {
@@ -29,8 +28,8 @@ export class TeamService {
 
     createTeam(team: {name: string; image: string}): Observable<any> {
         return this.httpClient.post<ITeam[]>(serverAddress + '/team', {
-            ...team,
-            image: 'lol'
+            name: team.name,
+            image: team.image
         });
     }
 

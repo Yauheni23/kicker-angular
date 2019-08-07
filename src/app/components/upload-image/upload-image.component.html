@@ -1,0 +1,17 @@
+<div class="image-upload-container">
+    <div class="image-upload">
+        <input #imageInput
+               type="file"
+               accept="image/*"
+               (dragenter)="setColor(element)"
+               (dragleave)="deleteColor(element)"
+               (change)="processFile(imageInput)">
+        <div class="image-upload__text" #element [ngStyle]="{opacity: image && image.value ? 0 : 1}">
+            <mat-icon>add</mat-icon>
+            <span>Add image</span>
+        </div>
+        <div class="image-container" *ngIf="image && image.value">
+            <img [src]="image.value" alt="">
+        </div>
+    </div>
+</div>

@@ -8,17 +8,22 @@ import {PlayerService} from '../../services/player.service';
     styleUrls: ['./editor-user.component.css']
 })
 export class EditorUserComponent {
-    public userFormGroup = new FormGroup({
+    userFormGroup = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        image: new FormControl('', [Validators.required]),
     });
-    public success: boolean;
-    public errorMessage: string;
+    success: boolean;
+    errorMessage: string;
 
     constructor(private playerService: PlayerService) {
     }
 
     get name() {
         return this.userFormGroup.get('name');
+    }
+
+    get image() {
+        return this.userFormGroup.get('image');
     }
 
     public onSubmit(): void {
@@ -35,4 +40,6 @@ export class EditorUserComponent {
     public clear(): void {
         this.errorMessage = '';
     }
+
+
 }

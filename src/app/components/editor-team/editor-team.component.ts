@@ -10,18 +10,19 @@ import {IUser} from '../../types';
     styleUrls: ['./editor-team.component.css']
 })
 export class EditorTeamComponent {
-    public teamFormGroup = new FormGroup({
+    teamFormGroup = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        image: new FormControl('', [Validators.required]),
     });
-    public success: boolean;
-    public errorMessage: string;
-    public players: IUser[] = [];
+    success: boolean;
+    errorMessage: string;
+    players: IUser[] = [];
 
     constructor(private teamService: TeamService, private playerService: PlayerService) {
         this.players = this.playerService.getFreePlayers();
     }
 
-    public onSubmit(): void {
+    onSubmit(): void {
         this.teamService.createTeam(this.teamFormGroup.value)
             .subscribe(() => {
                 this.teamFormGroup.reset();
@@ -37,15 +38,11 @@ export class EditorTeamComponent {
         return this.teamFormGroup.get('name');
     }
 
-    get player1() {
-        return this.teamFormGroup.get('player1');
+    get image() {
+        return this.teamFormGroup.get('image');
     }
 
-    get player2() {
-        return this.teamFormGroup.get('player2');
-    }
-
-    public clear(): void {
+    clear(): void {
         this.errorMessage = '';
     }
 }

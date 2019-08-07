@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {IUser, ITeam} from '../types';
 import {TeamService} from './team.service';
-import {DataBaseService} from './data-base.service';
 import {serverAddress} from '../constants';
 import {HttpClient} from '@angular/common/http';
 
@@ -10,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class PlayerService {
     private data: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
 
-    constructor(private teamService: TeamService, private dataBaseService: DataBaseService, private httpClient: HttpClient) {
+    constructor(private teamService: TeamService, private httpClient: HttpClient) {
     }
 
     getPlayers(): Observable<IUser[]> {
@@ -39,9 +38,10 @@ export class PlayerService {
     }
 
     createPlayer(player): any {
+        console.log(1);
         return this.httpClient.post<IUser[]>(serverAddress + '/user', {
-            ...player,
-            image: 'lol'
+            name: player.name,
+            image: player.image,
         });
     }
 
