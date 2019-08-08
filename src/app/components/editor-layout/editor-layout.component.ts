@@ -10,6 +10,7 @@ export class EditorLayoutComponent {
   @Input() public success: boolean = false;
   @Input() public formGroup: FormGroup;
   @Input() public errorMessage: string;
+  @Input() public buttonText: string = 'Create';
   @Output() public submitEvent = new EventEmitter<void>();
 
   public submit(): void {

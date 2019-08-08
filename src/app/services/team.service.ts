@@ -26,11 +26,17 @@ export class TeamService {
         return this.data.value.find(team => team.id === id);
     }
 
-    createTeam(team: {name: string; image: string}): Observable<any> {
+    createTeam(team: { name: string; image: string }): Observable<any> {
         return this.httpClient.post<ITeam[]>(serverAddress + '/team', {
             name: team.name,
             image: team.image
         });
     }
 
+    addUser(data: { user: string; team: string }): Observable<any> {
+        return this.httpClient.post<ITeam[]>(serverAddress + '/team/user', {
+            userId: data.user,
+            teamId: data.team
+        });
+    }
 }

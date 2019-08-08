@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TeamService} from '../../services/team.service';
-import {PlayerService} from '../../services/player.service';
-import {IUser} from '../../types';
 
 @Component({
     selector: 'app-editor-team',
@@ -16,10 +14,8 @@ export class EditorTeamComponent {
     });
     success: boolean;
     errorMessage: string;
-    players: IUser[] = [];
 
-    constructor(private teamService: TeamService, private playerService: PlayerService) {
-        this.players = this.playerService.getFreePlayers();
+    constructor(private teamService: TeamService) {
     }
 
     onSubmit(): void {
@@ -27,7 +23,6 @@ export class EditorTeamComponent {
             .subscribe(() => {
                 this.teamFormGroup.reset();
                 this.success = true;
-                this.players = this.playerService.getFreePlayers();
             }, error => {
                 this.success = false;
                 this.errorMessage = error.message;

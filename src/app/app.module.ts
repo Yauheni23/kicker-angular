@@ -39,6 +39,7 @@ import { HistoryGamesComponent } from './components/history-games/history-games.
 import { DescriptionGameLayoutComponent } from './components/description-game-layout/description-game-layout.component';
 import { RatingComponent } from './screens/rating/rating.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { EditorTeamUserComponent } from './components/editor-team-user/editor-team-user.component';
 
 const appRoutes: Routes = [
     {path: 'create/game', component: GamePageComponent},
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
         HistoryGamesComponent,
         DescriptionGameLayoutComponent,
         RatingComponent,
-        UploadImageComponent
+        UploadImageComponent,
+        EditorTeamUserComponent
     ],
     imports: [
         RouterModule.forRoot(appRoutes),

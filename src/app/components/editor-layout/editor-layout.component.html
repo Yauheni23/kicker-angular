@@ -5,7 +5,7 @@
             class="button-create"
             (click)="submit()"
             [disabled]="!formGroup.valid"
-    >Create
+    >{{buttonText}}
     </button>
     <div *ngIf="success && !formGroup.touched && !errorMessage">
         <span class="success">Success</span>
