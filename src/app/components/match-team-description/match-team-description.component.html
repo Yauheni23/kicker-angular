@@ -1,31 +1,15 @@
 <div class="match-team-description">
-    <div class="team center">
-        <mat-form-field>
-            <mat-label>Team</mat-label>
-            <mat-select [formControl]="name">
-                <mat-option *ngFor="let team of teams" [value]="team.id" (click)="selectTeam(team)" >
-                    {{team.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="goals center">
-        <h1 class="team-name">{{selectedTeam ? selectedTeam.name : null}}</h1>
-        <mat-form-field class="goals-select">
-            <mat-label>Goals</mat-label>
-            <mat-select (valueChange)="setMaxGoals(goals.value)" #goals [formControl]="countGoals">
-                <mat-option *ngFor="let goal of variantGoals" [value]="goal" >
-                    {{goal}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="players">
-        <div *ngFor="let player of players; index as i">
-            <app-player-match-game [player]="player"
-                                   [id]="i"
-                                   [formGroupPlayer]="playersStatistics[i]">
-            </app-player-match-game>
+    <div class="team-select">
+            <app-list-team-players [formGroupTeam]="formGroupTeam"
+                                   [class]="float + ' ' + 'team-select__list'"
+            ></app-list-team-players>
+
+        <div>
+            <app-select-team [formGroupTeam]="formGroupTeam"></app-select-team>
         </div>
+    </div>
+    <div class="match-team-description__players">
+        <app-player-statistics [formGroupPlayer]="player1" [goals]="goals"></app-player-statistics>
+        <app-player-statistics [formGroupPlayer]="player2" [goals]="goals"></app-player-statistics>
     </div>
 </div>

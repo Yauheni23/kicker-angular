@@ -10,7 +10,7 @@ export interface ITeam {
 }
 
 export interface IUser {
-    id: string;
+    id: number;
     name: string;
     image: string;
     scope: number;

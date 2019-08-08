@@ -4,7 +4,15 @@
                    (submitEvent)="createGame()">
     <h1>Game</h1>
     <div class="teams">
-        <app-match-team-description [formGroupTeam]="team1"></app-match-team-description>
-        <app-match-team-description [formGroupTeam]="team2"></app-match-team-description>
+        <app-match-team-description [formGroupTeam]="team1"
+                                    [float]="'left'"
+                                    [style.width.%]="100">
+
+        </app-match-team-description>
+        <app-match-team-description [formGroupTeam]="team2"
+                                    [float]="'right'"
+                                    [style.width.%]="100">
+
+        </app-match-team-description>
     </div>
 </app-editor-layout>

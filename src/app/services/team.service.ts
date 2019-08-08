@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {ITeam} from '../types';
+import {ITeam, IUser} from '../types';
 import {serverAddress} from '../constants';
 import {HttpClient} from '@angular/common/http';
 
@@ -22,8 +22,8 @@ export class TeamService {
         return this.data.asObservable();
     }
 
-    getTeamById(id: string): ITeam {
-        return this.data.value.find(team => team.id === id);
+    getUsers(teamId: string): IUser[] {
+        return this.data.value.find(team => team.id === teamId).users;
     }
 
     createTeam(team: { name: string; image: string }): Observable<any> {

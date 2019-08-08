@@ -1,8 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {IUser, ITeam} from '../../types';
-import {PlayerService} from '../../services/player.service';
-import {EditorGameService} from '../../services/editor-game.service';
-import {goalsVariant} from '../../constants';
 import {PlayerStatisticService} from '../../services/player-statistic.service';
 import {AbstractControl, FormGroup} from '@angular/forms';
 
@@ -13,52 +9,18 @@ import {AbstractControl, FormGroup} from '@angular/forms';
     providers: [PlayerStatisticService]
 })
 export class MatchTeamDescriptionComponent {
-    public readonly variantGoals: number[] = goalsVariant;
-    @Input() formGroupTeam: FormGroup | AbstractControl;
-    public teams: ITeam[] = [];
-    public players: IUser[] = [];
-    private selectedTeam: ITeam;
+    @Input() formGroupTeam: FormGroup;
+    @Input() float: string;
 
-    constructor(private playerService: PlayerService,
-                private editorService: EditorGameService,
-                private playerStatisticService: PlayerStatisticService) {
-        this.editorService.getTeams().subscribe(data => {
-            if (!this.selectedTeam || (this.selectedTeam && data.some(el => el.id === this.selectedTeam.id))) {
-                this.selectedTeam = undefined;
-                this.teams = data;
-            } else {
-                this.teams = data.concat(this.selectedTeam);
-            }
-        });
+    get player1(): AbstractControl {
+        return this.formGroupTeam.get('player1');
     }
 
-    get name(): AbstractControl {
-        return this.formGroupTeam.get('name');
+    get player2(): AbstractControl {
+        return this.formGroupTeam.get('player2');
     }
 
-    get countGoals(): AbstractControl {
-        return this.formGroupTeam.get('countGoals');
-    }
-
-    get playersStatistics(): AbstractControl[] {
-        return [this.formGroupTeam.get('playersStatistics').get('goalsPlayer1'),
-            this.formGroupTeam.get('playersStatistics').get('goalsPlayer2')];
-    }
-
-    public selectTeam(team: ITeam): void {
-        const oldSelectedTeamId = this.selectedTeam ? this.selectedTeam.id : undefined;
-        this.selectedTeam = team;
-        this.editorService.selectTeam(oldSelectedTeamId, this.selectedTeam.id);
-
-        this.getPlayers();
-    }
-
-    public setMaxGoals(countGoals: number) {
-        this.playerStatisticService.setMaxGoals(countGoals);
-    }
-
-    private getPlayers(): void {
-        this.players = this.playerService.getPlayerByTeam(this.selectedTeam);
-        this.playerStatisticService.setCountPlayers(this.players.length);
+    get goals(): number {
+        return this.formGroupTeam.get('goals').value;
     }
 }

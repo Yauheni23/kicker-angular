@@ -58,7 +58,9 @@ export class RatingTeamsComponent implements OnInit {
             image: team.image,
             games: team.games.length,
             goals: team.goals,
-            winRate: (team.games.length ? team.games.reduce(reduceWinRate, 0) / team.games.length : 0) * 100
+            winRate: team.games.length
+                ? ( team.games.reduce(reduceWinRate, 0) / team.games.length * 1000 | 0) / 10
+                : 0
         };
 
         function reduceWinRate(accumulator, game): number {

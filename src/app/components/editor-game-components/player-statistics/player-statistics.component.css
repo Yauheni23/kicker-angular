@@ -1,0 +1,17 @@
+.player-statistics {
+    position: relative;
+}
+
+.player-statistics__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}

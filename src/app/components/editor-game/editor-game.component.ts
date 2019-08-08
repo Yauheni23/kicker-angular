@@ -29,14 +29,14 @@ export class EditorGameComponent {
 
     public createGame(): void {
         this.gameService.createGame(this.gameFormGroup.value)
-            .then(() => {
+            .subscribe(() => {
                 this.gameFormGroup.reset();
                 this.editorGameService.clear();
                 this.clear();
                 this.success = true;
-            })
-            .catch(error => {
-                this.errorMessage = error.message;
+            }, error => {
+                console.log(error);
+                this.errorMessage = error.error.message;
             });
     }
 
@@ -46,12 +46,17 @@ export class EditorGameComponent {
 
     private prepareTeamGroup(): FormGroup {
         return new FormGroup({
-            name: new FormControl('', Validators.required),
-            countGoals: new FormControl(undefined, [Validators.required, Validators.max(11), Validators.min(0)]),
-            playersStatistics: new FormGroup({
-                goalsPlayer1: new FormControl(0, [Validators.max(11), Validators.min(0)]),
-                goalsPlayer2: new FormControl(0, [Validators.max(11), Validators.min(0)])
-            })
+            id: new FormControl('', [Validators.required]),
+            goals: new FormControl('', [Validators.required, Validators.max(10), Validators.min(0)]),
+            player1: this.preparePlayerGroup(),
+            player2: this.preparePlayerGroup()
+        });
+    }
+
+    private preparePlayerGroup(): FormGroup {
+        return new FormGroup({
+            id: new FormControl( '', [Validators.required]),
+            goals: new FormControl(0, [Validators.max(10), Validators.min(0)])
         });
     }
 }

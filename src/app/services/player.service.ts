@@ -19,12 +19,8 @@ export class PlayerService {
         return this.data.asObservable();
     }
 
-    getPlayerById(id: string): IUser {
-        return this.data.value.find(player => player.id === id);
-    }
-
-    getPlayerByTeam(team: ITeam): IUser[] {
-        return this.data.value.filter(player => team.users.some(el => el.id === player.id));
+    getPlayerById(id: number): Observable<IUser> {
+        return this.httpClient.get<IUser>(serverAddress + '/user/' + id);
     }
 
     createPlayer(player): any {
