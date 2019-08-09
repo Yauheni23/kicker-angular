@@ -1,17 +1,17 @@
 <mat-nav-list>
     <h2 matSubheader>Creating</h2>
     <mat-list-item routerLink="/create/game" (click)="closeSidenav()">
-        <span matLine><mat-icon>add</mat-icon>Game</span>
+        <div><mat-icon>add</mat-icon><span>Game</span></div>
     </mat-list-item>
     <mat-list-item routerLink="/create/team" (click)="closeSidenav()">
-        <span matLine><mat-icon>edit</mat-icon>Editor</span>
+        <div><mat-icon>edit</mat-icon><span>Editor</span></div>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item routerLink="/rating" (click)="closeSidenav()">
-        <span matLine><mat-icon>assessment</mat-icon>Rating</span>
+        <div><mat-icon>assessment</mat-icon><span>Rating</span></div>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item routerLink="/history/games" (click)="closeSidenav()">
-        <span matLine><mat-icon>videogame_asset</mat-icon>History</span>
+        <div><mat-icon>videogame_asset</mat-icon><span>History</span></div>
     </mat-list-item>
 </mat-nav-list>

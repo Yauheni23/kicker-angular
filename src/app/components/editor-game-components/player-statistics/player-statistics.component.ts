@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
-import {goalsVariant} from '../../../constants';
+import {VARIANT_GOALS} from '../../../constants';
 import {IUser} from '../../../types';
 import {PlayerService} from '../../../services/player.service';
 
@@ -10,7 +10,7 @@ import {PlayerService} from '../../../services/player.service';
     styleUrls: ['./player-statistics.component.css']
 })
 export class PlayerStatisticsComponent {
-    readonly variantGoals: number[] = goalsVariant;
+    readonly variantGoals: number[] = VARIANT_GOALS;
     @Input() formGroupPlayer: FormGroup;
     @Input() goals: number = 0;
     id: number;
@@ -20,7 +20,7 @@ export class PlayerStatisticsComponent {
     }
 
     get availableGoals(): number[] {
-        return this.variantGoals.slice(0, this.goals);
+        return this.variantGoals.slice(0, this.goals + 1);
     }
 
     get playerId(): number {

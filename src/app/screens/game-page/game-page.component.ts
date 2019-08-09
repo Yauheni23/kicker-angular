@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {EditorGameService} from '../../services/editor-game.service';
 
 @Component({
     selector: 'app-game-page',
@@ -7,8 +6,4 @@ import {EditorGameService} from '../../services/editor-game.service';
     styleUrls: ['./game-page.component.css']
 })
 export class GamePageComponent {
-    constructor(private editorGameService: EditorGameService) {
-        this.editorGameService.clear();
-    }
-
 }

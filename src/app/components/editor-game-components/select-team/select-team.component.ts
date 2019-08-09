@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
 import {TeamService} from '../../../services/team.service';
 import {ITeam} from '../../../types';
-import {goalsVariant} from '../../../constants';
+import {VARIANT_GOALS} from '../../../constants';
 
 @Component({
     selector: 'app-select-team',
@@ -10,7 +10,7 @@ import {goalsVariant} from '../../../constants';
     styleUrls: ['./select-team.component.css']
 })
 export class SelectTeamComponent {
-    readonly variantGoals: number[] = goalsVariant;
+    readonly variantGoals: number[] = VARIANT_GOALS;
     @Input() formGroupTeam: FormGroup;
     teams: ITeam[];
 

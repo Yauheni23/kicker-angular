@@ -13,7 +13,7 @@ export class EditorLayoutComponent {
   @Input() public buttonText: string = 'Create';
   @Output() public submitEvent = new EventEmitter<void>();
 
-  public submit(): void {
-    this.submitEvent.emit();
+  public submit(form): void {
+    this.submitEvent.emit(form);
   }
 }

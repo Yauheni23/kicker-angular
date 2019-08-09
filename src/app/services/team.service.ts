@@ -26,8 +26,8 @@ export class TeamService {
         return this.data.value.find(team => team.id === teamId).users;
     }
 
-    createTeam(team: { name: string; image: string }): Observable<any> {
-        return this.httpClient.post<ITeam[]>(serverAddress + '/team', {
+    createTeam(team: { name: string; image: string }): Observable<ITeam> {
+        return this.httpClient.post<ITeam>(serverAddress + '/team', {
             name: team.name,
             image: team.image
         });
@@ -38,5 +38,9 @@ export class TeamService {
             userId: data.user,
             teamId: data.team
         });
+    }
+
+    updateTeam(team: ITeam): void {
+        this.data.next(this.data.value.concat(team));
     }
 }

@@ -1,12 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {PlayerStatisticService} from '../../services/player-statistic.service';
 import {AbstractControl, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-match-team-description',
     templateUrl: './match-team-description.component.html',
-    styleUrls: ['./match-team-description.component.css'],
-    providers: [PlayerStatisticService]
+    styleUrls: ['./match-team-description.component.css']
 })
 export class MatchTeamDescriptionComponent {
     @Input() formGroupTeam: FormGroup;

@@ -3,6 +3,11 @@
     width: 80%;
 }
 
+.history-games__header {
+    text-align: center;
+    padding: 10px;
+}
+
 table {
     width: 100%;
 }
@@ -13,6 +18,7 @@ tr.example-detail-row {
 
 tr.example-element-row:not(.example-expanded-row):hover {
     background: #777;
+    cursor: pointer;
 }
 
 tr.example-element-row:not(.example-expanded-row):active {

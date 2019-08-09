@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {TeamService} from '../../services/team.service';
-import {PlaceColor} from '../../constants';
+import {ColorTop, DefaultColor, MAX_GOALS} from '../../constants';
 import {ITeam} from '../../types';
 
 @Component({
@@ -29,7 +29,7 @@ export class RatingTeamsComponent implements OnInit {
         });
     }
 
-    applyFilter(filterValue: string) {
+    applyFilter(filterValue: string): void {
         this.dataSource.filter = filterValue.trim().toLowerCase();
 
         if (this.dataSource.paginator) {
@@ -37,20 +37,11 @@ export class RatingTeamsComponent implements OnInit {
         }
     }
 
-    setColor(id: number): string {
-        switch (id) {
-            case 1:
-                return PlaceColor.First;
-            case 2:
-                return PlaceColor.Second;
-            case 3:
-                return PlaceColor.Third;
-            default:
-                return PlaceColor.Default;
-        }
+    setColor(place: number): string {
+        return ColorTop[place - 1] || DefaultColor;
     }
 
-    private mapTeams(team): ITeam {
+    private mapTeams = (team): ITeam => {
         return {
             id: team.id,
             name: team.name,
@@ -58,14 +49,17 @@ export class RatingTeamsComponent implements OnInit {
             image: team.image,
             games: team.games.length,
             goals: team.goals,
-            winRate: team.games.length
-                ? ( team.games.reduce(reduceWinRate, 0) / team.games.length * 1000 | 0) / 10
-                : 0
+            winRate: this.considerWinRate(team)
         };
+    }
+
+    private considerWinRate(team): number {
+        return +(team.games.length ? team.games.reduce(reduceWinRate, 0) / team.games.length * 100 : 0).toFixed(2);
 
         function reduceWinRate(accumulator, game): number {
-            return accumulator +
-                ((game.team1.id === team.id && game.team1.goals === 10) || (game.team2.id === team.id && game.team2.goals === 10) ? 1 : 0);
+            return accumulator
+                + ((game.team1.id === team.id && game.team1.goals === MAX_GOALS)
+                || (game.team2.id === team.id && game.team2.goals === MAX_GOALS) ? 1 : 0);
         }
     }
 

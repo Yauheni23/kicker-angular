@@ -1,15 +1,16 @@
 <div class="description-game">
     <div class="description-game__team">
         <div>
+            <img [src]="game.team1.image" class="avatar">
             <h3 class="team__name">{{game.team1.name}}</h3>
         </div>
     </div>
     <div class="description-game__bill">
         <div>
             <h2>
-                <span [style.color]="game.team1.goals === 10 ? 'green' : 'red'">{{game.team1.goals}}</span>
+                <span [style.color]="game.team1.goals === maxGoals ? 'green' : 'red'">{{game.team1.goals}}</span>
                 :
-                <span [style.color]="game.team2.goals === 10 ? 'green' : 'red'">{{game.team2.goals}}</span>
+                <span [style.color]="game.team2.goals === maxGoals ? 'green' : 'red'">{{game.team2.goals}}</span>
             </h2>
         </div>
         <div>
@@ -18,6 +19,7 @@
     </div>
     <div class="description-game__team">
         <div>
+            <img [src]="game.team2.image" class="avatar">
             <h3 class="team__name">{{game.team2.name}}</h3>
         </div>
     </div>

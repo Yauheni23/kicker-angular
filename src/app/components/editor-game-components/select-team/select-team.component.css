@@ -1,0 +1,17 @@
+.list-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.list-item > * {
+    margin-right: 10px;
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}

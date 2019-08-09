@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {IUser, ITeam} from '../types';
+import {IUser} from '../types';
 import {TeamService} from './team.service';
 import {serverAddress} from '../constants';
 import {HttpClient} from '@angular/common/http';
@@ -23,11 +23,14 @@ export class PlayerService {
         return this.httpClient.get<IUser>(serverAddress + '/user/' + id);
     }
 
-    createPlayer(player): any {
-        return this.httpClient.post<IUser[]>(serverAddress + '/user', {
+    createPlayer(player): Observable<IUser> {
+        return this.httpClient.post<IUser>(serverAddress + '/user', {
             name: player.name,
             image: player.image,
         });
     }
 
+    updateUser(user: IUser): void {
+        this.data.next(this.data.value.concat(user));
+    }
 }

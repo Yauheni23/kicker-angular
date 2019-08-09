@@ -1,0 +1,16 @@
+mat-list-item div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-list-item div > *{
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 5px;
+}
+
+mat-list-item div > mat-icon{
+    margin-top: -2px;
+    font-size: 1.5em;
+}

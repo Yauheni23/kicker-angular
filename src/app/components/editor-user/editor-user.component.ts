@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {PlayerService} from '../../services/player.service';
 
 @Component({
@@ -18,18 +18,19 @@ export class EditorUserComponent {
     constructor(private playerService: PlayerService) {
     }
 
-    get name() {
+    get name(): AbstractControl {
         return this.userFormGroup.get('name');
     }
 
-    get image() {
+    get image(): AbstractControl {
         return this.userFormGroup.get('image');
     }
 
-    public onSubmit(): void {
+    onSubmit(form): void {
         this.playerService.createPlayer(this.userFormGroup.value)
-            .subscribe(() => {
-                this.userFormGroup.reset();
+            .subscribe((data) => {
+                this.playerService.updateUser(data);
+                form.reset();
                 this.success = true;
             }, error => {
                 this.errorMessage = error.message;
@@ -37,9 +38,7 @@ export class EditorUserComponent {
             });
     }
 
-    public clear(): void {
+    clear(): void {
         this.errorMessage = '';
     }
-
-
 }

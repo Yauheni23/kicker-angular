@@ -31,14 +31,13 @@ import {EditorUserComponent} from './components/editor-user/editor-user.componen
 import {TeamPageComponent} from './screens/team-page/team-page.component';
 import {GamePageComponent} from './screens/game-page/game-page.component';
 import {EditorGameComponent} from './components/editor-game/editor-game.component';
-import {MatchTeamDescriptionComponent} from './components/match-team-description/match-team-description.component';
-import {PlayerMatchGameComponent} from './components/player-match-game/player-match-game.component';
+import {MatchTeamDescriptionComponent} from './components/editor-game-components/match-team-description/match-team-description.component';
 import {EditorTeamComponent} from './components/editor-team/editor-team.component';
 import {EditorLayoutComponent} from './components/editor-layout/editor-layout.component';
 import {RatingTeamsComponent} from './components/rating-teams/rating-teams.component';
 import {RatingUsersComponent} from './components/rating-users/rating-users.component';
 import {HistoryGamesComponent} from './components/history-games/history-games.component';
-import {DescriptionGameLayoutComponent} from './components/description-game-layout/description-game-layout.component';
+import {DescriptionGameLayoutComponent} from './components/history-games/description-game-layout/description-game-layout.component';
 import {RatingComponent} from './screens/rating/rating.component';
 import {UploadImageComponent} from './components/upload-image/upload-image.component';
 import {EditorTeamUserComponent} from './components/editor-team-user/editor-team-user.component';
@@ -70,7 +69,6 @@ const appRoutes: Routes = [
         GamePageComponent,
         EditorGameComponent,
         MatchTeamDescriptionComponent,
-        PlayerMatchGameComponent,
         EditorTeamComponent,
         EditorLayoutComponent,
         RatingTeamsComponent,

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {PlayerService} from '../../services/player.service';
-import {PlaceColor} from '../../constants';
+import {ColorTop, DefaultColor} from '../../constants';
 import {IUser} from '../../types';
 
 @Component({
@@ -35,17 +35,8 @@ export class RatingUsersComponent implements OnInit {
         }
     }
 
-    setColor(id: number): string {
-        switch (id) {
-            case 1:
-                return PlaceColor.First;
-            case 2:
-                return PlaceColor.Second;
-            case 3:
-                return PlaceColor.Third;
-            default:
-                return PlaceColor.Default;
-        }
+    setColor(place: number): string {
+        return ColorTop[place - 1] || DefaultColor;
     }
 
     private sortByResult(prev, next): number {

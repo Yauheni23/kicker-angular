@@ -25,8 +25,6 @@ export class ListTeamPlayersComponent {
             this.player1.setValue(playerId);
         } else if (!this.player2.value) {
             this.player2.setValue(playerId);
-        } else {
-            console.log('Player has selected');
         }
     }
 

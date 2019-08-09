@@ -8,7 +8,7 @@ import {TeamService} from '../../services/team.service';
     styleUrls: ['./editor-team.component.css']
 })
 export class EditorTeamComponent {
-    teamFormGroup = new FormGroup({
+    teamFormGroup: FormGroup = new FormGroup({
         name: new FormControl('', [Validators.required, Validators.minLength(2)]),
         image: new FormControl('', [Validators.required]),
     });
@@ -18,10 +18,11 @@ export class EditorTeamComponent {
     constructor(private teamService: TeamService) {
     }
 
-    onSubmit(): void {
+    onSubmit(form): void {
         this.teamService.createTeam(this.teamFormGroup.value)
-            .subscribe(() => {
-                this.teamFormGroup.reset();
+            .subscribe((data) => {
+                form.reset();
+                this.teamService.updateTeam(data);
                 this.success = true;
             }, error => {
                 this.success = false;
@@ -39,5 +40,6 @@ export class EditorTeamComponent {
 
     clear(): void {
         this.errorMessage = '';
+        this.success = false;
     }
 }

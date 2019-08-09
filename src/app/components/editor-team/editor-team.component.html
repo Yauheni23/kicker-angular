@@ -1,7 +1,7 @@
 <app-editor-layout [errorMessage]="errorMessage"
                    [success]="success"
                    [formGroup]="teamFormGroup"
-                   (submitEvent)="onSubmit()"
+                   (submitEvent)="onSubmit($event)"
                    class="editor-team"
 >
     <h1>Team</h1>

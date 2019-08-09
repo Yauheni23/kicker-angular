@@ -1,9 +1,16 @@
-<mat-action-list role="list" [style.width.px]="200" class="list-players">
-    <mat-list-item mat-list-item role="listitem" *ngFor="let user of users"
-                   (click)="selectPlayer(user.id)">
-        <img [src]="user.image" alt="" matListAvatar>
-        {{user.name}}
-        <mat-divider></mat-divider>
-    </mat-list-item>
-</mat-action-list>
+<div class="list-players-container">
+    <mat-action-list role="list" class="list-players" *ngIf="users.length;else empty">
+        <mat-list-item mat-list-item role="listitem" *ngFor="let user of users"
+                       (click)="selectPlayer(user.id)">
+            <img [src]="user.image" matListAvatar>
+            {{user.name}}
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-action-list>
+</div>
 
+<ng-template #empty>
+    <div class="empty">
+        <span>The list of players is empty.</span>
+    </div>
+</ng-template>

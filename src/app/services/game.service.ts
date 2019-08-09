@@ -15,15 +15,15 @@ export class GameService {
         return this.data.value;
     }
 
-    public getGames(): Observable<IGame[]> {
+    getGames(): Observable<IGame[]> {
         this.httpClient.get<IGame[]>(serverAddress + '/game').subscribe(games => {
             this.data.next(games);
         });
         return this.data.asObservable();
     }
 
-    public createGame(data): Observable<any> {
-        return this.httpClient.post(serverAddress + '/game', {
+    createGame(data): Observable<IGame> {
+        return this.httpClient.post<IGame>(serverAddress + '/game', {
             date: new Date(),
             teams: [data.team1, data.team2],
             users: [data.team1.player1, data.team1.player2, data.team2.player1, data.team2.player2]
