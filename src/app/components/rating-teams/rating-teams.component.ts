@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {TeamService} from '../../services/team.service';
-import {ColorTop, DefaultColor, MAX_GOALS} from '../../constants';
+import {ColorTop, DefaultColor, DisplayedColumns, MAX_GOALS} from '../../constants';
 import {ITeam} from '../../types';
 
 @Component({
@@ -12,7 +12,7 @@ import {ITeam} from '../../types';
     styleUrls: ['./rating-teams.component.css']
 })
 export class RatingTeamsComponent implements OnInit {
-    displayedColumns: string[] = ['place', 'name', 'games', 'goals', 'winRate'];
+    displayedColumns: string[] = DisplayedColumns.ratingTeams;
     dataSource: MatTableDataSource<ITeam>;
 
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ITeam, IUser} from '../types';
-import {serverAddress} from '../constants';
+import {serverAddress, UrlAddress} from '../constants';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
@@ -27,14 +27,14 @@ export class TeamService {
     }
 
     createTeam(team: { name: string; image: string }): Observable<ITeam> {
-        return this.httpClient.post<ITeam>(serverAddress + '/team', {
+        return this.httpClient.post<ITeam>(UrlAddress.team, {
             name: team.name,
             image: team.image
         });
     }
 
     addUser(data: { user: string; team: string }): Observable<any> {
-        return this.httpClient.post<ITeam[]>(serverAddress + '/team/user', {
+        return this.httpClient.post<ITeam[]>(UrlAddress.addUser, {
             userId: data.user,
             teamId: data.team
         });

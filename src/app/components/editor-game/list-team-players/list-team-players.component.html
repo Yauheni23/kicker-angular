@@ -2,7 +2,7 @@
     <mat-action-list role="list" class="list-players" *ngIf="users.length;else empty">
         <mat-list-item mat-list-item role="listitem" *ngFor="let user of users"
                        (click)="selectPlayer(user.id)">
-            <img [src]="user.image" matListAvatar>
+            <img [src]="user.image" matListAvatar alt="">
             {{user.name}}
             <mat-divider></mat-divider>
         </mat-list-item>

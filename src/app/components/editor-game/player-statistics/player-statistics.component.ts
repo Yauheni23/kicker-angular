@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
-import {VARIANT_GOALS} from '../../../constants';
+import {GameFormGroup, VARIANT_GOALS} from '../../../constants';
 import {IUser} from '../../../types';
 import {PlayerService} from '../../../services/player.service';
 
@@ -24,7 +24,7 @@ export class PlayerStatisticsComponent {
     }
 
     get playerId(): number {
-        return this.formGroupPlayer.get('id').value;
+        return this.formGroupPlayer.get(GameFormGroup.id).value;
     }
 
     get player(): IUser {
@@ -43,12 +43,12 @@ export class PlayerStatisticsComponent {
     }
 
     get goalsControl(): AbstractControl {
-        return this.formGroupPlayer.get('goals');
+        return this.formGroupPlayer.get(GameFormGroup.goals);
     }
 
     deleteUser(): void {
         this.userGG = undefined;
         this.id = undefined;
-        this.formGroupPlayer.get('id').reset();
+        this.formGroupPlayer.get(GameFormGroup.id).reset();
     }
 }

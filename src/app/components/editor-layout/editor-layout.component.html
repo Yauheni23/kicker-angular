@@ -11,6 +11,6 @@
         <span class="success">Success</span>
     </div>
     <div *ngIf="errorMessage">
-        <span class="error">{{errorMessage}}</span>
+        <span class="error">{{errorMessage | titlecase}}</span>
     </div>
 </form>

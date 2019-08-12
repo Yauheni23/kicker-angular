@@ -1,16 +1,17 @@
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {serverAddress} from '../constants';
+import {UrlAddress} from '../constants';
 
 export class ImageService {
 
-  constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {
+    }
 
-  public uploadImage(image: File): Observable<any> {
-    const formData = new FormData();
+    uploadImage(image: File): Observable<{ link: string }> {
+        const formData = new FormData();
 
-    formData.append('image', image);
+        formData.append('image', image);
 
-    return this.httpClient.post(serverAddress + '/image', formData);
-  }
+        return this.httpClient.post<{ link: string }>(UrlAddress.uploadImage, formData);
+    }
 }

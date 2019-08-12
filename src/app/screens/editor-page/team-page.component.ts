@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './team-page.component.html',
   styleUrls: ['./team-page.component.css']
 })
-export class TeamPageComponent {
+export class EditorPageComponent {
 }

@@ -3,6 +3,7 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {ITeam, IUser} from '../../types';
 import {TeamService} from '../../services/team.service';
 import {PlayerService} from '../../services/player.service';
+import {TeamFromGroup} from '../../constants';
 
 @Component({
     selector: 'app-editor-team-user',
@@ -10,16 +11,17 @@ import {PlayerService} from '../../services/player.service';
     styleUrls: ['./editor-team-user.component.css']
 })
 export class EditorTeamUserComponent {
-    teamFormGroup: FormGroup = new FormGroup({
-        team: new FormControl('', [Validators.required]),
-        user: new FormControl('', [Validators.required]),
-    });
+    teamFormGroup: FormGroup;
     success: boolean;
     errorMessage: string;
     teams: ITeam[] = [];
     users: IUser[] = [];
 
     constructor(private teamService: TeamService, private playerService: PlayerService) {
+        this.teamFormGroup = new FormGroup({
+            team: new FormControl('', [Validators.required]),
+            user: new FormControl('', [Validators.required]),
+        });
         this.teamService.getTeams().subscribe(teams => {
             this.teams = teams;
         });
@@ -29,11 +31,11 @@ export class EditorTeamUserComponent {
     }
 
     get team(): AbstractControl {
-        return this.teamFormGroup.get('team');
+        return this.teamFormGroup.get(TeamFromGroup.team);
     }
 
     get user(): AbstractControl {
-        return this.teamFormGroup.get('user');
+        return this.teamFormGroup.get(TeamFromGroup.user);
     }
 
     get freeUsers(): IUser[] {
@@ -56,7 +58,7 @@ export class EditorTeamUserComponent {
         this.errorMessage = '';
     }
 
-    private filterFreeUsers = (user) => {
+    private filterFreeUsers = (user: IUser): boolean => {
         return !user.teams.some(team =>  team.id === this.team.value ) && this.team.value;
     }
 }

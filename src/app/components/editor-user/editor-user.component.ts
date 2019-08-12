@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {PlayerService} from '../../services/player.service';
+import {UserFormGroup} from '../../constants';
 
 @Component({
     selector: 'app-editor-user',
@@ -8,22 +9,23 @@ import {PlayerService} from '../../services/player.service';
     styleUrls: ['./editor-user.component.css']
 })
 export class EditorUserComponent {
-    userFormGroup = new FormGroup({
-        name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        image: new FormControl('', [Validators.required]),
-    });
+    userFormGroup: FormGroup;
     success: boolean;
     errorMessage: string;
 
     constructor(private playerService: PlayerService) {
+        this.userFormGroup = new FormGroup({
+            name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+            image: new FormControl('', [Validators.required]),
+        });
     }
 
     get name(): AbstractControl {
-        return this.userFormGroup.get('name');
+        return this.userFormGroup.get(UserFormGroup.name);
     }
 
     get image(): AbstractControl {
-        return this.userFormGroup.get('image');
+        return this.userFormGroup.get(UserFormGroup.image);
     }
 
     onSubmit(form): void {
@@ -33,7 +35,7 @@ export class EditorUserComponent {
                 form.reset();
                 this.success = true;
             }, error => {
-                this.errorMessage = error.message;
+                this.errorMessage = error.error.message;
                 this.success = false;
             });
     }

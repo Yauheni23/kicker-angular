@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
+import {GameFormGroup} from '../../../constants';
 
 @Component({
     selector: 'app-match-team-description',
@@ -11,14 +12,14 @@ export class MatchTeamDescriptionComponent {
     @Input() float: string;
 
     get player1(): AbstractControl {
-        return this.formGroupTeam.get('player1');
+        return this.formGroupTeam.get(GameFormGroup.firstPlayer);
     }
 
     get player2(): AbstractControl {
-        return this.formGroupTeam.get('player2');
+        return this.formGroupTeam.get(GameFormGroup.secondPlayer);
     }
 
     get goals(): number {
-        return this.formGroupTeam.get('goals').value;
+        return this.formGroupTeam.get(GameFormGroup.goals).value;
     }
 }

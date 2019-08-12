@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {TeamService} from '../../../services/team.service';
 import {IUser} from '../../../types';
-import {FormGroup} from '@angular/forms';
+import {AbstractControl, FormGroup} from '@angular/forms';
+import {GameFormGroup} from '../../../constants';
 
 @Component({
     selector: 'app-list-team-players',
@@ -28,15 +29,15 @@ export class ListTeamPlayersComponent {
         }
     }
 
-    private get player1() {
-        return this.formGroupTeam.get('player1').get('id');
+    private get player1(): AbstractControl {
+        return this.formGroupTeam.get(GameFormGroup.firstPlayer).get(GameFormGroup.id);
     }
 
-    private get player2() {
-        return this.formGroupTeam.get('player2').get('id');
+    private get player2(): AbstractControl {
+        return this.formGroupTeam.get(GameFormGroup.secondPlayer).get(GameFormGroup.id);
     }
 
-    private filterSelectedPlayers = (user) => {
+    private filterSelectedPlayers = (user: IUser): boolean => {
         return (user.id !== this.player1.value) && (user.id !== this.player2.value);
     }
 }

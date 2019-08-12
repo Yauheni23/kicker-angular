@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {PlayerService} from '../../services/player.service';
-import {ColorTop, DefaultColor} from '../../constants';
+import {ColorTop, DefaultColor, DisplayedColumns} from '../../constants';
 import {IUser} from '../../types';
 
 @Component({
@@ -10,7 +10,7 @@ import {IUser} from '../../types';
     styleUrls: ['./rating-users.component.css']
 })
 export class RatingUsersComponent implements OnInit {
-    displayedColumns: string[] = ['place', 'name', 'countGame', 'scope'];
+    displayedColumns: string[] = DisplayedColumns.ratingUsers;
     dataSource: MatTableDataSource<IUser>;
 
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -39,11 +39,11 @@ export class RatingUsersComponent implements OnInit {
         return ColorTop[place - 1] || DefaultColor;
     }
 
-    private sortByResult(prev, next): number {
+    private sortByResult(prev: IUser, next: IUser): number {
         return (prev.scope / prev.countGame || 0) > (next.scope / next.countGame || 0) ? -1 : 1;
     }
 
-    private mapPlace(user, index): IUser {
+    private mapPlace(user: IUser, index: number): IUser {
         return {
             ...user,
             place: index + 1

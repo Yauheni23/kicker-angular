@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
 import {TeamService} from '../../../services/team.service';
 import {ITeam} from '../../../types';
-import {VARIANT_GOALS} from '../../../constants';
+import {GameFormGroup, VARIANT_GOALS} from '../../../constants';
 
 @Component({
     selector: 'app-select-team',
@@ -21,15 +21,15 @@ export class SelectTeamComponent {
     }
 
     get teamId(): AbstractControl {
-        return this.formGroupTeam.get('id');
+        return this.formGroupTeam.get(GameFormGroup.id);
     }
 
     get goals(): AbstractControl {
-        return this.formGroupTeam.get('goals');
+        return this.formGroupTeam.get(GameFormGroup.goals);
     }
 
-    clear() {
-        this.formGroupTeam.get('player1').reset();
-        this.formGroupTeam.get('player2').reset();
+    clear(): void {
+        this.formGroupTeam.get(GameFormGroup.firstPlayer).reset();
+        this.formGroupTeam.get(GameFormGroup.secondPlayer).reset();
     }
 }

@@ -6,9 +6,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
     styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-    @Output() public selectLink: EventEmitter<void> = new EventEmitter();
+    @Output() selectLink: EventEmitter<void> = new EventEmitter();
 
-    public closeSidenav(): void {
+    closeSidenav(): void {
         this.selectLink.emit();
     }
 }

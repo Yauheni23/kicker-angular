@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {GameService} from '../../services/game.service';
-import {MAX_GOALS} from '../../constants';
+import {GameFormGroup} from '../../constants';
+import {GameValidator} from '../../validators/game-validator';
 
 @Component({
     selector: 'app-editor-game',
@@ -9,25 +10,28 @@ import {MAX_GOALS} from '../../constants';
     styleUrls: ['./editor-game.component.css']
 })
 export class EditorGameComponent {
-    public success: boolean = false;
-    public errorMessage: string;
-    public gameFormGroup: FormGroup = new FormGroup({
-        team1: this.prepareTeamGroup(),
-        team2: this.prepareTeamGroup()
-    }, {validators: [teamValidator, goalsValidator, playerValidator, playerGoalsValidator]});
+    gameValidator: GameValidator;
+    success: boolean = false;
+    errorMessage: string;
+    gameFormGroup: FormGroup;
 
     constructor(private gameService: GameService) {
+        this.gameValidator = new GameValidator();
+        this.gameFormGroup = new FormGroup({
+            team1: this.prepareTeamGroup(),
+            team2: this.prepareTeamGroup()
+        }, {validators: this.gameValidator.getAllValidators()});
     }
 
     get team1(): AbstractControl {
-        return this.gameFormGroup.get('team1');
+        return this.gameFormGroup.get(GameFormGroup.firstTeam);
     }
 
     get team2(): AbstractControl {
-        return this.gameFormGroup.get('team2');
+        return this.gameFormGroup.get(GameFormGroup.secondTeam);
     }
 
-    public createGame(form): void {
+    createGame(form: HTMLFormElement): void {
         this.gameService.createGame(this.gameFormGroup.value)
             .subscribe(() => {
                 form.reset();
@@ -38,7 +42,7 @@ export class EditorGameComponent {
             });
     }
 
-    public clear(): void {
+    clear(): void {
         this.errorMessage = '';
     }
 
@@ -59,34 +63,3 @@ export class EditorGameComponent {
     }
 
 }
-
-const teamValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-    const team1 = control.get('team1').value;
-    const team2 = control.get('team2').value;
-
-    return team1.id === team2.id ? {'teamError': true} : null;
-};
-
-const goalsValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-    const team1 = control.get('team1').value;
-    const team2 = control.get('team2').value;
-
-    return team1.goals === team2.goals || !(team1.goals === MAX_GOALS || team2.goals === MAX_GOALS) ? {'goalsError': true} : null;
-};
-
-const playerValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-    const team1 = control.get('team1').value;
-    const team2 = control.get('team2').value;
-
-    return team1.player1.id === team2.player1.id || team1.player1.id === team2.player2.id || team1.player2.id === team2.player1.id
-    || team1.player2.id === team2.player2.id ? {'playersError': true} : null;
-};
-
-const playerGoalsValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-    const team1 = control.get('team1').value;
-    const team2 = control.get('team2').value;
-
-    return (team1.player1.goals + team1.player2.goals > team1.goals) || (team2.player1.goals + team2.player2.goals > team2.goals)
-        ? {'playersGoalsError': true}
-        : null;
-};

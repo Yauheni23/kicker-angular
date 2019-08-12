@@ -28,10 +28,10 @@ import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {EditorUserComponent} from './components/editor-user/editor-user.component';
-import {TeamPageComponent} from './screens/team-page/team-page.component';
+import {EditorPageComponent} from './screens/editor-page/team-page.component';
 import {GamePageComponent} from './screens/game-page/game-page.component';
 import {EditorGameComponent} from './components/editor-game/editor-game.component';
-import {MatchTeamDescriptionComponent} from './components/editor-game-components/match-team-description/match-team-description.component';
+import {MatchTeamDescriptionComponent} from './components/editor-game/match-team-description/match-team-description.component';
 import {EditorTeamComponent} from './components/editor-team/editor-team.component';
 import {EditorLayoutComponent} from './components/editor-layout/editor-layout.component';
 import {RatingTeamsComponent} from './components/rating-teams/rating-teams.component';
@@ -41,13 +41,13 @@ import {DescriptionGameLayoutComponent} from './components/history-games/descrip
 import {RatingComponent} from './screens/rating/rating.component';
 import {UploadImageComponent} from './components/upload-image/upload-image.component';
 import {EditorTeamUserComponent} from './components/editor-team-user/editor-team-user.component';
-import {SelectTeamComponent} from './components/editor-game-components/select-team/select-team.component';
-import { ListTeamPlayersComponent } from './components/editor-game-components/list-team-players/list-team-players.component';
-import { PlayerStatisticsComponent } from './components/editor-game-components/player-statistics/player-statistics.component';
+import {SelectTeamComponent} from './components/editor-game/select-team/select-team.component';
+import { ListTeamPlayersComponent } from './components/editor-game/list-team-players/list-team-players.component';
+import { PlayerStatisticsComponent } from './components/editor-game/player-statistics/player-statistics.component';
 
 const appRoutes: Routes = [
     {path: 'create/game', component: GamePageComponent},
-    {path: 'create/team', component: TeamPageComponent},
+    {path: 'create/team', component: EditorPageComponent},
     {path: 'rating', component: RatingComponent},
     {path: 'history/games', component: HistoryGamesComponent},
     {
@@ -65,7 +65,7 @@ const appRoutes: Routes = [
         NavigationComponent,
         FooterComponent,
         EditorUserComponent,
-        TeamPageComponent,
+        EditorPageComponent,
         GamePageComponent,
         EditorGameComponent,
         MatchTeamDescriptionComponent,

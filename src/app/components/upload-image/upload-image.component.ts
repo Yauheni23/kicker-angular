@@ -1,12 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {serverAddress} from '../../constants';
+import {MainColor, serverAddress} from '../../constants';
 import {ImageService} from '../../services/image.service';
 import {FormControl} from '@angular/forms';
-
-class ImageSnippet {
-    constructor(public src: string, public file: File) {
-    }
-}
+import {ImageSnippet} from '../../utils/image-snippet';
 
 @Component({
     selector: 'app-upload-image',
@@ -21,7 +17,7 @@ export class UploadImageComponent {
     constructor(private imageService: ImageService) {
     }
 
-    processFile(imageInput: any) {
+    processFile(imageInput: any): void {
         const file: File = imageInput.files[0];
         const reader = new FileReader();
 
@@ -38,8 +34,8 @@ export class UploadImageComponent {
     }
 
     setColor(element) {
-        element.style.color = 'blue';
-        element.style.borderColor = 'blue';
+        element.style.color = MainColor;
+        element.style.borderColor = MainColor;
     }
 
     deleteColor(element) {
