@@ -43,3 +43,11 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.isWin {
+    color: green;
+}
+
+.isLose {
+    color: red;
+}

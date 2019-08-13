@@ -23,30 +23,26 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatCardModule} from '@angular/material/card';
 
-import {HeaderComponent} from './components/header/header.component';
-import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {NavigationComponent} from './components/navigation/navigation.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {EditorUserComponent} from './components/editor-user/editor-user.component';
+import {EditorUserComponent} from './components/editors/editor-user/editor-user.component';
 import {EditorPageComponent} from './screens/editor-page/team-page.component';
-import {GamePageComponent} from './screens/game-page/game-page.component';
-import {EditorGameComponent} from './components/editor-game/editor-game.component';
-import {MatchTeamDescriptionComponent} from './components/editor-game/match-team-description/match-team-description.component';
-import {EditorTeamComponent} from './components/editor-team/editor-team.component';
-import {EditorLayoutComponent} from './components/editor-layout/editor-layout.component';
-import {RatingTeamsComponent} from './components/rating-teams/rating-teams.component';
-import {RatingUsersComponent} from './components/rating-users/rating-users.component';
+import {EditorGameComponent} from './components/editors/editor-game/editor-game.component';
+import {MatchTeamDescriptionComponent} from './components/editors/editor-game/match-team-description/match-team-description.component';
+import {EditorTeamComponent} from './components/editors/editor-team/editor-team.component';
+import {EditorLayoutComponent} from './components/editors/editor-layout/editor-layout.component';
+import {RatingTeamsComponent} from './components/rating/rating-teams/rating-teams.component';
+import {RatingUsersComponent} from './components/rating/rating-users/rating-users.component';
 import {HistoryGamesComponent} from './components/history-games/history-games.component';
 import {DescriptionGameLayoutComponent} from './components/history-games/description-game-layout/description-game-layout.component';
 import {RatingComponent} from './screens/rating/rating.component';
 import {UploadImageComponent} from './components/upload-image/upload-image.component';
-import {EditorTeamUserComponent} from './components/editor-team-user/editor-team-user.component';
-import {SelectTeamComponent} from './components/editor-game/select-team/select-team.component';
-import { ListTeamPlayersComponent } from './components/editor-game/list-team-players/list-team-players.component';
-import { PlayerStatisticsComponent } from './components/editor-game/player-statistics/player-statistics.component';
+import {EditorTeamUserComponent} from './components/editors/editor-team-user/editor-team-user.component';
+import {SelectTeamComponent} from './components/editors/editor-game/select-team/select-team.component';
+import {ListTeamPlayersComponent} from './components/editors/editor-game/list-team-players/list-team-players.component';
+import {PlayerStatisticsComponent} from './components/editors/editor-game/player-statistics/player-statistics.component';
 
 const appRoutes: Routes = [
-    {path: 'create/game', component: GamePageComponent},
+    {path: 'create/game', component: EditorGameComponent},
     {path: 'create/team', component: EditorPageComponent},
     {path: 'rating', component: RatingComponent},
     {path: 'history/games', component: HistoryGamesComponent},
@@ -60,13 +56,9 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        SidenavComponent,
-        HeaderComponent,
         NavigationComponent,
-        FooterComponent,
         EditorUserComponent,
         EditorPageComponent,
-        GamePageComponent,
         EditorGameComponent,
         MatchTeamDescriptionComponent,
         EditorTeamComponent,

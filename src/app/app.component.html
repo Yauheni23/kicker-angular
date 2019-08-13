@@ -1,1 +1,28 @@
-<app-sidenav></app-sidenav>
+<div>
+    <ng-container *ngIf="true">
+        <mat-toolbar class="header" color="primary">
+            <mat-toolbar-row>
+                <mat-icon aria-hidden="false"
+                          aria-label="Home icon"
+                          class="header__home-icon"
+                          (click)="sidenav.toggle()">
+                    menu
+                </mat-icon>
+                <span>Kicker</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <mat-sidenav-container class="sidenav-container">
+            <mat-sidenav #sidenav mode="over" class="sidenav">
+                <app-navigation (selectLink)="sidenav.close()"></app-navigation>
+            </mat-sidenav>
+
+            <mat-sidenav-content>
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
+        <mat-toolbar class="footer" color="primary">Kicker v1.0.0</mat-toolbar>
+    </ng-container>
+</div>
+

@@ -18,6 +18,7 @@ import {DisplayedColumns} from '../../constants';
     ],
 })
 export class HistoryGamesComponent implements OnInit {
+    readonly pageSizeOptions: number[] = [10, 5, 20, 50];
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     dataSource: MatTableDataSource<IGame>;
     displayedColumns: string[] = DisplayedColumns.historyGames;
@@ -27,7 +28,7 @@ export class HistoryGamesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.gameService.getGames().subscribe(games => {
+        this.gameService.getAll().subscribe(games => {
             this.dataSource = new MatTableDataSource<IGame>(games);
             this.dataSource.paginator = this.paginator;
         });

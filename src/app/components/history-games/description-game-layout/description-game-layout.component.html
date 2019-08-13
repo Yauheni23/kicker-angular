@@ -8,9 +8,9 @@
     <div class="description-game__bill">
         <div>
             <h2>
-                <span [style.color]="game.team1.goals === maxGoals ? 'green' : 'red'">{{game.team1.goals}}</span>
+                <span [ngClass]="isWin(game.team1.goals)">{{game.team1.goals}}</span>
                 :
-                <span [style.color]="game.team2.goals === maxGoals ? 'green' : 'red'">{{game.team2.goals}}</span>
+                <span [ngClass]="isWin(game.team2.goals)">{{game.team2.goals}}</span>
             </h2>
         </div>
         <div>

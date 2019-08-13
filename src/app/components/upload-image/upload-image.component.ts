@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MainColor, serverAddress} from '../../constants';
+import {MainColor, UrlAddress} from '../../constants';
 import {ImageService} from '../../services/image.service';
 import {FormControl} from '@angular/forms';
 import {ImageSnippet} from '../../utils/image-snippet';
@@ -26,7 +26,7 @@ export class UploadImageComponent {
 
             this.imageService.uploadImage(this.selectedFile.file).subscribe(
                 (result) => {
-                    this.image.setValue(serverAddress + result.link);
+                    this.image.setValue(UrlAddress.image + result.link);
                 });
         });
 

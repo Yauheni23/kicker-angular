@@ -7,6 +7,9 @@ import {MAX_GOALS} from '../../../constants';
     styleUrls: ['./description-game-layout.component.css']
 })
 export class DescriptionGameLayoutComponent {
-    readonly maxGoals = MAX_GOALS;
     @Input() game;
+
+    isWin(goals: number): string {
+        return goals === MAX_GOALS ? 'isWin' : 'isLose';
+    }
 }

@@ -1,7 +1,4 @@
-export interface ITeam {
-    id: string;
-    name: string;
-    image: string;
+export interface ITeam extends IEntity {
     users: IUser[];
     goals: number;
     games: IGame[];
@@ -9,33 +6,26 @@ export interface ITeam {
     winRate?: number;
 }
 
-export interface IUser {
-    id: number;
-    name: string;
-    image: string;
+export interface IUser extends IEntity {
     scope: number;
     countGame: number;
     place?: number;
-    teams?: {
-        id: string,
-        name: string,
-        image: string
-    }[];
+    teams?: IEntity[];
 }
 
 export interface IGame {
     id: string;
     date: Date;
-    team1: {
-        id: string;
-        name: string;
-        image: string;
-        goals: number;
-    };
-    team2: {
-        id: string;
-        name: string;
-        image: string;
-        goals: number;
-    };
+    team1: IGameTeam;
+    team2: IGameTeam;
+}
+
+interface IGameTeam extends IEntity {
+    goals: number;
+}
+
+interface IEntity {
+    id: string;
+    name: string;
+    image: string;
 }
