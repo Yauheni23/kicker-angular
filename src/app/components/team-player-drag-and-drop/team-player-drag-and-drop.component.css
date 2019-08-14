@@ -1,0 +1,83 @@
+.team-player {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.team-player__teams-container {
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.team-player__players-container {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.team-player__header {
+    text-align: center;
+    padding: 2px;
+}
+
+.team-player__teams {
+    height: 100%;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 10px 20px 25px;
+    overflow-y: auto;
+}
+
+.team-player__players {
+    overflow-x: auto;
+    padding: 0 15px;
+    width: 300px;
+    min-width: 200px;
+}
+
+.team-player__team {
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+.team-player__player {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.team-player__player:hover {
+    cursor: grab;
+}
+
+.avatar-team {
+    width: 100px;
+    height: 100px;
+}
+
+.avatar-player {
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+}
+
+.team-player__player-text {
+    margin-left: 10px;
+    font-size: 1.2em;
+    line-height: 40px;
+}
+
+.team-player__team-name {
+    text-align: center;
+}
+
+
+mat-list-item span {
+    margin-left: 10px;
+}
+
+.disabled {
+    opacity: 0.2;
+}

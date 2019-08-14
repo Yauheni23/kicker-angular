@@ -9,4 +9,12 @@ export class PlayerService extends EditorService<IUser> {
     constructor(protected httpClient: HttpClient) {
         super(httpClient, UrlAddress.user);
     }
+
+    updateTeams(id: number, team): void {
+        this.data.value.find(player => player.id === id).teams.push({
+            id: team.id,
+            name: team.name,
+            image: team.image
+        });
+    }
 }

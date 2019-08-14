@@ -2,7 +2,7 @@
     height: 280px;
     width: 200px;
     border: 1px solid black;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .list-players {

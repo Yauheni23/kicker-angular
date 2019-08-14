@@ -1,0 +1,14 @@
+<div class="dialog">
+    <div mat-dialog-content class="dialog__text">
+        <p>Add <b>{{data.user.name | titlecase}}</b> to the team <b>{{data.team.name | titlecase}}</b>?
+        </p>
+    </div>
+    <div mat-dialog-actions class="dialog__actions">
+        <button class="button-close" mat-button (click)="onNoClick()">
+            <mat-icon color="accent">close</mat-icon>
+        </button>
+        <button class="button-done" mat-button [mat-dialog-close]="data" cdkFocusInitial>
+            <mat-icon>done</mat-icon>
+        </button>
+    </div>
+</div>

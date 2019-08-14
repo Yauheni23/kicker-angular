@@ -1,0 +1,36 @@
+<mat-card class="team-player">
+    <div class="team-player__teams-container">
+        <h2 class="team-player__header">Teams</h2>
+        <div class="team-player__teams">
+            <div *ngFor="let team of teams"
+                 class="team-player__team"
+                 (drop)="dropPlayer(team)"
+                 (dragover)="isEnabled(team.id)"
+                 [ngClass]="disabledTeams[team.id] ? 'disabled' : ''">
+                <mat-card>
+                    <img [src]="team.image" class="avatar-team" [title]="team.name">
+                    <mat-card-footer>
+                        <mat-card-title
+                                class="team-player__team-name">{{team.name}}</mat-card-title>
+                    </mat-card-footer>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div class="team-player__players-container">
+        <h2 class="team-player__header">Users</h2>
+        <mat-list class="team-player__players">
+            <mat-card *ngFor="let player of players"
+                      draggable="true"
+                      class="team-player__player"
+                      (dragstart)="dragStart($event, player)"
+                      (dragend)="dragEnd()"
+                      [style.padding]="'5px 20px'"
+            >
+                <img [src]="player.image" class="avatar-player" [title]="player.name"
+                     draggable="false">
+                <span class="team-player__player-text">{{player.name}}</span>
+            </mat-card>
+        </mat-list>
+    </div>
+</mat-card>

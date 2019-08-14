@@ -1,13 +1,15 @@
-<app-editor-layout [errorMessage]="errorMessage"
-                   [success]="success"
-                   [formGroup]="formGroup"
-                   buttonText="Add game"
-                   (submitEvent)="onSubmit($event)">
-    <h1>Game</h1>
-    <div class="teams">
-        <app-match-team-description [formGroupTeam]="team1" float="left">
-        </app-match-team-description>
-        <app-match-team-description [formGroupTeam]="team2" float="right">
-        </app-match-team-description>
-    </div>
-</app-editor-layout>
+<div class="editor-game-container">
+    <app-editor-layout [errorMessage]="errorMessage"
+                       [success]="success"
+                       [formGroup]="formGroup"
+                       buttonText="Add game"
+                       (submitEvent)="onSubmit($event)">
+        <h1>Game</h1>
+        <div class="teams">
+            <app-match-team-description [formGroupTeam]="team1" float="left">
+            </app-match-team-description>
+            <app-match-team-description [formGroupTeam]="team2" float="right">
+            </app-match-team-description>
+        </div>
+    </app-editor-layout>
+</div>
