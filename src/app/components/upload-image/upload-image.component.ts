@@ -33,13 +33,11 @@ export class UploadImageComponent {
         reader.readAsDataURL(file);
     }
 
-    setColor(element) {
-        element.style.color = MainColor;
-        element.style.borderColor = MainColor;
+    setColor(element: HTMLDivElement): void {
+        element.classList.add('hover');
     }
 
-    deleteColor(element) {
-        element.style.color = '';
-        element.style.borderColor = '';
+    deleteColor(element: HTMLDivElement): void {
+        element.classList.remove('hover');
     }
 }

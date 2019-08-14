@@ -25,6 +25,11 @@
     transition: 0.2s;
 }
 
+.image-upload__text.hover {
+    color: blue;
+    border-color: blue;
+}
+
 .image-upload:hover .image-upload__text {
     border-color: blue;
     color: blue;

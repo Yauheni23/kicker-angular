@@ -16,6 +16,11 @@ export enum ColorTop {
     '#cd7f32'
 }
 
+export enum ClassName {
+    isWin = 'isWin',
+    isLose = 'isLose'
+}
+
 export enum GameFormGroup {
     id = 'id',
     firstTeam = 'team1',

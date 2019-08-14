@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MAX_GOALS} from '../../../constants';
+import {ClassName, MAX_GOALS} from '../../../constants';
 
 @Component({
     selector: 'app-description-game-layout',
@@ -10,6 +10,6 @@ export class DescriptionGameLayoutComponent {
     @Input() game;
 
     isWin(goals: number): string {
-        return goals === MAX_GOALS ? 'isWin' : 'isLose';
+        return goals === MAX_GOALS ? ClassName.isWin : ClassName.isLose;
     }
 }

@@ -31,7 +31,6 @@ export class PlayerStatisticsComponent {
         if (this.playerId && this.playerId !== this.id) {
             this.id = this.playerId;
             this.playerService.getById(this.playerId).subscribe(data => {
-                console.log(data);
                 this.userGG = data;
             });
         }

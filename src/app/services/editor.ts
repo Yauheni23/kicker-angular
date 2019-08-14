@@ -18,7 +18,7 @@ export class EditorService<T> {
         return this.httpClient.get<T>(`${this.urlAddress}/${id}`);
     }
 
-    create(data): Observable<T> {
+    create(data: any): Observable<T> {
         return this.httpClient.post<T>(this.urlAddress, data);
     }
 

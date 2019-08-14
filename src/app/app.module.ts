@@ -42,10 +42,14 @@ import {ListTeamPlayersComponent} from './components/editors/editor-game/list-te
 import {PlayerStatisticsComponent} from './components/editors/editor-game/player-statistics/player-statistics.component';
 
 const appRoutes: Routes = [
-    {path: 'create/game', component: EditorGameComponent},
-    {path: 'create/team', component: EditorPageComponent},
+    {
+        path: 'create', children: [
+            {path: 'game', component: EditorGameComponent},
+            {path: 'team', component: EditorPageComponent},
+        ]
+    },
     {path: 'rating', component: RatingComponent},
-    {path: 'history/games', component: HistoryGamesComponent},
+    {path: 'history', component: HistoryGamesComponent},
     {
         path: '',
         redirectTo: 'create/game',

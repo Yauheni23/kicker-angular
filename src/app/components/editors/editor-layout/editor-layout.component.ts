@@ -8,11 +8,11 @@ import {DEFAULT_BUTTON_TEXT_EDITOR} from '../../../constants';
     styleUrls: ['./editor-layout.component.css']
 })
 export class EditorLayoutComponent {
-    @Input() public success: boolean = false;
-    @Input() public formGroup: FormGroup;
-    @Input() public errorMessage: string;
-    @Input() public buttonText: string = DEFAULT_BUTTON_TEXT_EDITOR;
-    @Output() public submitEvent: EventEmitter<HTMLFormElement> = new EventEmitter<HTMLFormElement>();
+    @Input() success: boolean = false;
+    @Input() formGroup: FormGroup;
+    @Input() errorMessage: string;
+    @Input() buttonText: string = DEFAULT_BUTTON_TEXT_EDITOR;
+    @Output() submitEvent: EventEmitter<HTMLFormElement> = new EventEmitter<HTMLFormElement>();
 
     submit(form: HTMLFormElement): void {
         this.submitEvent.emit(form);
