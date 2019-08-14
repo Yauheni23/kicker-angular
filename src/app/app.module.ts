@@ -22,6 +22,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {EditorUserComponent} from './components/editors/editor-user/editor-user.component';
@@ -36,10 +38,11 @@ import {HistoryGamesComponent} from './components/history-games/history-games.co
 import {DescriptionGameLayoutComponent} from './components/history-games/description-game-layout/description-game-layout.component';
 import {RatingComponent} from './screens/rating/rating.component';
 import {UploadImageComponent} from './components/upload-image/upload-image.component';
-import {EditorTeamUserComponent} from './components/editors/editor-team-user/editor-team-user.component';
 import {SelectTeamComponent} from './components/editors/editor-game/select-team/select-team.component';
 import {ListTeamPlayersComponent} from './components/editors/editor-game/list-team-players/list-team-players.component';
 import {PlayerStatisticsComponent} from './components/editors/editor-game/player-statistics/player-statistics.component';
+import {TeamPlayerDragAndDropComponent} from './components/team-player-drag-and-drop/team-player-drag-and-drop.component';
+import {DialogComponent} from './components/dialog/dialog.component';
 
 const appRoutes: Routes = [
     {
@@ -73,10 +76,11 @@ const appRoutes: Routes = [
         DescriptionGameLayoutComponent,
         RatingComponent,
         UploadImageComponent,
-        EditorTeamUserComponent,
         SelectTeamComponent,
         ListTeamPlayersComponent,
-        PlayerStatisticsComponent
+        PlayerStatisticsComponent,
+        TeamPlayerDragAndDropComponent,
+        DialogComponent,
     ],
     imports: [
         RouterModule.forRoot(appRoutes),
@@ -99,9 +103,12 @@ const appRoutes: Routes = [
         MatSortModule,
         MatTabsModule,
         MatCardModule,
-        DragDropModule
+        DragDropModule,
+        MatDialogModule,
+        MatSnackBarModule,
     ],
     providers: [],
+    entryComponents: [DialogComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

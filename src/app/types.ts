@@ -13,8 +13,13 @@ export interface IUser extends IEntity {
     teams?: IEntity[];
 }
 
+export interface ITeamUser {
+    user: IUser;
+    team: ITeam;
+}
+
 export interface IGame {
-    id: string;
+    id: number;
     date: Date;
     team1: IGameTeam;
     team2: IGameTeam;
@@ -25,7 +30,7 @@ interface IGameTeam extends IEntity {
 }
 
 interface IEntity {
-    id: string;
+    id: number;
     name: string;
     image: string;
 }

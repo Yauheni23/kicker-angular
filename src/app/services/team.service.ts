@@ -11,11 +11,13 @@ export class TeamService extends EditorService<ITeam> {
         super(httpClient, UrlAddress.team);
     }
 
-    getPlayers(teamId: string): IUser[] {
+    getPlayers(teamId: number): IUser[] {
         return this.data.value.find(team => team.id === teamId).users;
     }
 
-    addPlayer(data: { user: string; team: string }): Observable<any> {
-        return this.httpClient.post<ITeam[]>(UrlAddress.addUser, data);
+    addPlayer(teamId: number, userId: number): Observable<any> {
+        return this.httpClient.post<ITeam[]>(UrlAddress.addUser, {
+            teamId, userId
+        });
     }
 }

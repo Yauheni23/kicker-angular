@@ -1,3 +1,7 @@
+.editor-game-container {
+    width: 70%;
+    margin: 0 auto;
+}
 .teams {
     display: flex;
     flex-wrap: wrap;

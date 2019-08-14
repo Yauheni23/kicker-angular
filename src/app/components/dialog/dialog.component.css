@@ -1,0 +1,21 @@
+.dialog {
+    font-size: 1.2em;
+    padding-top: 10px;
+    width: 300px;
+}
+.dialog__text {
+}
+
+.dialog__actions {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.button-close {
+    color: red;
+}
+
+.button-done {
+    color: green;
+}

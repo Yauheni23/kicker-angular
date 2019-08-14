@@ -58,3 +58,9 @@ export enum UrlAddress {
     user = 'http://172.18.144.5:8080/user',
     uploadImage = 'http://172.18.144.5:8080/image',
 }
+
+export enum Message {
+    success = 'Success',
+    failed = 'Failed',
+    close = 'Close'
+}
