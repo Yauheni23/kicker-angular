@@ -51,12 +51,12 @@ export const DisplayedColumns = {
 };
 
 export enum UrlAddress {
-    image = 'http://172.18.144.5:8080',
-    game = 'http://172.18.144.5:8080/game',
-    team = 'http://172.18.144.5:8080/team',
-    addUser = 'http://172.18.144.5:8080/team/user',
-    user = 'http://172.18.144.5:8080/user',
-    uploadImage = 'http://172.18.144.5:8080/image',
+    image = 'http://172.18.144.38:8080',
+    game = 'http://172.18.144.38:8080/game',
+    team = 'http://172.18.144.38:8080/team',
+    addUser = 'http://172.18.144.38:8080/team/user',
+    user = 'http://172.18.144.38:8080/user',
+    uploadImage = 'http://172.18.144.38:8080/image',
 }
 
 export enum Message {
