@@ -3,15 +3,18 @@
         <input #imageInput
                type="file"
                accept="image/*"
-               (dragenter)="setColor(element)"
-               (dragleave)="deleteColor(element)"
+               (dragenter)="setColor()"
+               (dragleave)="deleteColor()"
                (change)="processFile(imageInput)">
-        <div class="image-upload__text" #element [ngStyle]="{opacity: image && image.value ? 0 : 1}">
-            <mat-icon>add</mat-icon>
-            <span>Add image</span>
+        <div class="image-upload__text" [ngStyle]="{opacity: image && image.value ? 0 : 1}">
+            <img src="../../../assets/addImage.svg" alt="" *ngIf="!hover; else blueImage">
         </div>
         <div class="image-container" *ngIf="image && image.value">
             <img [src]="image.value" alt="">
         </div>
     </div>
 </div>
+
+<ng-template #blueImage>
+    <img src="../../../assets/addImageHover.svg" alt="">
+</ng-template>

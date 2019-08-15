@@ -30,11 +30,3 @@ td, th {
 .list-item > * {
     margin-right: 10px;
 }
-
-.avatar {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}

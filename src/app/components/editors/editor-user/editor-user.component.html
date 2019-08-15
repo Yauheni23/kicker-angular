@@ -1,7 +1,9 @@
 <app-editor-layout [errorMessage]="errorMessage"
                    [success]="success"
                    [formGroup]="formGroup"
-                   (submitEvent)="onSubmit($event)">
+                   (submitEvent)="onSubmit($event)"
+                   class="editor-user"
+>
     <h1>User</h1>
     <mat-form-field class="wrapper-input">
         <input matInput placeholder="Name" [formControl]="name" (input)="clear()">

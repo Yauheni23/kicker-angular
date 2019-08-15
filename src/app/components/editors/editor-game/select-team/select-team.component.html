@@ -1,25 +1,23 @@
-<div class="match-team-description">
+<div class="select-team">
+    <div >
+        <img [src]="teamImage" alt="" class="avatar-team" *ngIf="teamImage; else defaultImage">
+    </div>
+
     <div class="team center">
         <mat-form-field>
             <mat-label>Team</mat-label>
             <mat-select [formControl]="teamId" (valueChange)="clear()">
                 <mat-option *ngFor="let team of teams" [value]="team.id">
                     <span class="list-item">
-                    <img class="avatar" [src]="team.image" alt="">
+                    <img class="avatar-sm" [src]="team.image" alt="">
                         {{team.name}}
                     </span>
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
-    <div class="goals center">
-        <mat-form-field class="goals-select">
-            <mat-label>Goals</mat-label>
-            <mat-select [formControl]="goals">
-                <mat-option *ngFor="let goal of variantGoals" [value]="goal">
-                    {{goal}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
 </div>
+
+<ng-template #defaultImage>
+    <img src="../../../../../assets/team.svg" alt="" class="avatar-team">
+</ng-template>

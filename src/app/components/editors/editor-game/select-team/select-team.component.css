@@ -1,3 +1,11 @@
+.select-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .list-item {
     display: flex;
     justify-content: left;
@@ -8,10 +16,7 @@
     margin-right: 10px;
 }
 
-.avatar {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+.avatar-team {
+    width: 250px;
+    height: 250px;
 }

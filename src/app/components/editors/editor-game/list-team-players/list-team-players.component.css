@@ -1,7 +1,6 @@
 .list-players-container{
-    height: 280px;
-    width: 200px;
-    border: 1px solid black;
+    height: 100%;
+    width: 350px;
     overflow-y: auto;
 }
 
@@ -9,6 +8,20 @@
     padding: 0;
     width: 100%;
     height: 100%;
+}
+
+.list-players__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 10px;
+    padding: 5px 20px;
+}
+
+.list-players__item-info {
+    display: flex;
+    align-items: center;
 }
 
 .empty {
@@ -21,4 +34,27 @@
 .empty span {
     text-align: center;
     font-size: 1.5em;
+}
+
+.avatar-player {
+    height: 40px;
+    width: 40px;
+}
+
+.bill-input {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    height: 20px;
+    width: 30px;
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

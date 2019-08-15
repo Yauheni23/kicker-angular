@@ -13,6 +13,7 @@ import {ImageSnippet} from '../../utils/image-snippet';
 export class UploadImageComponent {
     @Input() image: FormControl;
     selectedFile: ImageSnippet;
+    hover: boolean = false;
 
     constructor(private imageService: ImageService) {
     }
@@ -33,11 +34,11 @@ export class UploadImageComponent {
         reader.readAsDataURL(file);
     }
 
-    setColor(element: HTMLDivElement): void {
-        element.classList.add('hover');
+    setColor(): void {
+        this.hover = true;
     }
 
-    deleteColor(element: HTMLDivElement): void {
-        element.classList.remove('hover');
+    deleteColor(): void {
+        this.hover = false;
     }
 }

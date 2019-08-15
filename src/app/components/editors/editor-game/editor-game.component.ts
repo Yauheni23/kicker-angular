@@ -12,6 +12,7 @@ import {IGame} from '../../../types';
     styleUrls: ['./editor-game.component.css']
 })
 export class EditorGameComponent extends Editor<IGame> {
+    readonly maxGoals = MAX_GOALS;
     constructor(private gameService: GameService) {
         super(gameService);
         this.formGroup = new FormGroup({
@@ -28,10 +29,18 @@ export class EditorGameComponent extends Editor<IGame> {
         return this.formGroup.get(GameFormGroup.secondTeam);
     }
 
+    get goalsTeam1(): AbstractControl {
+        return this.formGroup.get(GameFormGroup.firstTeam).get(GameFormGroup.goals);
+    }
+
+    get goalsTeam2(): AbstractControl {
+        return this.formGroup.get(GameFormGroup.secondTeam).get(GameFormGroup.goals);
+    }
+
     private prepareTeamGroup(): FormGroup {
         return new FormGroup({
             id: new FormControl('', [Validators.required]),
-            goals: new FormControl('', [Validators.required, Validators.max(MAX_GOALS), Validators.min(MIN_GOALS)]),
+            goals: new FormControl(MIN_GOALS, [Validators.required, Validators.max(MAX_GOALS), Validators.min(MIN_GOALS)]),
             player1: this.preparePlayerGroup(),
             player2: this.preparePlayerGroup()
         });

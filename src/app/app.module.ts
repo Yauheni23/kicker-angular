@@ -29,7 +29,6 @@ import {NavigationComponent} from './components/navigation/navigation.component'
 import {EditorUserComponent} from './components/editors/editor-user/editor-user.component';
 import {EditorPageComponent} from './screens/editor-page/team-page.component';
 import {EditorGameComponent} from './components/editors/editor-game/editor-game.component';
-import {MatchTeamDescriptionComponent} from './components/editors/editor-game/match-team-description/match-team-description.component';
 import {EditorTeamComponent} from './components/editors/editor-team/editor-team.component';
 import {EditorLayoutComponent} from './components/editors/editor-layout/editor-layout.component';
 import {RatingTeamsComponent} from './components/rating/rating-teams/rating-teams.component';
@@ -40,7 +39,6 @@ import {RatingComponent} from './screens/rating/rating.component';
 import {UploadImageComponent} from './components/upload-image/upload-image.component';
 import {SelectTeamComponent} from './components/editors/editor-game/select-team/select-team.component';
 import {ListTeamPlayersComponent} from './components/editors/editor-game/list-team-players/list-team-players.component';
-import {PlayerStatisticsComponent} from './components/editors/editor-game/player-statistics/player-statistics.component';
 import {TeamPlayerDragAndDropComponent} from './components/team-player-drag-and-drop/team-player-drag-and-drop.component';
 import {DialogComponent} from './components/dialog/dialog.component';
 
@@ -67,7 +65,6 @@ const appRoutes: Routes = [
         EditorUserComponent,
         EditorPageComponent,
         EditorGameComponent,
-        MatchTeamDescriptionComponent,
         EditorTeamComponent,
         EditorLayoutComponent,
         RatingTeamsComponent,
@@ -78,7 +75,6 @@ const appRoutes: Routes = [
         UploadImageComponent,
         SelectTeamComponent,
         ListTeamPlayersComponent,
-        PlayerStatisticsComponent,
         TeamPlayerDragAndDropComponent,
         DialogComponent,
     ],

@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {AbstractControl, FormGroup} from '@angular/forms';
 import {TeamService} from '../../../../services/team.service';
 import {ITeam} from '../../../../types';
-import {GameFormGroup, VARIANT_GOALS} from '../../../../constants';
+import {GameFormGroup} from '../../../../constants';
 
 @Component({
     selector: 'app-select-team',
@@ -10,7 +10,6 @@ import {GameFormGroup, VARIANT_GOALS} from '../../../../constants';
     styleUrls: ['./select-team.component.css']
 })
 export class SelectTeamComponent {
-    readonly variantGoals: number[] = VARIANT_GOALS;
     @Input() formGroupTeam: FormGroup;
     teams: ITeam[];
 
@@ -26,6 +25,10 @@ export class SelectTeamComponent {
 
     get goals(): AbstractControl {
         return this.formGroupTeam.get(GameFormGroup.goals);
+    }
+
+    get teamImage(): string {
+        return this.teamId.value ? this.teams.find(team => team.id === this.teamId.value).image : '';
     }
 
     clear(): void {

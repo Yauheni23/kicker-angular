@@ -1,15 +1,29 @@
-<div class="editor-game-container">
+<mat-card class="editor-game-container">
     <app-editor-layout [errorMessage]="errorMessage"
                        [success]="success"
                        [formGroup]="formGroup"
                        buttonText="Add game"
+                       [style.height.%]="100"
                        (submitEvent)="onSubmit($event)">
         <h1>Game</h1>
         <div class="teams">
-            <app-match-team-description [formGroupTeam]="team1" float="left">
-            </app-match-team-description>
-            <app-match-team-description [formGroupTeam]="team2" float="right">
-            </app-match-team-description>
+            <mat-card class="teams-item">
+                <app-select-team [style.width.%]="100" [formGroupTeam]="team1"></app-select-team>
+                <app-list-team-players [formGroupTeam]="team1" [style.height.%]="100"></app-list-team-players>
+            </mat-card>
+            <div class="teams__bill-container">
+                <mat-card class="teams__bill">
+                    <input matInput [formControl]="goalsTeam1" class="bill-input" type="number" min="0" [max]="maxGoals" step="1"
+                           onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <span>:</span>
+                    <input matInput [formControl]="goalsTeam2" class="bill-input" type="number" min="0" [max]="maxGoals" step="1"
+                           onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                </mat-card>
+            </div>
+            <mat-card class="teams-item">
+                <app-select-team [style.width.%]="100" [formGroupTeam]="team2"></app-select-team>
+                <app-list-team-players [formGroupTeam]="team2" [style.height.%]="100"></app-list-team-players>
+            </mat-card>
         </div>
     </app-editor-layout>
-</div>
+</mat-card>

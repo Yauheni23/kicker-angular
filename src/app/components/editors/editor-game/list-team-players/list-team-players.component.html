@@ -1,16 +1,24 @@
-<div class="list-players-container">
+<mat-card class="list-players-container" >
     <mat-action-list role="list" class="list-players" *ngIf="users.length;else empty">
-        <mat-list-item mat-list-item role="listitem" *ngFor="let user of users"
-                       (click)="selectPlayer(user.id)">
-            <img [src]="user.image" matListAvatar alt="">
-            {{user.name}}
-            <mat-divider></mat-divider>
-        </mat-list-item>
+        <mat-card *ngFor="let user of users" class="list-players__item">
+            <div class="list-players__item-info">
+                <mat-checkbox (change)="selectUser(user)" [disabled]="isTeamFull(user.id)"></mat-checkbox>
+                <img [src]="user.image" class="avatar-player" alt="">
+                <span>{{user.name}}</span>
+            </div>
+            <input matInput class="bill-input" type="number" min="0" step="1" [disabled]="!isSelectedPlayer(user.id)"
+                   onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="0" *ngIf="!getFormControl(user.id); else goalsFormControl">
+            <ng-template #goalsFormControl>
+                <input matInput class="bill-input" type="number" min="0" step="1"
+                       onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="0" [formControl]="getFormControl(user.id)">
+            </ng-template>
+        </mat-card>
     </mat-action-list>
-</div>
+</mat-card>
 
 <ng-template #empty>
     <div class="empty">
         <span>The list of players is empty.</span>
     </div>
 </ng-template>
+
