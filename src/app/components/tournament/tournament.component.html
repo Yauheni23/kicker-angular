@@ -1,1 +1,41 @@
-<p>tournament works!</p>
+<div cdkDropListGroup class="tournament">
+    <div class="example-container">
+        <h2>All players</h2>
+        <div    cdkDropList
+                #todoList="cdkDropList"
+                [cdkDropListData]="users"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of users" cdkDrag>
+                <img [src]="item.image" alt="" class="avatar-sm">
+                <span>{{item.name}}</span>
+                <div *cdkDragPreview class="drag-item">
+                    <img [src]="item.image" [alt]="item.name">
+                    <h2>{{item.name}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="teams" >
+        <div class="example-container" *ngFor="let selectedTeam of selectedTeams; index as i">
+            <h2>Team {{i + 1}}</h2>
+            <div
+                    cdkDropList
+                    [cdkDropListData]="selectedTeam"
+                    [cdkDropListConnectedTo]="[todoList]"
+                    [cdkDropListEnterPredicate]="twoPredicate"
+                    class="example-list"
+                    (cdkDropListDropped)="dropSelectedPlayer($event)">
+                <div class="example-box" *ngFor="let player of selectedTeam" cdkDrag>
+                    <img [src]="player.image" alt="" class="avatar-sm">
+                    <span>{{player.name}}</span>
+                    <div *cdkDragPreview class="drag-item">
+                        <img [src]="player.image" [alt]="player.name">
+                        <h2>{{player.name}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button mat-raised-button color="primary" (click)="refresh()" [disabled]="isFullTeams()">Random teams</button>
