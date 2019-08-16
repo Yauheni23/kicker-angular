@@ -19,6 +19,9 @@ export class EditorGameComponent extends Editor<IGame> {
             team1: this.prepareTeamGroup(),
             team2: this.prepareTeamGroup()
         }, {validators: [teamValidator, playerGoalsValidator, goalsValidator, playerValidator]});
+        this.formGroup.valueChanges.subscribe(data =>{
+            console.log(data);
+        })
     }
 
     get team1(): AbstractControl {

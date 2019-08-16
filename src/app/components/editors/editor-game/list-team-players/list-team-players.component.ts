@@ -52,12 +52,7 @@ export class ListTeamPlayersComponent implements OnInit {
             this.player1.get(GameFormGroup.id).value === user.id ? this.player1.reset() : this.player2.reset();
             this.selectedUsers = this.selectedUsers.filter(selectedUser => selectedUser.id !== user.id);
         } else {
-            if (this.player1.get(GameFormGroup.id).value) {
-                this.player2.get(GameFormGroup.id).setValue(user.id);
-            } else {
-                this.player1.get(GameFormGroup.id).setValue(user.id);
-            }
-            this.selectedUsers.push(user);
+            this.addPlayer(user);
         }
         this.users.sort(this.sortPlayer);
     }
@@ -78,16 +73,25 @@ export class ListTeamPlayersComponent implements OnInit {
 
     getFormControl(id: number): AbstractControl | undefined {
         const user = this.selectedUsers.find(selectedUser => selectedUser.id === id);
-        if (this.selectedUsers[0] && user && user.id === this.selectedUsers[0].id) {
+        if (user && user.id === this.player1.get(GameFormGroup.id).value) {
             return this.player1.get(GameFormGroup.goals);
         }
-        if (this.selectedUsers[1] && user && user.id === this.selectedUsers[1].id) {
+        if (user && user.id === this.player2.get(GameFormGroup.id).value) {
             return this.player2.get(GameFormGroup.goals);
         }
     }
 
     isNumber(event: KeyboardEvent): boolean {
         return event.charCode >= '0'.charCodeAt(0)  && event.charCode <= '9'.charCodeAt(0);
+    }
+
+    private addPlayer(user: IUser): void {
+        if (this.player1.get(GameFormGroup.id).value) {
+            this.player2.get(GameFormGroup.id).setValue(user.id);
+        } else {
+            this.player1.get(GameFormGroup.id).setValue(user.id);
+        }
+        this.selectedUsers.push(user);
     }
 
     private sortPlayer(current: IUser): number {
