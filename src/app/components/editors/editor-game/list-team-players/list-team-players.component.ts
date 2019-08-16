@@ -11,8 +11,10 @@ import {COUNT_PLAYERS_IN_TEAM, GameFormGroup} from '../../../../constants';
 })
 export class ListTeamPlayersComponent implements OnInit {
     @Input() formGroupTeam: FormGroup;
+    @Input() formGroupRival: FormGroup;
     users: IUser[] = [];
     selectedUsers: IUser[] = [];
+    selectedRivalUsers: IUser[] = [];
     selectedTeam: number;
 
     constructor(private teamService: TeamService) {
@@ -31,6 +33,10 @@ export class ListTeamPlayersComponent implements OnInit {
                 this.users = [];
             }
         });
+        this.formGroupRival.valueChanges.subscribe(data => {
+            this.selectedRivalUsers[0] = data.player1;
+            this.selectedRivalUsers[1] = data.player2;
+        });
     }
 
     get player1(): AbstractControl {
@@ -43,9 +49,7 @@ export class ListTeamPlayersComponent implements OnInit {
 
     selectUser(user: IUser): void {
         if (this.selectedUsers.some(selectedUser => selectedUser.id === user.id)) {
-            this.player1.get(GameFormGroup.id).value === user.id
-                ? this.player1.reset()
-                : this.player2.reset();
+            this.player1.get(GameFormGroup.id).value === user.id ? this.player1.reset() : this.player2.reset();
             this.selectedUsers = this.selectedUsers.filter(selectedUser => selectedUser.id !== user.id);
         } else {
             if (this.player1.get(GameFormGroup.id).value) {
@@ -56,6 +60,11 @@ export class ListTeamPlayersComponent implements OnInit {
             this.selectedUsers.push(user);
         }
         this.users.sort(this.sortPlayer);
+    }
+
+    isSelectedRival(id: number): boolean {
+        return (this.selectedRivalUsers[0] && this.selectedRivalUsers[0].id === id)
+            || (this.selectedRivalUsers[1] && this.selectedRivalUsers[1].id === id);
     }
 
     isTeamFull(id: number): boolean {
@@ -75,6 +84,10 @@ export class ListTeamPlayersComponent implements OnInit {
         if (this.selectedUsers[1] && user && user.id === this.selectedUsers[1].id) {
             return this.player2.get(GameFormGroup.goals);
         }
+    }
+
+    isNumber(event: KeyboardEvent): boolean {
+        return event.charCode >= '0'.charCodeAt(0)  && event.charCode <= '9'.charCodeAt(0);
     }
 
     private sortPlayer(current: IUser): number {

@@ -29,17 +29,29 @@ export class EditorGameComponent extends Editor<IGame> {
         return this.formGroup.get(GameFormGroup.secondTeam);
     }
 
+    get team1Id(): AbstractControl {
+        return this.team1.get(GameFormGroup.id);
+    }
+
+    get team2Id(): AbstractControl {
+        return this.team2.get(GameFormGroup.id);
+    }
+
     get goalsTeam1(): AbstractControl {
-        return this.formGroup.get(GameFormGroup.firstTeam).get(GameFormGroup.goals);
+        return this.team1.get(GameFormGroup.goals);
     }
 
     get goalsTeam2(): AbstractControl {
-        return this.formGroup.get(GameFormGroup.secondTeam).get(GameFormGroup.goals);
+        return this.team2.get(GameFormGroup.goals);
+    }
+
+    isNumber(event: KeyboardEvent): boolean {
+        return event.charCode >= '0'.charCodeAt(0)  && event.charCode <= '9'.charCodeAt(0);
     }
 
     private prepareTeamGroup(): FormGroup {
         return new FormGroup({
-            id: new FormControl('', [Validators.required]),
+            id: new FormControl(undefined, [Validators.required]),
             goals: new FormControl(MIN_GOALS, [Validators.required, Validators.max(MAX_GOALS), Validators.min(MIN_GOALS)]),
             player1: this.preparePlayerGroup(),
             player2: this.preparePlayerGroup()
@@ -48,7 +60,7 @@ export class EditorGameComponent extends Editor<IGame> {
 
     private preparePlayerGroup(): FormGroup {
         return new FormGroup({
-            id: new FormControl('', [Validators.required]),
+            id: new FormControl(undefined, [Validators.required]),
             goals: new FormControl(MIN_GOALS, [Validators.max(MAX_GOALS), Validators.min(MIN_GOALS)])
         });
     }

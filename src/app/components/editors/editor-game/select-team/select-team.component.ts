@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {TeamService} from '../../../../services/team.service';
 import {ITeam} from '../../../../types';
 import {GameFormGroup} from '../../../../constants';
@@ -11,6 +11,7 @@ import {GameFormGroup} from '../../../../constants';
 })
 export class SelectTeamComponent {
     @Input() formGroupTeam: FormGroup;
+    @Input() rivalId: FormControl;
     teams: ITeam[];
 
     constructor(private teamService: TeamService) {
@@ -29,6 +30,10 @@ export class SelectTeamComponent {
 
     get teamImage(): string {
         return this.teamId.value ? this.teams.find(team => team.id === this.teamId.value).image : '';
+    }
+
+    isSelectedRival(id: number): boolean {
+        return this.rivalId.value === id;
     }
 
     clear(): void {

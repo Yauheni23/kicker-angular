@@ -2,15 +2,15 @@
     <mat-action-list role="list" class="list-players" *ngIf="users.length;else empty">
         <mat-card *ngFor="let user of users" class="list-players__item">
             <div class="list-players__item-info">
-                <mat-checkbox (change)="selectUser(user)" [disabled]="isTeamFull(user.id)"></mat-checkbox>
+                <mat-checkbox (change)="selectUser(user)" [disabled]="isTeamFull(user.id) || isSelectedRival(user.id)"></mat-checkbox>
                 <img [src]="user.image" class="avatar-player" alt="">
                 <span>{{user.name}}</span>
             </div>
             <input matInput class="bill-input" type="number" min="0" step="1" [disabled]="!isSelectedPlayer(user.id)"
-                   onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="0" *ngIf="!getFormControl(user.id); else goalsFormControl">
+                   (keypress)="isNumber($event)" value="0" *ngIf="!getFormControl(user.id); else goalsFormControl">
             <ng-template #goalsFormControl>
                 <input matInput class="bill-input" type="number" min="0" step="1"
-                       onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="0" [formControl]="getFormControl(user.id)">
+                       (keypress)="isNumber($event)" value="0" [formControl]="getFormControl(user.id)">
             </ng-template>
         </mat-card>
     </mat-action-list>

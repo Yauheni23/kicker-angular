@@ -8,21 +8,23 @@
         <h1>Game</h1>
         <div class="teams">
             <mat-card class="teams-item">
-                <app-select-team [style.width.%]="100" [formGroupTeam]="team1"></app-select-team>
-                <app-list-team-players [formGroupTeam]="team1" [style.height.%]="100"></app-list-team-players>
+                <app-select-team [style.width.%]="100" [formGroupTeam]="team1" [rivalId]="team2Id"></app-select-team>
+                <app-list-team-players [formGroupTeam]="team1" [formGroupRival]="team2"
+                                       [style.height.%]="100"></app-list-team-players>
             </mat-card>
             <div class="teams__bill-container">
                 <mat-card class="teams__bill">
-                    <input matInput [formControl]="goalsTeam1" class="bill-input" type="number" min="0" [max]="maxGoals" step="1"
-                           onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <input matInput [formControl]="goalsTeam1" class="bill-input" type="number" min="0" [max]="maxGoals"
+                           step="1" (keypress)="isNumber($event)">
                     <span>:</span>
-                    <input matInput [formControl]="goalsTeam2" class="bill-input" type="number" min="0" [max]="maxGoals" step="1"
-                           onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <input matInput [formControl]="goalsTeam2" class="bill-input" type="number" min="0" [max]="maxGoals"
+                           step="1" (keypress)="isNumber($event)">
                 </mat-card>
             </div>
             <mat-card class="teams-item">
-                <app-select-team [style.width.%]="100" [formGroupTeam]="team2"></app-select-team>
-                <app-list-team-players [formGroupTeam]="team2" [style.height.%]="100"></app-list-team-players>
+                <app-select-team [style.width.%]="100" [formGroupTeam]="team2" [rivalId]="team1Id"></app-select-team>
+                <app-list-team-players [formGroupTeam]="team2" [formGroupRival]="team1"
+                                       [style.height.%]="100"></app-list-team-players>
             </mat-card>
         </div>
     </app-editor-layout>
