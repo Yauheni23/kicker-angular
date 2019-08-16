@@ -1,12 +1,11 @@
 <app-editor-layout [errorMessage]="errorMessage"
-                   [success]="success"
                    [formGroup]="formGroup"
                    (submitEvent)="onSubmit($event)"
                    class="editor-team"
 >
-    <h1>Team</h1>
     <mat-form-field class="wrapper-input">
-        <input matInput placeholder="Name" formControlName="name" (change)="clear()">
+        <mat-label>Team</mat-label>
+        <input matInput placeholder="Team" formControlName="name" (change)="clear()">
         <mat-error *ngIf="name.touched && name.errors">
             Minimum 2 character
         </mat-error>

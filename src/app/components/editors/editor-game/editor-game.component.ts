@@ -5,6 +5,7 @@ import {GameFormGroup, MAX_GOALS, MIN_GOALS} from '../../../constants';
 import {teamValidator, playerGoalsValidator, goalsValidator, playerValidator} from '../../../validators/game-validator';
 import {Editor} from '../editor';
 import {IGame} from '../../../types';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-editor-game',
@@ -13,15 +14,12 @@ import {IGame} from '../../../types';
 })
 export class EditorGameComponent extends Editor<IGame> {
     readonly maxGoals = MAX_GOALS;
-    constructor(private gameService: GameService) {
-        super(gameService);
+    constructor(private gameService: GameService, snackBar: MatSnackBar) {
+        super(gameService, snackBar);
         this.formGroup = new FormGroup({
             team1: this.prepareTeamGroup(),
             team2: this.prepareTeamGroup()
         }, {validators: [teamValidator, playerGoalsValidator, goalsValidator, playerValidator]});
-        this.formGroup.valueChanges.subscribe(data =>{
-            console.log(data);
-        })
     }
 
     get team1(): AbstractControl {

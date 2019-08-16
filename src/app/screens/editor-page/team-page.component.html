@@ -1,7 +1,10 @@
-<mat-card class="editor-page">
-    <app-team-player-drag-and-drop class="editor-page__team-user"></app-team-player-drag-and-drop>
-    <div class="editor-page__team-and-user">
+<div class="editor-page">
+    <mat-card [style.height.%]="100" class="editor-page_game-and-team-user">
+        <app-editor-game class="editor-page__editor-team"></app-editor-game>
+        <app-team-player-drag-and-drop class="editor-page__team-user"></app-team-player-drag-and-drop>
+    </mat-card>
+    <mat-card class="editor-page__team-and-user">
         <app-editor-team></app-editor-team>
         <app-editor-user></app-editor-user>
-    </div>
-</mat-card>
+    </mat-card>
+</div>

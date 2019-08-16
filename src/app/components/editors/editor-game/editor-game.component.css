@@ -1,10 +1,9 @@
 .editor-game-container {
-    width: 70%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
 }
 .teams {
-    height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
@@ -13,14 +12,19 @@
 
 .teams-item {
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    height: 100%;
+    height: 280px;
+}
+
+.teams-item > * {
+    margin: 0 5px;
 }
 
 .teams__bill-container {
-    height: 90%;
+    height: 60%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 

@@ -5,6 +5,7 @@
                accept="image/*"
                (dragenter)="setColor()"
                (dragleave)="deleteColor()"
+               (drop)="deleteColor()"
                (change)="processFile(imageInput)">
         <div class="image-upload__text" [ngStyle]="{opacity: image && image.value ? 0 : 1}">
             <img src="../../../assets/addImage.svg" alt="" *ngIf="!hover; else blueImage">

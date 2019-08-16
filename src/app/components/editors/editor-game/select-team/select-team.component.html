@@ -1,4 +1,4 @@
-<div class="select-team">
+<mat-card class="select-team">
     <div >
         <img [src]="teamImage" alt="" class="avatar-team" *ngIf="teamImage; else defaultImage">
     </div>
@@ -16,7 +16,7 @@
             </mat-select>
         </mat-form-field>
     </div>
-</div>
+</mat-card>
 
 <ng-template #defaultImage>
     <img src="../../../../../assets/team.svg" alt="" class="avatar-team">

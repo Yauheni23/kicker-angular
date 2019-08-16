@@ -1,20 +1,25 @@
 .editor-page {
     display: flex;
-    width: 70%;
     height: 100%;
-    margin: 0 auto;
+}
+
+.editor-page_game-and-team-user {
+    display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .editor-page__team-and-user{
+    margin-left: 20px;
     display: flex;
-    width: 100%;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.editor-page__editor-team{
+    margin-bottom: 20px;
 }
 
 .editor-page__team-user {
-    padding: 20px;
     display: flex;
     justify-content: center;
     width: 100%;

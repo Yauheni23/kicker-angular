@@ -5,11 +5,9 @@
             class="button-create"
             (click)="submit(formElement)"
             [disabled]="!formGroup.valid"
+            [ngStyle]="buttonStyle"
     >{{buttonText}}
     </button>
-    <div *ngIf="success && !formGroup.touched && !errorMessage">
-        <span class="success">Success</span>
-    </div>
     <div *ngIf="errorMessage">
         <span class="error">{{errorMessage | titlecase}}</span>
     </div>

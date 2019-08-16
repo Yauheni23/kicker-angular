@@ -4,7 +4,7 @@ import {TeamService} from '../../services/team.service';
 import {ITeam, ITeamUser, IUser} from '../../types';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogComponent} from '../dialog/dialog.component';
-import {Message} from '../../constants';
+import {Message, SNACK_BAR_DURATION} from '../../constants';
 
 @Component({
     selector: 'app-team-player-drag-and-drop',
@@ -64,7 +64,6 @@ export class TeamPlayerDragAndDropComponent {
         dialogRef.afterClosed().subscribe(this.accept);
     }
 
-
     private accept(result: ITeamUser): void {
         if (result) {
             this.teamService.addPlayer(result.team.id, result.user.id)
@@ -81,7 +80,7 @@ export class TeamPlayerDragAndDropComponent {
 
     private showSnackBar(message: string): void {
         this.snackBar.open(message, Message.close, {
-            duration: 2000
+            duration: SNACK_BAR_DURATION
         });
     }
 }

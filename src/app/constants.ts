@@ -6,6 +6,7 @@ export const MAX_GOALS = VARIANT_GOALS[VARIANT_GOALS.length - 1];
 export const [MIN_GOALS] = VARIANT_GOALS;
 export const MIN_LENGTH_NAME = 2;
 export const COUNT_PLAYERS_IN_TEAM = 2;
+export const SNACK_BAR_DURATION = 2000;
 
 export const DEFAULT_BUTTON_TEXT_EDITOR = 'Create';
 

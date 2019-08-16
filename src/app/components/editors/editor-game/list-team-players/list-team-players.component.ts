@@ -26,7 +26,9 @@ export class ListTeamPlayersComponent implements OnInit {
             if (data.id && +data.id !== this.selectedTeam) {
                 this.selectedUsers = [];
                 this.selectedTeam = +data.id;
-                this.users = this.teamService.getPlayers(this.selectedTeam);
+                this.teamService.getById(this.selectedTeam).subscribe(team => {
+                    this.users = team.users;
+                });
             } else if (!data.id) {
                 this.selectedTeam = undefined;
                 this.selectedUsers = [];

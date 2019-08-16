@@ -41,19 +41,16 @@ import {SelectTeamComponent} from './components/editors/editor-game/select-team/
 import {ListTeamPlayersComponent} from './components/editors/editor-game/list-team-players/list-team-players.component';
 import {TeamPlayerDragAndDropComponent} from './components/team-player-drag-and-drop/team-player-drag-and-drop.component';
 import {DialogComponent} from './components/dialog/dialog.component';
+import {TournamentComponent} from './components/tournament/tournament.component';
 
 const appRoutes: Routes = [
-    {
-        path: 'create', children: [
-            {path: 'game', component: EditorGameComponent},
-            {path: 'team', component: EditorPageComponent},
-        ]
-    },
+    {path: 'tournament', component: TournamentComponent},
+    {path: 'editor', component: EditorPageComponent},
     {path: 'rating', component: RatingComponent},
     {path: 'history', component: HistoryGamesComponent},
     {
         path: '',
-        redirectTo: 'create/game',
+        redirectTo: 'rating',
         pathMatch: 'full'
     },
 ];
@@ -77,6 +74,7 @@ const appRoutes: Routes = [
         ListTeamPlayersComponent,
         TeamPlayerDragAndDropComponent,
         DialogComponent,
+        TournamentComponent,
     ],
     imports: [
         RouterModule.forRoot(appRoutes),

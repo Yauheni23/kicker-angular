@@ -4,6 +4,7 @@ import {PlayerService} from '../../../services/player.service';
 import {MIN_LENGTH_NAME, UserFormGroup} from '../../../constants';
 import {Editor} from '../editor';
 import {IUser} from '../../../types';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-editor-user',
@@ -11,11 +12,11 @@ import {IUser} from '../../../types';
     styleUrls: ['./editor-user.component.css']
 })
 export class EditorUserComponent extends Editor<IUser> {
-    constructor(private playerService: PlayerService) {
-        super(playerService);
+    constructor(private playerService: PlayerService, snackBar: MatSnackBar) {
+        super(playerService, snackBar);
         this.formGroup = new FormGroup({
             name: new FormControl('', [Validators.required, Validators.minLength(MIN_LENGTH_NAME)]),
-            image: new FormControl('', [Validators.required]),
+            image: new FormControl(''),
         });
     }
 
