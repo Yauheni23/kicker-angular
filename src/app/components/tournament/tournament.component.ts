@@ -50,9 +50,12 @@ export class TournamentComponent {
     refresh(): void {
         const refreshedUsers = [];
         // @ts-ignore
-        this.selectedTeams.flat().sort(() => {
-            return Math.random() - 0.5;
-        }).forEach((user, index, array) => {
+        const sortArray = this.selectedTeams.flat();
+        const randomCountSort = Math.random() * 10;
+        for (let i = 0; i < randomCountSort; i++) {
+            sortArray.sort(() => Math.random() - 0.5);
+        }
+        sortArray.forEach((user, index, array) => {
             if (index % 2 === 1) {
                 refreshedUsers.push([array[index - 1], array[index]]);
             }

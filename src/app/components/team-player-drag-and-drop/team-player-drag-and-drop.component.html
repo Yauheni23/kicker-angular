@@ -8,10 +8,7 @@
                  [ngClass]="disabledTeams[team.id] ? 'disabled' : ''">
                 <mat-card>
                     <img [src]="team.image" class="avatar-team" [title]="team.name">
-                    <mat-card-footer>
-                        <mat-card-title
-                                class="team-player__team-name">{{team.name}}</mat-card-title>
-                    </mat-card-footer>
+                    <mat-card-title class="team-player__team-name">{{team.name}}</mat-card-title>
                 </mat-card>
             </div>
         </div>
