@@ -30,6 +30,7 @@ export class HistoryGamesComponent implements OnInit {
     ngOnInit(): void {
         this.gameService.getAll().subscribe(games => {
             this.dataSource = new MatTableDataSource<IGame>(games);
+            [this.expandedElement] = games;
             this.dataSource.paginator = this.paginator;
         });
     }
