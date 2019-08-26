@@ -2,6 +2,10 @@ import {Component} from '@angular/core';
 import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {PlayerService} from '../../services/player.service';
 import {IUser} from '../../types';
+import {TournamentService} from '../../services/tournament.service';
+import {Message, SNACK_BAR_DURATION} from '../../constants';
+import {MatSnackBar} from '@angular/material';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
     selector: 'app-tournament',
@@ -10,12 +14,17 @@ import {IUser} from '../../types';
 })
 export class TournamentComponent {
     users: IUser[] = [];
+    nameTournament: string = 'Tournament';
+    nameTeams: string[] = ['Team1'];
+    image: FormControl = new FormControl('');
     selectedTeams: IUser[][] = [[]];
 
-    constructor(private playerService: PlayerService) {
+    constructor(private playerService: PlayerService, private tournamentService: TournamentService, private snackBar: MatSnackBar) {
         this.playerService.getAll().subscribe(users => {
             this.users = users;
         });
+
+        this.createTournament = this.createTournament.bind(this);
     }
 
     drop(event: CdkDragDrop<IUser[]>) {
@@ -29,12 +38,13 @@ export class TournamentComponent {
         }
     }
 
-    dropSelectedPlayer(event: CdkDragDrop<IUser[]>) {
+    dropSelectedPlayer(event: CdkDragDrop<IUser[]>): void {
         this.drop(event);
         if (event.container.data.length === 2
             && event.previousContainer.data.length > 1
             && event.previousContainer.id !== event.container.id) {
             this.selectedTeams.push([]);
+            this.nameTeams.push('Team' + (this.nameTeams.length + 1));
         }
     }
 
@@ -62,5 +72,36 @@ export class TournamentComponent {
         });
 
         this.selectedTeams = refreshedUsers;
+    }
+
+    createTournament(): void {
+        this.tournamentService.create({
+            name: this.nameTournament,
+            image: this.image.value,
+            teams: this.selectedTeams.filter(team => team.length === 2).map((players, index) => ({
+                name: this.nameTeams[index],
+                players
+            }))
+        }).subscribe(() => {
+            this.showShackBar(Message.success);
+            this.resetCreating();
+        }, () => {
+            this.showShackBar(Message.failed);
+        });
+    }
+
+    private resetCreating(): void {
+        // @ts-ignore
+        this.users = this.users.concat(this.selectedTeams.flat());
+        this.selectedTeams = [[]];
+        this.image.reset();
+        this.nameTournament = 'Tournament';
+        this.nameTeams = ['Team1'];
+    }
+
+    private showShackBar(message: string): void {
+        this.snackBar.open(message, Message.close, {
+            duration: SNACK_BAR_DURATION
+        });
     }
 }

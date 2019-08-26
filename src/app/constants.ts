@@ -49,13 +49,14 @@ export enum UserFormGroup {
 export const DisplayedColumns = {
     historyGames: ['id', 'teams', 'bill', 'date'],
     ratingTeams: ['place', 'name', 'games', 'goals', 'winRate'],
-    ratingUsers: ['place', 'name', 'countGame', 'scope'],
+    ratingUsers: ['place', 'name', 'countGame', 'goals'],
 };
 
 export enum UrlAddress {
     image = 'http://172.18.144.38:8080',
     game = 'http://172.18.144.38:8080/game',
     team = 'http://172.18.144.38:8080/team',
+    tournament = 'http://172.18.144.38:8080/tournament',
     addUser = 'http://172.18.144.38:8080/team/user',
     user = 'http://172.18.144.38:8080/user',
     uploadImage = 'http://172.18.144.38:8080/image',

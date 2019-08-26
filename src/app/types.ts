@@ -1,3 +1,8 @@
+export interface ITournament extends IEntity {
+    teams: ITeamTournament[];
+    games: IGameTournament[];
+}
+
 export interface ITeam extends IEntity {
     users: IUser[];
     goals: number;
@@ -7,7 +12,8 @@ export interface ITeam extends IEntity {
 }
 
 export interface IUser extends IEntity {
-    scope: number;
+    games: any;
+    goals: number;
     countGame: number;
     place?: number;
     teams?: IEntity[];
@@ -23,6 +29,17 @@ export interface IGame {
     date: Date;
     team1: IGameTeam;
     team2: IGameTeam;
+}
+
+interface IGameTournament {
+    id: number;
+    date: Date;
+    teams: ITeamTournament[];
+}
+
+interface ITeamTournament extends IEntity {
+    players: IEntity[];
+    goals?: number;
 }
 
 interface IGameTeam extends IEntity {

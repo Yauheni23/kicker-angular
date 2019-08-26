@@ -29,6 +29,7 @@ export class TeamPlayerDragAndDropComponent {
         });
 
         this.accept = this.accept.bind(this);
+        this.onFailed = this.onFailed.bind(this);
     }
 
     isEnabled(id: number): boolean {

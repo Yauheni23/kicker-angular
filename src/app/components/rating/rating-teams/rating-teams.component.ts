@@ -28,20 +28,9 @@ export class RatingTeamsComponent extends Rating<ITeam> implements OnInit {
             users: team.users,
             image: team.image,
             games: team.games.length,
-            goals: team.goals,
-            winRate: this.considerWinRate(team)
+            goals: team.games.reduce((accumulator, currentGame) => accumulator + currentGame.goals, 0),
+            winRate: team.games.filter(game => game.goals === MAX_GOALS).length / team.games.length || 0
         };
-    }
-
-    private considerWinRate(team): number {
-        return team.games.length ? team.games.reduce(reduceWinRate, 0) / team.games.length : 0;
-
-        function reduceWinRate(accumulator, game): number {
-            const isTeam1AndIsWin = game.team1.id === team.id && game.team1.goals === MAX_GOALS;
-            const isTeam2AndIsWin = game.team2.id === team.id && game.team2.goals === MAX_GOALS;
-
-            return accumulator + (isTeam1AndIsWin || isTeam2AndIsWin ? 1 : 0);
-        }
     }
 
     private sortWinRate(current: ITeam, next: ITeam): number {

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MainColor, UrlAddress} from '../../constants';
+import {UrlAddress} from '../../constants';
 import {ImageService} from '../../services/image.service';
 import {FormControl} from '@angular/forms';
 import {ImageSnippet} from '../../utils/image-snippet';

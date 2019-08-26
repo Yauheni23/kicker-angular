@@ -1,7 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {Component} from '@angular/core';
 import {PlayerService} from '../../../services/player.service';
-import {ColorTop, DefaultColor, DisplayedColumns} from '../../../constants';
+import {DisplayedColumns} from '../../../constants';
 import {IUser} from '../../../types';
 import {Rating} from '../rating';
 
@@ -18,11 +17,17 @@ export class RatingUsersComponent extends Rating<IUser> {
     }
 
     protected changeData(data: IUser[]): IUser[] {
-        return data.sort(this.sortByResult).map(this.mapPlace);
+        return data.map(user => ({
+            id: user.id,
+            name: user.name,
+            image: user.image,
+            goals: user.games.reduce((accumulator, game) => accumulator + game.goals, 0),
+            countGame: user.games.length
+        })).sort(this.sortByResult).map(this.mapPlace);
     }
 
     private sortByResult(prev: IUser, next: IUser): number {
-        return (prev.scope / prev.countGame || 0) > (next.scope / next.countGame || 0) ? -1 : 1;
+        return (prev.goals / prev.countGame || 0) > (next.goals / next.countGame || 0) ? -1 : 1;
     }
 
     private mapPlace(user: IUser, index: number): IUser {

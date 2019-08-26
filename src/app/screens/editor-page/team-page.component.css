@@ -6,16 +6,22 @@
 .editor-page_game-and-team-user {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.editor-page__team-and-user{
+.editor-page__team-and-user {
     margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-.editor-page__editor-team{
+.editor-page__team-and-user > * {
+    margin-bottom: 20px;
+}
+
+
+.editor-page__editor-team {
     margin-bottom: 20px;
 }
 

@@ -1,59 +1,66 @@
 <mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
     <mat-tab label="New">
         <mat-card>
-            <mat-form-field [style.width.%]="100">
-                <input matInput placeholder="Tournament name" value="Tournament">
-            </mat-form-field>
-            <div cdkDropListGroup class="tournament">
-                <div class="example-container">
-                    <h2>All players</h2>
-                    <div cdkDropList
-                         #todoList="cdkDropList"
-                         [cdkDropListData]="users"
-                         class="example-list"
-                         (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let item of users" cdkDrag>
-                            <img [src]="item.image" alt="" class="avatar-sm">
-                            <span>{{item.name}}</span>
-                            <div *cdkDragPreview class="drag-item">
-                                <img [src]="item.image" [alt]="item.name">
-                                <h2>{{item.name}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="button-random-container">
-                        <button mat-raised-button color="primary" (click)="refresh()" [disabled]="isFullTeams()">Random teams</button>
-                    </div>
-                </div>
-                <div class="teams">
-                    <div class="example-container" *ngFor="let selectedTeam of selectedTeams; index as i">
-                        <mat-form-field>
-                            <input matInput placeholder="Team name" [value]="'Team' + (i + 1)">
-                        </mat-form-field>
-                        <div
-                                cdkDropList
-                                [cdkDropListData]="selectedTeam"
-                                [cdkDropListConnectedTo]="[todoList]"
-                                [cdkDropListEnterPredicate]="twoPredicate"
-                                class="example-list"
-                                (cdkDropListDropped)="dropSelectedPlayer($event)">
-                            <div class="example-box" *ngFor="let player of selectedTeam" cdkDrag>
-                                <img [src]="player.image" alt="" class="avatar-sm">
-                                <span>{{player.name}}</span>
+            <div class="creating-tournament">
+                <mat-card>
+                    <mat-form-field>
+                        <input matInput placeholder="Tournament name" [(ngModel)]="nameTournament">
+                    </mat-form-field>
+                    <app-upload-image [image]="image"></app-upload-image>
+                </mat-card>
+                <mat-card cdkDropListGroup class="tournament">
+                    <div class="example-container">
+                        <h2>All players</h2>
+                        <div cdkDropList
+                             #todoList="cdkDropList"
+                             [cdkDropListData]="users"
+                             class="example-list"
+                             (cdkDropListDropped)="drop($event)">
+                            <div class="example-box" *ngFor="let item of users" cdkDrag>
+                                <img [src]="item.image" alt="" class="avatar-sm">
+                                <span>{{item.name}}</span>
                                 <div *cdkDragPreview class="drag-item">
-                                    <img [src]="player.image" [alt]="player.name">
-                                    <h2>{{player.name}}</h2>
+                                    <img [src]="item.image" [alt]="item.name">
+                                    <h2>{{item.name}}</h2>
                                 </div>
                             </div>
                         </div>
+                        <div class="button-random-container">
+                            <button mat-raised-button color="primary" (click)="refresh()" [disabled]="isFullTeams()">Random teams</button>
+                        </div>
                     </div>
-                </div>
+                    <div class="teams">
+                        <div class="example-container" *ngFor="let selectedTeam of selectedTeams; index as i">
+                            <mat-form-field>
+                                <input matInput placeholder="Team name" [(ngModel)]="nameTeams[i]">
+                            </mat-form-field>
+                            <div
+                                    cdkDropList
+                                    [cdkDropListData]="selectedTeam"
+                                    [cdkDropListConnectedTo]="[todoList]"
+                                    [cdkDropListEnterPredicate]="twoPredicate"
+                                    class="example-list"
+                                    (cdkDropListDropped)="dropSelectedPlayer($event)">
+                                <div class="example-box" *ngFor="let player of selectedTeam" cdkDrag>
+                                    <img [src]="player.image" alt="" class="avatar-sm">
+                                    <span>{{player.name}}</span>
+                                    <div *cdkDragPreview class="drag-item">
+                                        <img [src]="player.image" [alt]="player.name">
+                                        <h2>{{player.name}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-card>
             </div>
-
+            <button mat-raised-button class="button-create" color="accent" (click)="createTournament()" [disabled]="isFullTeams()">Create
+            </button>
         </mat-card>
-
     </mat-tab>
-    <mat-tab label="Current">Content 2</mat-tab>
-    <mat-tab label="Completed">Content 3</mat-tab>
+    <mat-tab label="Current">
+        <app-list-tournaments></app-list-tournaments>
+    </mat-tab>
 </mat-tab-group>
 
