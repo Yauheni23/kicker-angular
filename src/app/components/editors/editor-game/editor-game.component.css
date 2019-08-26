@@ -1,0 +1,61 @@
+.editor-game-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.teams {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.teams-item {
+    display: flex;
+    justify-content: flex-start;
+    height: 280px;
+}
+
+.teams-item > * {
+    margin: 0 5px;
+}
+
+.teams__bill-container {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teams__bill {
+    font-size: 50px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bill-input {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 75px;
+    line-height: 50px;
+    font-size: 50px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.lists-players {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

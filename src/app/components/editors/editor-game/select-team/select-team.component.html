@@ -1,0 +1,23 @@
+<mat-card class="select-team">
+    <div >
+        <img [src]="teamImage" alt="" class="avatar-team" *ngIf="teamImage; else defaultImage">
+    </div>
+
+    <div class="team center">
+        <mat-form-field>
+            <mat-label>Team</mat-label>
+            <mat-select [formControl]="teamId" (valueChange)="clear()">
+                <mat-option *ngFor="let team of teams" [value]="team.id" [disabled]="isSelectedRival(team.id)">
+                    <span class="list-item">
+                    <img class="avatar-sm" [src]="team.image" alt="">
+                        {{team.name}}
+                    </span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-card>
+
+<ng-template #defaultImage>
+    <img src="../../../../../assets/team.svg" alt="" class="avatar-team">
+</ng-template>

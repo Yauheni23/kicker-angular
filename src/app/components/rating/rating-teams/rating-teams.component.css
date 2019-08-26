@@ -1,0 +1,32 @@
+.rating-teams {
+    margin: 0 auto;
+    width: 80%;
+    padding: 10px 10px 30px;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 18%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.list-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.list-item > * {
+    margin-right: 10px;
+}

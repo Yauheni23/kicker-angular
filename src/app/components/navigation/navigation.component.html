@@ -1,0 +1,14 @@
+<mat-nav-list>
+    <h2 matSubheader>Menu</h2>
+    <mat-list-item routerLink="/editor" (click)="closeSidenav()">
+        <div><img class="icon" src="../../../assets/editor.svg" alt=""><span>Editor</span></div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item routerLink="/rating" (click)="closeSidenav()">
+        <div><img class="icon" src="../../../assets/rating.svg" alt=""><span>Rating</span></div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item routerLink="/history" (click)="closeSidenav()">
+        <div><img class="icon" src="../../../assets/history.svg" alt=""><span>History</span></div>
+    </mat-list-item>
+</mat-nav-list>

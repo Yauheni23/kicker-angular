@@ -1,0 +1,10 @@
+.editor-user {
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper-input {
+    width: 100%;
+}
