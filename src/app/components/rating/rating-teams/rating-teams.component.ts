@@ -18,7 +18,7 @@ export class RatingTeamsComponent extends Rating<ITeam> implements OnInit {
     }
 
     protected changeData(data: ITeam[]): ITeam[] {
-        return data.map(this.mapTeams).sort(this.sortWinRate).map(this.mapPlace);
+        return data.map(this.mapTeams).sort(this.sortCountGames).sort(this.sortWinRate).map(this.mapPlace);
     }
 
     private mapTeams(team): ITeam {
@@ -35,6 +35,10 @@ export class RatingTeamsComponent extends Rating<ITeam> implements OnInit {
 
     private sortWinRate(current: ITeam, next: ITeam): number {
         return current.winRate > next.winRate ? -1 : 1;
+    }
+
+    private sortCountGames(current: ITeam, next: ITeam): number {
+        return current.games > next.games ? -1 : 1;
     }
 
     private mapPlace(team: ITeam, index: number): ITeam {
