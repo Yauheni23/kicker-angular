@@ -1,7 +1,7 @@
 import {FormGroup} from '@angular/forms';
 import {EditorService} from '../../services/editor';
 import {Message, SNACK_BAR_DURATION} from '../../constants';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export class Editor<T> {
     formHTMLElement: HTMLFormElement;

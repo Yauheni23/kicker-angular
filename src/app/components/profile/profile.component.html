@@ -1,0 +1,28 @@
+<div *ngIf="player" class="profile">
+    <mat-card class="user-info">
+        <app-upload-image [image]="image" [disabled]="!isEditEnabled"></app-upload-image>
+        <button mat-raised-button color="accent" (click)="update()" *ngIf="isEditEnabled"
+                [disabled]="!isNewImage">Save</button>
+        <p>Name: <b>{{player.name}}</b></p>
+        <p>Mail: <b>{{player.mail}}</b></p>
+        <p>Game: {{games.length}} </p>
+        <p>Goals: {{goals}}</p>
+        <button mat-raised-button color="primary" (click)="changePassword()" *ngIf="isEditEnabled">
+            Change password
+        </button>
+        <br>
+    </mat-card>
+    <mat-card>
+
+    </mat-card>
+
+    <mat-card>
+        <h3 class="header-team">Teams</h3>
+        <div class="teams-list">
+            <div *ngFor="let team of player.teams" class="mat-card">
+                <img class="avatar-team" [src]="team.image" [alt]="team.name">
+                <span class="mat-card-title">{{team.name}}</span>
+            </div>
+        </div>
+    </mat-card>
+</div>

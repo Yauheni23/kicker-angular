@@ -39,10 +39,12 @@ export const DisplayedColumns = {
     ratingUsers: [ 'place', 'name', 'countGame', 'goals' ]
 };
 
-const serverAddress = 'http://172.18.144.38:8080';
+const serverAddress = 'http://localhost:8080';
 
 export const UrlAddress = {
     image: serverAddress,
+    login: `${serverAddress}/login`,
+    register: `${serverAddress}/register`,
     game: `${serverAddress}/game`,
     team: `${serverAddress}/team`,
     tournament: `${serverAddress}/tournament`,

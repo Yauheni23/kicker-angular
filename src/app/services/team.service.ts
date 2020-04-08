@@ -11,7 +11,7 @@ export class TeamService extends EditorService<ITeam> {
         super(httpClient, UrlAddress.team);
     }
 
-    addPlayer(teamId: number, userId: number): Observable<any> {
+    addPlayer(teamId: string, userId: string): Observable<any> {
         return this.httpClient.post<ITeam[]>(UrlAddress.addUser, {
             teamId, userId
         });

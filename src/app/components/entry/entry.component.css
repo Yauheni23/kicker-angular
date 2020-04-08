@@ -1,0 +1,46 @@
+.entry-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: url('../../../assets/fon.jpg') no-repeat;
+    background-size: cover;
+}
+
+.entry-form {
+    margin-top: -50px;
+    padding: 50px 75px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.entry-form__title {
+    font-family: Lato sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+mat-card-subtitle {
+    text-align: center;
+    font-size: 1em;
+}
+
+mat-card-subtitle span {
+    color: #0000b7;
+    font-weight: 500;
+}
+
+mat-card-subtitle span:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 255, 0.93);
+}
+
+
+::ng-deep button {
+    width: 100%;
+    font-size: 1em !important;
+}
+

@@ -1,14 +1,36 @@
 <mat-nav-list>
-    <h2 matSubheader>Menu</h2>
-    <mat-list-item routerLink="/editor" (click)="closeSidenav()">
-        <div><img class="icon" src="../../../assets/editor.svg" alt=""><span>Editor</span></div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item routerLink="/rating" (click)="closeSidenav()">
-        <div><img class="icon" src="../../../assets/rating.svg" alt=""><span>Rating</span></div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item routerLink="/history" (click)="closeSidenav()">
-        <div><img class="icon" src="../../../assets/history.svg" alt=""><span>History</span></div>
-    </mat-list-item>
+    <div>
+        <h2 class="navigation__header">Menu</h2>
+        <mat-divider></mat-divider>
+        <mat-list-item class="profile" [routerLink]="['user', authService.currentUser.id]" (click)="closeSidenav()"
+                       *ngIf="isEnabled">
+            <div>
+                <img class="profile-icon" [src]="authService.currentUser.image" alt="">
+                <span>{{authService.currentUser.name}}</span>
+            </div>
+        </mat-list-item>
+        <mat-divider *ngIf="isEnabled"></mat-divider>
+        <mat-list-item routerLink="/login" (click)="closeSidenav()" *ngIf="!isEnabled">
+            <div><img class="icon" src="../../../assets/team.svg" alt=""><span>Login</span></div>
+        </mat-list-item>
+        <mat-list-item routerLink="/editor" (click)="closeSidenav()" *ngIf="isEnabled">
+            <div><img class="icon" src="../../../assets/editor.svg" alt=""><span>Editor</span></div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/rating" (click)="closeSidenav()">
+            <div><img class="icon" src="../../../assets/rating.svg" alt=""><span>Rating</span></div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/history" (click)="closeSidenav()">
+            <div><img class="icon" src="../../../assets/history.svg" alt=""><span>History</span></div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </div>
+    <div>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="exit()" *ngIf="isEnabled">
+            <div><img class="icon" src="../../../assets/exit.svg" alt=""><span>Exit</span></div>
+        </mat-list-item>
+    </div>
+
 </mat-nav-list>

@@ -15,7 +15,7 @@ export class ListTeamPlayersComponent implements OnInit {
     users: IUser[] = [];
     selectedUsers: IUser[] = [];
     selectedRivalUsers: IUser[] = [];
-    selectedTeam: number;
+    selectedTeam: string;
 
     constructor(private teamService: TeamService) {
         this.sortPlayer = this.sortPlayer.bind(this);
@@ -23,9 +23,9 @@ export class ListTeamPlayersComponent implements OnInit {
 
     ngOnInit(): void {
         this.formGroupTeam.valueChanges.subscribe(data => {
-            if (data.id && +data.id !== this.selectedTeam) {
+            if (data.id && data.id !== this.selectedTeam) {
                 this.selectedUsers = [];
-                this.selectedTeam = +data.id;
+                this.selectedTeam = data.id;
                 this.teamService.getById(this.selectedTeam).subscribe(team => {
                     this.users = team.users;
                 });

@@ -1,6 +1,7 @@
 <div class="image-upload-container">
     <div class="image-upload">
         <input #imageInput
+               [class.disabled]="disabled"
                type="file"
                accept="image/*"
                (dragenter)="setColor()"

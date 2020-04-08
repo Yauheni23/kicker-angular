@@ -12,6 +12,7 @@ export interface ITeam extends IEntity {
 }
 
 export interface IUser extends IEntity {
+    mail?: string;
     games: any;
     goals: number;
     countGame: number;
@@ -25,14 +26,14 @@ export interface ITeamUser {
 }
 
 export interface IGame {
-    id: number;
+    id: string;
     date: Date;
     team1: IGameTeam;
     team2: IGameTeam;
 }
 
 interface IGameTournament {
-    id: number;
+    id: string;
     date: Date;
     teams: ITeamTournament[];
 }
@@ -47,7 +48,7 @@ interface IGameTeam extends IEntity {
 }
 
 interface IEntity {
-    id: number;
+    id: string;
     name: string;
     image: string;
 }

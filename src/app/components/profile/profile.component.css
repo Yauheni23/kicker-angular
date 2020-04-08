@@ -1,0 +1,27 @@
+.profile {
+    display: flex;
+    padding: 30px;
+}
+
+.user-info {
+    width: 300px;
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.header-team {
+    text-align: center;
+    font-size: 36px;
+}
+.avatar-team {
+    width: 200px;
+    height: 200px;
+}
+
+.teams-list {
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,17 +1,12 @@
 <ng-container *ngIf="true">
-    <mat-toolbar class="header" color="primary">
-        <mat-toolbar-row>
-            <mat-icon aria-hidden="false"
-                      aria-label="Home icon"
-                      class="header__home-icon"
-                      (click)="sidenav.toggle()">
-                menu
-            </mat-icon>
-            <span>Kicker</span>
-        </mat-toolbar-row>
-    </mat-toolbar>
-
+    <mat-icon aria-hidden="false"
+              aria-label="Home icon"
+              class="header__home-icon"
+              (click)="sidenav.toggle()">
+        {{sidenav.opened ? 'keyboard_arrow_left' : 'keyboard_arrow_right'}}
+    </mat-icon>
     <mat-sidenav-container class="sidenav-container">
+
         <mat-sidenav #sidenav mode="over" class="sidenav">
             <app-navigation (selectLink)="sidenav.close()"></app-navigation>
         </mat-sidenav>

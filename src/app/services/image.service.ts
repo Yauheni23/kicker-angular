@@ -1,7 +1,10 @@
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {UrlAddress} from '../constants';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UrlAddress } from '../constants';
+import { Injectable } from '@angular/core';
 
+
+@Injectable()
 export class ImageService {
     constructor(private httpClient: HttpClient) {
     }

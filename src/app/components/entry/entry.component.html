@@ -1,0 +1,18 @@
+<div class="entry-form-wrapper">
+    <mat-card class="entry-form">
+        <div>
+            <h1 class="entry-form__title">Welcome</h1>
+            <div class="entry-form__main">
+                <app-register *ngIf="!isLogin"></app-register>
+                <app-login *ngIf="isLogin"></app-login>
+            </div>
+        </div>
+
+        <mat-card-subtitle>
+            {{isLogin ? 'Don’t have an account?' : 'Do have an account?'}}
+            <span (click)="toggleForm()">{{isLogin ? 'Sign Up' : 'Sign In'}} </span>
+        </mat-card-subtitle>
+    </mat-card>
+</div>
+
+

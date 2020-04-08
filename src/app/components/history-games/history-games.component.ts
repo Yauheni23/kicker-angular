@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {GameService} from '../../services/game.service';
 import {IGame} from '../../types';
 import {DisplayedColumns} from '../../constants';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
     selector: 'app-history-games',

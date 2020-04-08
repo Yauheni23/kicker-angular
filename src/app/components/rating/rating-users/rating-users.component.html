@@ -35,7 +35,9 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-                [style.backgroundColor]="setColor(row.place)">
+                [style.backgroundColor]="setColor(row.place)"
+                [routerLink]="['/user/', row.id]"
+            >
             </tr>
         </table>
 
