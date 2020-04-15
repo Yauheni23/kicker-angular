@@ -1,11 +1,5 @@
-<mat-tab-group mat-stretch-tabs>
-    <mat-tab label="Добавление игр">
-        <app-editor-game class="editor-page__editor-team"></app-editor-game>
-    </mat-tab>
-    <mat-tab label="Добавление игроков в команду">
-        <app-team-player-drag-and-drop class="editor-page__team-user"></app-team-player-drag-and-drop>
-    </mat-tab>
-    <mat-tab label="Добавление команд">
-        <app-editor-team></app-editor-team>
-    </mat-tab>
-</mat-tab-group>
+<mat-card class="editor">
+    <app-team-player-drag-and-drop></app-team-player-drag-and-drop>
+    <app-editor-game></app-editor-game>
+</mat-card>
+

@@ -2,7 +2,6 @@
     <app-editor-layout [errorMessage]="errorMessage"
                        [formGroup]="formGroup"
                        buttonText="Add game"
-                       [style.height.%]="100"
                        (submitEvent)="onSubmit($event)"
                        [buttonStyle]="{'width':'200px', 'marginTop': '-35px'}"
     >
@@ -13,7 +12,7 @@
                 <app-select-team [formGroupTeam]="team1" [rivalId]="team2Id"></app-select-team>
             </div>
             <div class="teams__bill-container">
-                <h1>Game</h1>
+                <h1>Добавление игры</h1>
                 <mat-card class="teams__bill">
                     <input matInput [formControl]="goalsTeam1" class="bill-input" type="number" min="0" [max]="maxGoals"
                            step="1" (keypress)="isNumber($event)">

@@ -7,6 +7,7 @@ export interface ITeam extends IEntity {
     users: IUser[];
     goals: number;
     games: IGame[];
+    captainId: string;
     place?: number;
     winRate?: number;
 }

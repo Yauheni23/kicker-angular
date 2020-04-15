@@ -59,21 +59,21 @@ export class ListTeamPlayersComponent implements OnInit {
         this.users.sort(this.sortPlayer);
     }
 
-    isSelectedRival(id: number): boolean {
+    isSelectedRival(id: string): boolean {
         return (this.selectedRivalUsers[0] && this.selectedRivalUsers[0].id === id)
             || (this.selectedRivalUsers[1] && this.selectedRivalUsers[1].id === id);
     }
 
-    isTeamFull(id: number): boolean {
+    isTeamFull(id: string): boolean {
         return !this.selectedUsers.some(selectedUser => selectedUser.id === id)
             && this.selectedUsers.length === COUNT_PLAYERS_IN_TEAM;
     }
 
-    isSelectedPlayer(id: number): boolean {
+    isSelectedPlayer(id: string): boolean {
         return this.selectedUsers.some(selectedUser => selectedUser.id === id);
     }
 
-    getFormControl(id: number): AbstractControl | undefined {
+    getFormControl(id: string): AbstractControl | undefined {
         const user = this.selectedUsers.find(selectedUser => selectedUser.id === id);
         if (user && user.id === this.player1.get(GameFormGroup.id).value) {
             return this.player1.get(GameFormGroup.goals);

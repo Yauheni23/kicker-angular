@@ -10,6 +10,11 @@
 .team-player__teams-container {
     overflow-y: hidden;
     height: 100%;
+    width: 100%;
+}
+
+.team-player__teams-header {
+    text-align: center;
 }
 
 .team-player__players-container {
@@ -80,7 +85,6 @@
 .team-player__team-name {
     text-align: center;
 }
-
 
 mat-list-item span {
     margin-left: 10px;

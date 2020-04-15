@@ -49,6 +49,7 @@ export const UrlAddress = {
     team: `${serverAddress}/team`,
     tournament: `${serverAddress}/tournament`,
     addUser: `${serverAddress}/team/user`,
+    teamsUser: `${serverAddress}/teamsUser`,
     user: `${serverAddress}/user`,
     uploadImage: `${serverAddress}/image`
 };

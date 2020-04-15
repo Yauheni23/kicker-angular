@@ -44,4 +44,10 @@
 
 ::ng-deep mat-form-field {
     width: 100%;
+
+}
+
+mat-sidenav-content {
+    background: url('../assets/fon.jpg') no-repeat;
+    background-size: cover;
 }

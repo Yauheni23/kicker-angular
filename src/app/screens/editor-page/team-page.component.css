@@ -1,22 +1,17 @@
-.editor-page {
-    display: flex;
+.editor {
     height: 100%;
-}
-
-.editor-page_game-and-team-user {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    background: url('../../../assets/fon.jpg') no-repeat;
+    background-size: cover;
 }
 
-.editor-page__team-and-user {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.editor-page__team-and-user > * {
+.editor app-team-player-drag-and-drop {
     margin-bottom: 20px;
+    height: 50%;
 }
 
+.editor app-editor-game {
+    margin-bottom: 20px;
+    height: 50%;
+}

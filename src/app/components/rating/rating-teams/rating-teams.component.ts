@@ -27,6 +27,7 @@ export class RatingTeamsComponent extends Rating<ITeam> implements OnInit {
             name: team.name,
             users: team.users,
             image: team.image,
+            captainId: team.captainId,
             games: team.games.length,
             goals: team.games.reduce((accumulator, currentGame) => accumulator + currentGame.goals, 0),
             winRate: team.games.filter(game => game.goals === MAX_GOALS).length / team.games.length || 0

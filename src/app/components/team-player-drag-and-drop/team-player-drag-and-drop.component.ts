@@ -6,6 +6,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { Message, SNACK_BAR_DURATION } from '../../constants';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -22,22 +23,23 @@ export class TeamPlayerDragAndDropComponent {
     constructor(private playerService: PlayerService,
                 private teamService: TeamService,
                 public dialog: MatDialog,
-                private snackBar: MatSnackBar
+                private snackBar: MatSnackBar,
+                private authService: AuthService
     ) {
         this.playerService.getAll()
             .subscribe(players => {
-                this.players = players;
+                this.players = players.filter(player => player.id !== this.authService.currentUser.id);
             });
         this.teamService.getAll()
             .subscribe(teams => {
-                this.teams = teams;
+                this.teams = teams.filter(team => team.captainId === this.authService.currentUser.id);
             });
 
         this.accept = this.accept.bind(this);
         this.onFailed = this.onFailed.bind(this);
     }
 
-    isEnabled(id: number): boolean {
+    isEnabled(id: string): boolean {
         return !!this.disabledTeams[id];
     }
 

@@ -1,5 +1,6 @@
 <mat-card class="team-player">
     <div class="team-player__teams-container">
+        <h2 class="team-player__teams-header">Мои команды</h2>
         <div class="team-player__teams">
             <div *ngFor="let team of teams"
                  class="team-player__team"
@@ -14,6 +15,7 @@
         </div>
     </div>
     <div class="team-player__players-container">
+        <h2 class="team-player__teams-header">Пользователи</h2>
         <mat-list class="team-player__players">
             <mat-card *ngFor="let player of players"
                       draggable="true"
@@ -28,4 +30,8 @@
             </mat-card>
         </mat-list>
     </div>
+    <mat-card>
+        <app-editor-team></app-editor-team>
+    </mat-card>
+
 </mat-card>
