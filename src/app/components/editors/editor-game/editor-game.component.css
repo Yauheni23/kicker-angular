@@ -1,8 +1,13 @@
 .editor-game-container {
     width: 100%;
-    height: 100%;
+    height: 310px;
     margin: 0 auto;
 }
+
+.editor-game-container ::ng-deep.button-create {
+    margin-top: -100px;
+}
+
 .teams {
     display: flex;
     align-items: flex-start;
@@ -26,6 +31,19 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.header {
+    color: #646974;
+    font-size: 27px;
+    font-family: Trebuchet MS, Fira Sans;
+    fill: #646974;
+    text-align: center;
+    font-weight: normal;
+    padding: 10px;
+    border-bottom: 1px solid #646974;
+    margin-bottom: 15px;
+    width: 100%;
 }
 
 .teams__bill {

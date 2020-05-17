@@ -39,7 +39,7 @@ mat-card-subtitle span:hover {
 }
 
 
-::ng-deep button {
+.entry-form-wrapper ::ng-deep button {
     width: 100%;
     font-size: 1em !important;
 }

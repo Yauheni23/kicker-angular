@@ -1,7 +1,7 @@
 .dialog {
     font-size: 1.2em;
     padding-top: 10px;
-    width: 300px;
+    max-width: 500px;
 }
 .dialog__text {
 }

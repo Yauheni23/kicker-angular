@@ -9,4 +9,20 @@ export class GameService extends EditorService<IGame> {
     constructor(protected httpClient: HttpClient) {
         super(httpClient, UrlAddress.game);
     }
+
+    getByUser(id: string) {
+        return this.httpClient.get<IGame[]>(this.urlAddress,{
+            params: {
+                userId: id,
+            }
+        })
+    }
+
+    getByTeam(id: string) {
+        return this.httpClient.get<IGame[]>(this.urlAddress,{
+            params: {
+                teamId: id,
+            }
+        })
+    }
 }

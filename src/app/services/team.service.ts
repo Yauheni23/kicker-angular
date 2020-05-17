@@ -22,4 +22,8 @@ export class TeamService extends EditorService<ITeam> {
     getUserTeams(id: string): Observable<any> {
         return this.httpClient.get<ITeam[]>(`${UrlAddress.teamsUser}/${id}`);
     }
+
+    updateTeam(id: string, data) {
+        return this.httpClient.put(`${this.urlAddress}/${id}`, data);
+    }
 }

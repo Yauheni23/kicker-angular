@@ -1,3 +1,7 @@
+td, span, div {
+    font-family: Trebuchet MS, Fira Sans;
+}
+
 .header {
     position: fixed;
     top: 0;

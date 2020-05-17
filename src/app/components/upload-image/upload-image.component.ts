@@ -3,7 +3,8 @@ import { UrlAddress } from '../../constants';
 import { ImageService } from '../../services/image.service';
 import { FormControl } from '@angular/forms';
 import { ImageSnippet } from '../../utils/image-snippet';
-
+import * as AWS from 'aws-sdk/global';
+import * as S3 from 'aws-sdk/clients/s3';
 
 @Component({
     selector: 'app-upload-image',
@@ -26,18 +27,30 @@ export class UploadImageComponent {
         }
 
         const file: File = imageInput.files[0];
-        const reader = new FileReader();
+        const contentType = file.type;
+        const bucket = new S3(
+            {
+                accessKeyId: 'AKIAI5E3RYOA3CCSNWSA',
+                secretAccessKey: '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',
+                region: 'eu-central-1'
+            }
+        );
+        const params = {
+            Bucket: 'myimagesforcoursework',
+            Key: 'image/' + new Date().getTime(),
+            Body: file,
+            ACL: 'public-read',
+            ContentType: contentType
+        };
 
-        reader.addEventListener('load', (event: any) => {
-            this.selectedFile = new ImageSnippet(event.target.result, file);
+        bucket.upload(params, (err, data) => {
+            if (err) {
+                return false;
+            }
+            this.image.setValue(data.Location);
 
-            this.imageService.uploadImage(this.selectedFile.file)
-                .subscribe((result) => {
-                    this.image.setValue(UrlAddress.image + result.link);
-                });
+            return true;
         });
-
-        reader.readAsDataURL(file);
     }
 
     setColor(): void {

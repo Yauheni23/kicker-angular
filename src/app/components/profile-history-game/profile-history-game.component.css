@@ -1,0 +1,69 @@
+.description-game {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.description-game__team {
+    text-align: center;
+}
+
+.description-game__bill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    font-size: 1.7em;
+}
+
+.team__name {
+    color: darkblue;
+    font-size: 1.7em;
+}
+
+.team__players {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    padding: 5px;
+}
+
+.team__players div {
+    cursor: pointer;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+}
+
+.isWin {
+    color: green;
+}
+
+.isLose {
+    color: red;
+}
+
+.games {
+    overflow: hidden;
+    height: 850px;
+}
+
+.list-games {
+    position: relative;
+}
+
+.title {
+    color: #646974;
+    font-size: 27px;
+    font-family: Trebuchet MS, Fira Sans;
+    fill: #646974;
+    text-align: center;
+    font-weight: normal;
+    padding: 10px;
+    border-bottom: 1px solid #646974;
+}

@@ -38,6 +38,11 @@ export class AuthService {
         localStorage.removeItem('user');
     }
 
+    update(user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.currentUser = user;
+    }
+
     private auth(user) {
         localStorage.setItem('token', JSON.stringify(user.token));
         localStorage.setItem('user', JSON.stringify(user));

@@ -1,3 +1,10 @@
+import * as moment from 'moment';
+
+export interface DateRange {
+    from: moment.Moment,
+    to: moment.Moment,
+}
+
 export interface ITournament extends IEntity {
     teams: ITeamTournament[];
     games: IGameTournament[];

@@ -1,0 +1,48 @@
+<h1 class="title">История игр ({{games.length}})</h1>
+<div class="games">
+    <perfect-scrollbar>
+        <div *ngFor="let game of games" class="list-games">
+            <div class="description-game">
+                <div class="description-game__team">
+                    <div>
+                        <img [src]="game.team1.image" class="avatar" [routerLink]="['/team/', game.team1.id]">
+                        <h3 class="team__name">{{game.team1.name}}</h3>
+                        <div class="team__players">
+                            <div *ngFor="let player of game.team1.players" [routerLink]="['/user/', player.id]">
+                                <img [src]="player.image" class="avatar-sm">
+                                <p>{{player.name}}</p>
+                                <p>{{player.goals || 0}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description-game__bill">
+                    <div>
+                        <h2>
+                            <span [ngClass]="isWin(game.team1.goals)">{{game.team1.goals}}</span>
+                            :
+                            <span [ngClass]="isWin(game.team2.goals)">{{game.team2.goals}}</span>
+                        </h2>
+                    </div>
+                    <div>
+                        <span>{{game.date | date:"dd MMM y"}}</span>
+                    </div>
+                </div>
+                <div class="description-game__team">
+                    <div>
+                        <img [src]="game.team2.image" class="avatar" [routerLink]="['/team/', game.team2.id]">
+                        <h3 class="team__name">{{game.team2.name}}</h3>
+                        <div class="team__players">
+                            <div *ngFor="let player of game.team2.players" [routerLink]="['/user/', player.id]">
+                                <img [src]="player.image" class="avatar-sm">
+                                <p>{{player.name}}</p>
+                                <p>{{player.goals || 0}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </perfect-scrollbar>
+</div>

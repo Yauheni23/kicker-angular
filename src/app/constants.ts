@@ -39,7 +39,7 @@ export const DisplayedColumns = {
     ratingUsers: [ 'place', 'name', 'countGame', 'goals' ]
 };
 
-const serverAddress = 'http://localhost:8080';
+const serverAddress = 'https://kicker-backend.herokuapp.com';
 
 export const UrlAddress = {
     image: serverAddress,
@@ -55,5 +55,5 @@ export const UrlAddress = {
 };
 
 export enum Message {
-    success = 'Success', failed = 'Failed', close = 'Close'
+    success = 'Успешно', failed = 'Неудачно', close = 'Закрыть'
 }

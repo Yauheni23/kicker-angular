@@ -1,6 +1,6 @@
 <mat-nav-list>
     <div>
-        <h2 class="navigation__header">Menu</h2>
+        <h2 class="navigation__header">Меню</h2>
         <mat-divider></mat-divider>
         <mat-list-item class="profile" [routerLink]="['user', authService.currentUser.id]" (click)="closeSidenav()"
                        *ngIf="isEnabled">
@@ -11,25 +11,25 @@
         </mat-list-item>
         <mat-divider *ngIf="isEnabled"></mat-divider>
         <mat-list-item routerLink="/login" (click)="closeSidenav()" *ngIf="!isEnabled">
-            <div><img class="icon" src="../../../assets/team.svg" alt=""><span>Login</span></div>
+            <div><img class="icon" src="../../../assets/team.svg" alt=""><span>Вход</span></div>
         </mat-list-item>
         <mat-list-item routerLink="/editor" (click)="closeSidenav()" *ngIf="isEnabled">
-            <div><img class="icon" src="../../../assets/editor.svg" alt=""><span>Editor</span></div>
+            <div><img class="icon" src="../../../assets/editor.svg" alt=""><span>Редактор</span></div>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item routerLink="/rating" (click)="closeSidenav()">
-            <div><img class="icon" src="../../../assets/rating.svg" alt=""><span>Rating</span></div>
+            <div><img class="icon" src="../../../assets/rating.svg" alt=""><span>Рейтинг</span></div>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item routerLink="/history" (click)="closeSidenav()">
-            <div><img class="icon" src="../../../assets/history.svg" alt=""><span>History</span></div>
+            <div><img class="icon" src="../../../assets/history.svg" alt=""><span>История</span></div>
         </mat-list-item>
         <mat-divider></mat-divider>
     </div>
     <div>
         <mat-divider></mat-divider>
         <mat-list-item (click)="exit()" *ngIf="isEnabled">
-            <div><img class="icon" src="../../../assets/exit.svg" alt=""><span>Exit</span></div>
+            <div><img class="icon" src="../../../assets/exit.svg" alt=""><span>Выход</span></div>
         </mat-list-item>
     </div>
 

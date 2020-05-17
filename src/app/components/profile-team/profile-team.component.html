@@ -1,0 +1,54 @@
+<div *ngIf="team" class="profile">
+    <mat-card class="user-info">
+        <h3 class="header-team">Команда</h3>
+        <div class="profile-info">
+            <div>
+                <app-upload-image [image]="image" [disabled]="!isEditEnabled"></app-upload-image>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Название:</td>
+                            <td>{{team.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Голы:</td>
+                            <td>{{goals}}</td>
+                        </tr>
+                    </table>
+                    <button mat-raised-button color="accent" (click)="update()" *ngIf="isEditEnabled"
+                            [disabled]="!isNewImage">Сохранить фото
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 class="header-team">Игроки ({{team.users.length}})</h3>
+            <mat-list class="profile__teams">
+                <perfect-scrollbar>
+                    <mat-card *ngFor="let user of team.users"
+                              draggable="true"
+                              class="profile__teams-team"
+                              [style.padding]="'5px 20px'"
+                              [routerLink]="['/user/', user.id]"
+                    >
+                        <div>
+                            <img [src]="user.image" class="profile__avatar-team" [title]="user.name"
+                                 draggable="false">
+                            <span class="profile__team-text">{{user.name}}</span>
+                        </div>
+                        <img src="../../../assets/captain.svg" class="profile__avatar-team" title="Капитан"
+                             draggable="false" *ngIf="team.captainId === user.id">
+                    </mat-card>
+                </perfect-scrollbar>
+            </mat-list>
+        </div>
+    </mat-card>
+    <mat-card [style.width.px]="750" *ngIf="games" class="statistics">
+        <h3 class="header-team">Статистика</h3>
+        <app-count-game-chart [games]="games" [id]="team.id" [type]="team"></app-count-game-chart>
+        <app-win-rate-team-chart [games]="games" [id]="team.id"></app-win-rate-team-chart>
+    </mat-card>
+    <mat-card [style.width.px]="580" *ngIf="games">
+        <app-profile-history-game [games]="games"></app-profile-history-game>
+    </mat-card>
+</div>

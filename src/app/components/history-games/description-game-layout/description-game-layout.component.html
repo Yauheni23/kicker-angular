@@ -1,10 +1,10 @@
 <div class="description-game">
     <div class="description-game__team">
         <div>
-            <img [src]="game.team1.image" class="avatar">
+            <img [src]="game.team1.image" class="avatar" [routerLink]="['/team/', game.team1.id]">
             <h3 class="team__name">{{game.team1.name}}</h3>
             <div class="team__players">
-                <div *ngFor="let player of game.team1.players">
+                <div *ngFor="let player of game.team1.players" [routerLink]="['/user/', player.id]">
                     <img [src]="player.image" class="avatar-sm">
                     <p>{{player.name}}</p>
                     <p>{{player.goals || 0}}</p>
@@ -21,15 +21,15 @@
             </h2>
         </div>
         <div>
-            <span>({{game.date | date:"medium"}})</span>
+            <span>{{game.date | date:"medium"}}</span>
         </div>
     </div>
     <div class="description-game__team">
         <div>
-            <img [src]="game.team2.image" class="avatar">
+            <img [src]="game.team2.image" class="avatar" [routerLink]="['/team/', game.team2.id]">
             <h3 class="team__name">{{game.team2.name}}</h3>
             <div class="team__players">
-                <div *ngFor="let player of game.team2.players">
+                <div *ngFor="let player of game.team2.players" [routerLink]="['/user/', player.id]">
                     <img [src]="player.image" class="avatar-sm">
                     <p>{{player.name}}</p>
                     <p>{{player.goals || 0}}</p>
