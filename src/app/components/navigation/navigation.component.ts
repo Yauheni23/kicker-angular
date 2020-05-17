@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavigationComponent {
     @Output() selectLink: EventEmitter<void> = new EventEmitter();
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(public authService: AuthService, private router: Router) {}
 
     get isEnabled() {
         return !!this.authService.token;
