@@ -16,7 +16,7 @@ import { AuthService } from '../../../services/auth.service';
 export class EditorTeamComponent extends Editor<ITeam> {
     constructor(private teamService: TeamService, snackBar: MatSnackBar, private authService: AuthService) {
         super(teamService, snackBar);
-        console.log(this.authService.currentUser.id);
+
         this.formGroup = new FormGroup({
             name: new FormControl('', [ Validators.required, Validators.minLength(MIN_LENGTH_NAME) ]),
             image: new FormControl(''),

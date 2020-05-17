@@ -13,7 +13,6 @@ export class Report {
   data: BehaviorSubject<ReportData> = new BehaviorSubject(null);
 
   update(data, id, type) {
-    console.log(data);
     const { date } = data.length ? _.minBy(data, item => item.date) : new Date();
     const periods = createPeriodsByWeek(date);
     const {win, lose} = this.getStatistics(data, periods, id, type);
