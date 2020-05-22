@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 import {ReportChartOptions} from './report-chart-options';
 import {createPeriodsByWeek} from '../../../helpers/date-helper';
 import {DateRange} from '../../../../../types';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 @Injectable()
 export class Report {
@@ -32,7 +32,7 @@ export class Report {
         teamNames.forEach( name => gameByTeam[name] = _.times(periods.length,_.constant(0)).map(() => ({win: 0, total: 0})));
 
         periods.forEach((period, index) => {
-            const gamesUnderDate = games.filter(game => period.to.isSameOrAfter(moment(game.date)));
+            const gamesUnderDate = games.filter(game => period.to.isAfter(dayjs(game.date)) ||  period.to.isSame(dayjs(game.date)));
 
             gamesUnderDate.forEach(game => {
                 const team = game.team1.players.some(player => player.id === id) ? game.team1 : game.team2;

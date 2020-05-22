@@ -3,12 +3,15 @@ import {EditorService} from '../../services/editor';
 import {Message, SNACK_BAR_DURATION} from '../../constants';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
-export class Editor<T> {
+export abstract class Editor<T> {
     formHTMLElement: HTMLFormElement;
     formGroup: FormGroup;
     errorMessage: string = '';
 
-    constructor(private editorService: EditorService<T>, private snackBar: MatSnackBar) {
+    protected constructor(
+        private editorService: EditorService<T>,
+        private snackBar: MatSnackBar
+    ) {
         this.onSuccess = this.onSuccess.bind(this);
         this.onFailed = this.onFailed.bind(this);
     }

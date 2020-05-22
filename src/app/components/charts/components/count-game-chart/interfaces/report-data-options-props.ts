@@ -1,7 +1,7 @@
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 export interface ReportChartOptionsProps {
   win: number[];
   lose: number[];
-  date: moment.Moment[];
+  date: dayjs.Dayjs[];
 }

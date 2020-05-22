@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UrlAddress } from '../constants';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {UrlAddress} from '../constants';
+import {Router} from '@angular/router';
 
 interface IUser {
-    id: string; name: string; mail: string; token: string; image: string;
+    id: string;
+    name: string;
+    mail: string;
+    token: string;
+    image: string;
 }
 
 @Injectable({
@@ -17,18 +21,15 @@ export class AuthService {
     constructor(private httpClient: HttpClient, private router: Router) {
         this.token = JSON.parse(localStorage.getItem('token'));
         this.currentUser = JSON.parse(localStorage.getItem('user'));
-
         this.auth = this.auth.bind(this);
     }
 
     login(data) {
-        return this.httpClient.post<IUser>(UrlAddress.login, data)
-            .subscribe(this.auth);
+        return this.httpClient.post<IUser>(UrlAddress.login, data).subscribe(this.auth);
     }
 
     register(data) {
-        return this.httpClient.post<IUser>(UrlAddress.register, data)
-            .subscribe(this.auth);
+        return this.httpClient.post<IUser>(UrlAddress.register, data).subscribe(this.auth);
     }
 
     removeToken() {
@@ -48,7 +49,6 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
         this.token = user.token;
         this.currentUser = user;
-
         this.router.navigate(['user', this.currentUser.id]);
     }
 }

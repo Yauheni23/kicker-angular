@@ -128,7 +128,7 @@ const appRoutes: Routes = [
         MatSnackBarModule,
         PerfectScrollbarModule,
     ],
-    providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, { provide: LOCALE_ID, useValue: 'ru' }],
+    providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: LOCALE_ID, useValue: 'ru'}],
     entryComponents: [DialogComponent, ChangePasswordComponent],
     bootstrap: [AppComponent]
 })

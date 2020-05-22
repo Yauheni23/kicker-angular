@@ -5,23 +5,15 @@
                type="file"
                accept="image/*"
                title=""
-               (dragenter)="setColor()"
-               (dragleave)="deleteColor()"
-               (drop)="deleteColor()"
                (change)="processFile(imageInput)">
         <div class="tooltip">
             {{ image.value ? 'Изменить фото' : 'Загрузить фото'}}
         </div>
         <div class="image-upload__text" [ngStyle]="{opacity: image && image.value ? 0 : 1}">
-            <img src="../../../assets/addImage.svg" alt="" *ngIf="!hover; else blueImage">
+            <img src="../../../assets/addImage.svg" alt="">
         </div>
         <div class="image-container" *ngIf="image && image.value">
             <img [src]="image.value" alt="">
         </div>
-
     </div>
 </div>
-
-<ng-template #blueImage>
-    <img src="../../../assets/addImageHover.svg" alt="">
-</ng-template>

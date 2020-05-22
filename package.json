@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "analyzer": "ng build --stats-json --prod && webpack-bundle-analyzer ./dist/kicker/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
@@ -24,16 +25,14 @@
     "@angular/router": "9.1.0",
     "aws-sdk": "^2.678.0",
     "compression": "^1.7.4",
+    "dayjs": "^1.8.27",
     "express": "^4.17.1",
     "highcharts": "^6.2.0",
-    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
-    "moment": "^2.25.3",
     "ngx-perfect-scrollbar": "^9.0.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "1.11.1",
-    "uuid": "3.3.2",
     "zone.js": "0.10.3"
   },
   "devDependencies": {

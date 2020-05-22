@@ -21,10 +21,9 @@ import { Chart, ChartObject, Options } from 'highcharts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent implements OnChanges, OnDestroy {
-
   @Input() options: Options;
   @Input() chart: ChartObject;
-  @Output() chartChange: EventEmitter<ChartObject> = new EventEmitter(true);
+  @Output() chartChange: EventEmitter<ChartObject> = new EventEmitter();
 
   @ViewChild('element', {static: true}) element: ElementRef;
 
@@ -46,7 +45,8 @@ export class ChartComponent implements OnChanges, OnDestroy {
 
   protected renderChart() {
     this.destroyChart();
-    this.chartChange.emit(this.chart = new Chart(this.element.nativeElement, this.options));
+    this.chartChange.emit(
+        this.chart = new Chart(this.element.nativeElement, this.options)
+    );
   }
-
 }

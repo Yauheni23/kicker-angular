@@ -1,13 +1,8 @@
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 export interface DateRange {
-    from: moment.Moment,
-    to: moment.Moment,
-}
-
-export interface ITournament extends IEntity {
-    teams: ITeamTournament[];
-    games: IGameTournament[];
+    from: dayjs.Dayjs,
+    to: dayjs.Dayjs,
 }
 
 export interface ITeam extends IEntity {

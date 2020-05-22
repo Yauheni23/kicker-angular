@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as _ from 'lodash';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 import { ReportChartOptions } from './report-chart-options';
 import { ReportData } from '../interfaces/report-data';
-import {DateRange, IGame} from '../../../../../types';
+import {DateRange} from '../../../../../types';
 import {createPeriodsByWeek} from '../../../helpers/date-helper';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class Report {
   getStatistics(data, periods: DateRange[], id, type) {
     const win = _.times(periods.length, _.constant(0));
     const lose = _.times(periods.length, _.constant(0));
-    const groupedGame = _.groupBy(data, item => moment(item.date).endOf('isoWeek').format('YYYY-MM-DD'));
+    const groupedGame = _.groupBy(data, item => dayjs(item.date).endOf('isoWeek').format('YYYY-MM-DD'));
 
     periods.forEach((period, index) => {
       const formattedDate = period.to.format('YYYY-MM-DD')

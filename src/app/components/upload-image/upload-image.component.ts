@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { UrlAddress } from '../../constants';
 import { ImageService } from '../../services/image.service';
 import { FormControl } from '@angular/forms';
-import { ImageSnippet } from '../../utils/image-snippet';
-import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 
 @Component({
@@ -14,12 +11,7 @@ import * as S3 from 'aws-sdk/clients/s3';
 })
 export class UploadImageComponent {
     @Input() image: FormControl;
-    selectedFile: ImageSnippet;
-    hover = false;
     @Input() disabled = false;
-
-    constructor(protected imageService: ImageService) {
-    }
 
     processFile(imageInput: any) {
         if (this.disabled) {
@@ -51,13 +43,5 @@ export class UploadImageComponent {
 
             return true;
         });
-    }
-
-    setColor(): void {
-        this.hover = true;
-    }
-
-    deleteColor(): void {
-        this.hover = false;
     }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
+import * as isoWeek from 'dayjs/plugin/isoWeek';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import * as moment from 'moment';
 })
 export class AppComponent {
   constructor() {
-    moment.locale('RU');
+    dayjs.extend(isoWeek)
+    dayjs.locale('RU');
   }
 }

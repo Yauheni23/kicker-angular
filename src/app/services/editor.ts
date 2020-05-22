@@ -4,13 +4,14 @@ import {HttpClient} from '@angular/common/http';
 export class EditorService<T> {
     protected data: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]);
 
-    protected constructor(protected httpClient: HttpClient, protected urlAddress: string) {
+    protected constructor(
+        protected httpClient: HttpClient,
+        protected urlAddress: string,
+    ) {
     }
 
     getAll(): Observable<T[]> {
-        this.httpClient.get<T[]>(this.urlAddress).subscribe(data => {
-            this.data.next(data);
-        });
+        this.httpClient.get<T[]>(this.urlAddress).subscribe(data => this.data.next(data));
         return this.data.asObservable();
     }
 
@@ -18,7 +19,7 @@ export class EditorService<T> {
         return this.httpClient.get<T>(`${this.urlAddress}/${id}`);
     }
 
-    create(data: any): Observable<T> {
+    create(data: T): Observable<T> {
         return this.httpClient.post<T>(this.urlAddress, data);
     }
 
