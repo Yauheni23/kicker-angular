@@ -2,10 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {IGame, ITeam} from '../../types';
 import {AuthService} from '../../services/auth.service';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {UserFormGroup} from '../../constants';
+import {Message, SNACK_BAR_DURATION, UserFormGroup} from '../../constants';
 import {ActivatedRoute} from '@angular/router';
 import {GameService} from '../../services/game.service';
 import {TeamService} from '../../services/team.service';
+import {MatDialog} from '@angular/material/dialog';
+import {CallTeamComponent} from './components/call-team/call-team.component';
 
 
 @Component({
@@ -19,8 +21,9 @@ export class ProfileTeamComponent implements OnInit {
     constructor(
         private teamService: TeamService,
         private gameService: GameService,
-        private authService: AuthService,
+        public authService: AuthService,
         private activatedRoute: ActivatedRoute,
+        public dialog: MatDialog,
     ) {
         this.formGroup = new FormGroup({
             image: new FormControl('')
@@ -82,4 +85,14 @@ export class ProfileTeamComponent implements OnInit {
                 });
         });
     }
+
+    callTeam() {
+        this.dialog.open(CallTeamComponent, {
+            data: {
+                teamId: this.activatedRoute.snapshot.params.id,
+                type: 'create'
+            }
+        });
+    }
+
 }

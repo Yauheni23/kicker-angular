@@ -31,7 +31,7 @@
             </button>
         </div>
         <div>
-            <h3 class="header-team">Команды ({{player.teams.length}})</h3>
+            <h3 class="header-team" [style.paddingTop.px]="10">Команды ({{player.teams.length}})</h3>
             <mat-list class="profile__teams">
                 <perfect-scrollbar>
                     <mat-card *ngFor="let team of player.teams"

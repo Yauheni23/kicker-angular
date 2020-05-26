@@ -56,6 +56,11 @@ import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import {ProfileTeamComponent} from './components/profile-team/profile-team.component';
 import {WinRateChartTeamComponent} from './components/charts/components/win-rate-chart-team/win-rate-chart-team.component';
+import { CallsComponent } from './components/profile-team/components/calls/calls.component';
+import {CallTeamComponent} from './components/profile-team/components/call-team/call-team.component';
+import {NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule} from '@angular-material-components/datetime-picker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {CallDialogComponent} from './components/profile-team/components/call-dialog/call-dialog.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -95,12 +100,15 @@ const appRoutes: Routes = [
         RegisterComponent,
         EntryComponent,
         ChangePasswordComponent,
+        CallTeamComponent,
         ChartComponent,
         CountGameChartComponent,
         WinRateChartComponent,
         WinRateChartTeamComponent,
         ProfileHistoryGameComponent,
         ProfileTeamComponent,
+        CallsComponent,
+        CallDialogComponent,
     ],
     imports: [
         RouterModule.forRoot(appRoutes),
@@ -127,9 +135,13 @@ const appRoutes: Routes = [
         MatDialogModule,
         MatSnackBarModule,
         PerfectScrollbarModule,
+        NgxMatDatetimePickerModule,
+        NgxMatNativeDateModule,
+        NgxMatTimepickerModule,
+        MatDatepickerModule
     ],
     providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: LOCALE_ID, useValue: 'ru'}],
-    entryComponents: [DialogComponent, ChangePasswordComponent],
+    entryComponents: [DialogComponent, ChangePasswordComponent, CallTeamComponent, CallDialogComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

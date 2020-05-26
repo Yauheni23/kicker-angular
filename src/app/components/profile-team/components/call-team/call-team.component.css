@@ -1,0 +1,28 @@
+.change-password {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 280px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.list-item > * {
+    margin-right: 10px;
+}
+
+.avatar-team {
+    width: 180px;
+    height: 180px;
+}

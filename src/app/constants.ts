@@ -39,7 +39,7 @@ export const DisplayedColumns = {
     ratingUsers: [ 'place', 'name', 'countGame', 'goals' ]
 };
 
-const serverAddress = 'https://kicker-backend.herokuapp.com';
+const serverAddress = 'http://localhost:8080';
 
 export const UrlAddress = {
     image: serverAddress,
@@ -51,7 +51,8 @@ export const UrlAddress = {
     addUser: `${serverAddress}/team/user`,
     teamsUser: `${serverAddress}/teamsUser`,
     user: `${serverAddress}/user`,
-    uploadImage: `${serverAddress}/image`
+    uploadImage: `${serverAddress}/image`,
+    call: `${serverAddress}/call`
 };
 
 export enum Message {

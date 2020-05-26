@@ -18,6 +18,9 @@
                     <button mat-raised-button color="accent" (click)="update()" *ngIf="isEditEnabled"
                             [disabled]="!isNewImage">Сохранить фото
                     </button>
+                    <button mat-raised-button color="accent" (click)="callTeam()" *ngIf="!isEditEnabled">
+                        Бросить вызов
+                    </button>
                 </div>
             </div>
         </div>
@@ -42,13 +45,18 @@
                 </perfect-scrollbar>
             </mat-list>
         </div>
+
     </mat-card>
     <mat-card [style.width.px]="750" *ngIf="games" class="statistics">
         <h3 class="header-team">Статистика</h3>
         <app-count-game-chart [games]="games" [id]="team.id" [type]="team"></app-count-game-chart>
         <app-win-rate-team-chart [games]="games" [id]="team.id"></app-win-rate-team-chart>
+
     </mat-card>
     <mat-card [style.width.px]="580" *ngIf="games">
-        <app-profile-history-game [games]="games"></app-profile-history-game>
+        <div *ngIf="team.captainId === authService.currentUser.id">
+            <app-calls></app-calls>
+        </div>
+        <app-profile-history-game [games]="games" *ngIf="team.captainId !== authService.currentUser.id"></app-profile-history-game>
     </mat-card>
 </div>

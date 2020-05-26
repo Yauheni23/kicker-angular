@@ -1,0 +1,51 @@
+<h3 class="header-team" *ngIf="calls">Вызовы</h3>
+<mat-list class="profile__teams">
+
+    <perfect-scrollbar>
+        <mat-card *ngFor="let call of calls"
+                  class="profile__teams-team"
+                  [style.padding]="'5px 0'"
+        >
+            <ng-container
+                    *ngTemplateOutlet="
+                        appTpl;
+                        context: {
+                          team: +call.creator.id === +activatedRoute.snapshot.params.id ? call.opponent : call.creator,
+                          call: call
+                        }
+                    "
+            ></ng-container>
+
+        </mat-card>
+    </perfect-scrollbar>
+</mat-list>
+
+<ng-template #appTpl let-team="team" let-call="call">
+    <div class="call">
+        <div class="call-team">
+            <img [src]="team.image" class="profile__avatar-team" [title]="team.name"
+                 draggable="false">
+            <span class="profile__team-text">{{team.name}}</span>
+        </div>
+        <div class="middle-info">
+            <span class="profile__team-text">{{call.Status[0]?.name}}</span>
+            <span class="profile__team-text">{{call.date | date: ' d MMM, y, H:mm:ss':'ru'}}</span>
+        </div>
+        <div class="calls-buttons-container">
+            <div class="calls-buttons" *ngIf="call.Status[0].name === 'Ожидает'">
+                <div class="calls-button" (click)="openDialog(call, 'apply')" *ngIf="!isConfirmed(call)">
+                    <img src="../../../../../assets/apply.svg" alt="">
+                </div>
+                <div class="calls-button" (click)="edit(call)">
+                    <img src="../../../../../assets/update.svg" alt="">
+                </div>
+                <div class="calls-button" (click)="openDialog(call, 'cancel')">
+                    <img src="../../../../../assets/cancel.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</ng-template>

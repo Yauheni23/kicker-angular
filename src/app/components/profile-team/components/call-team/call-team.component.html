@@ -1,0 +1,39 @@
+<div class="change-password" *ngIf="data.type === 'create'">
+    <mat-form-field>
+        <mat-label>Ваша команда</mat-label>
+        <mat-select [formControl]="formGroup.controls.creatorId">
+            <mat-option *ngFor="let team of teams" [value]="team.id">
+                    <span class="list-item">
+                    <img class="avatar-sm" [src]="team.image" alt="">
+                        {{team.name}}
+                    </span>
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker"
+               placeholder="Выберите дату"
+               [formControl]="formGroup.controls.date"
+               [min]="currentDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker>
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="create()" [disabled]="!formGroup.valid">Бросить вызов</button>
+</div>
+<div class="change-password" *ngIf="data.type === 'edit'">
+    <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker"
+               placeholder="Выберите дату"
+               [formControl]="formGroup.controls.date"
+               [min]="currentDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker>
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="update()" [disabled]="!formGroup.valid">Изменить дату</button>
+</div>

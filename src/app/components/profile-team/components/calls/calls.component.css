@@ -78,3 +78,53 @@ table td {
     font-size: 1.2em;
     line-height: 40px;
 }
+
+.call {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.call-team {
+    width: 180px;
+    display: flex;
+    align-items: center;
+}
+
+.middle-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.middle-info span {
+    line-height: 1.1em;
+}
+
+.middle-info span + span {
+    line-height: 1em;
+    font-size: 0.85em;
+    color: #646974;
+
+}
+
+.calls-buttons-container {
+    width: 180px;
+}
+
+.calls-buttons {
+    height: 100%;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.calls-button {
+    margin-right: 3px;
+}
+
+.calls-button, .calls-button img {
+    width: 30px;
+    height: 30px;
+}
