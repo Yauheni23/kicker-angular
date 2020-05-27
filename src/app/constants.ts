@@ -1,3 +1,5 @@
+import {address} from './server-address';
+
 export const VARIANT_GOALS: number[] = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ];
@@ -39,20 +41,18 @@ export const DisplayedColumns = {
     ratingUsers: [ 'place', 'name', 'countGame', 'goals' ]
 };
 
-const serverAddress = 'http://localhost:8080';
-
 export const UrlAddress = {
-    image: serverAddress,
-    login: `${serverAddress}/login`,
-    register: `${serverAddress}/register`,
-    game: `${serverAddress}/game`,
-    team: `${serverAddress}/team`,
-    tournament: `${serverAddress}/tournament`,
-    addUser: `${serverAddress}/team/user`,
-    teamsUser: `${serverAddress}/teamsUser`,
-    user: `${serverAddress}/user`,
-    uploadImage: `${serverAddress}/image`,
-    call: `${serverAddress}/call`
+    image: address,
+    login: `${address}/login`,
+    register: `${address}/register`,
+    game: `${address}/game`,
+    team: `${address}/team`,
+    tournament: `${address}/tournament`,
+    addUser: `${address}/team/user`,
+    teamsUser: `${address}/teamsUser`,
+    user: `${address}/user`,
+    uploadImage: `${address}/image`,
+    call: `${address}/call`
 };
 
 export enum Message {
